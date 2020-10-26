@@ -22,8 +22,8 @@ export const MyApp = ({
   reduxStore,
   router,
 }: MyAppProps) => {
-  const { loaded, fontsReady } = useAppLogic({ dispatch: reduxStore.dispatch });
-  console.log({ loaded, fontsReady });
+  const { loaded } = useAppLogic({ dispatch: reduxStore.dispatch });
+  console.log({ loaded });
   // const items = [
   //   {
   //     id: router.route,
