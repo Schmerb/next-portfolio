@@ -61,7 +61,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:100,300,400,500,700,900"
+            href="https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto:100,300,400,500,700,900"
             rel="stylesheet"
           />
           {/* {this.props.styleTags} */}

@@ -14,16 +14,17 @@ export const MyGlobalStyle = createGlobalStyle`
   }
   html, body {
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
   body {
     margin: 0;
     overflow-x: hidden;
-    overflow: hidden; // issue with double scroll bar
-    font-family: "NextPro-Regular", sans-serif;
+    /* overflow: hidden; // issue with double scroll bar */
+    /* font-family: "NextPro-Regular", sans-serif; */
   }
 
   h1 {
-    font-family: "NextPro-Regular", sans-serif;
+    /* font-family: "NextPro-Regular", sans-serif; */
   }
 
   .wf-loading body {
