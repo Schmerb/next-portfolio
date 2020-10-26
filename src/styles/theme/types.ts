@@ -11,11 +11,6 @@ export interface ColorProps {
   Secondary: string;
   Text: string;
   //
-  Blue1: string;
-  Blue2: string;
-  Blue3: string;
-  LightBlue: string;
-  //
   OffWhite: string;
   OffWhiteDark: string;
   LightGrey: string;

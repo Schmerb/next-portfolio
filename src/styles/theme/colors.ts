@@ -10,12 +10,8 @@ import { hex2rgb } from 'utils/helperFunctions/colors';
 const cornflowerBlue = '#6495ED';
 const rebeccaPurple = '#663399';
 
-const Primary = '#65bdd3'; // same as secondary for now
+const Primary = cornflowerBlue; // same as secondary for now
 const PrimaryLight = '#d1ecf3';
-const PrimaryExtraLight = '#e1f3f7';
-const Blue1 = '#68bfd5';
-const Blue2 = '#4a8b9d';
-const Blue3 = '#316271';
 const Secondary = rebeccaPurple;
 
 const LightBlue = 'rgb(209,235,242)';
@@ -55,11 +51,6 @@ export const colors = {
   PrimaryHover: '#52dae3',
   Secondary,
   Text: '#000',
-  //
-  Blue1,
-  Blue2,
-  Blue3,
-  LightBlue,
   //
   OffWhite,
   OffWhiteDark,

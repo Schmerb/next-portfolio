@@ -19,8 +19,10 @@ const BurgerMenu = ({
   onClick,
   type,
   style,
+  className,
 }: IBurgerMenuProps) => (
   <Container
+    className={className}
     onClick={onClick}
     style={style}
     type={type || 'button'}
@@ -34,6 +36,7 @@ interface IBurgerMenuProps {
   isOpen: boolean;
   // dispatch: (props: any) => void;
   onClick: (evt: any) => void;
+  className?: string;
   color?: any;
   type?: any;
   style?: any;

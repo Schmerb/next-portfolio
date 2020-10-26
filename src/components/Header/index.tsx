@@ -7,15 +7,32 @@
 import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
 
+import BurgerMenu from 'components/BurgerMenu';
+import Particles from 'components/Particles';
+import BurgerV2 from 'components/BurgerMenu/Burgerv2';
 import Chevron from 'components/svg/Icons/Chevron';
 
 export const HEADER_HEIGHT = 60;
 
 const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
-  const [state, setState] = useState({ slug: '', title: 'SecondSight' });
-
+  const [isOpen, setIsOpen] = useState(false);
+  console.log({ isOpen });
+  useEffect(() => {
+    // setIsOpen(true);
+    // setTimeout(() => {
+    //   setIsOpen(false);
+    // }, 100);
+  }, []);
   return (
     <Container>
+      <Particles />
+      <StyledBurgerMenu
+        isOpen={isOpen}
+        onClick={() => {
+          console.log('click');
+          setIsOpen(!isOpen);
+        }}
+      />
       <Content>
         <Title>
           <div>
@@ -44,6 +61,12 @@ interface HeaderProps {
 }
 
 export default memo(Header);
+
+const StyledBurgerMenu = styled(BurgerV2)`
+  position: fixed;
+  top: 15px;
+  right: 15px;
+`;
 
 const Container = styled.header<any>`
   display: flex;
@@ -82,7 +105,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  border: 1px solid limegreen;
+  /* border: 1px solid limegreen; */
   z-index: 1;
 `;
 
@@ -118,10 +141,14 @@ const Button = styled.button`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 7px 10px;
+  font-size: 26px;
+  width: 90%;
+  max-width: 280px;
+  padding: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  margin: 0 auto;
   z-index: 1;
   ${({ theme }) => theme.styles.boxShadows['1']};
 `;

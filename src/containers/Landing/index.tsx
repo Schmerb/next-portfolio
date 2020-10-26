@@ -20,7 +20,6 @@ export interface LandingPageProps {}
 const LandingPage = ({}: LandingPageProps) => {
   return (
     <Container>
-      <h2>YOOOO</h2>
       <Projects />
       <Work />
       <About />
