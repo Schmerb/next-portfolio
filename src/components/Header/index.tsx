@@ -8,9 +8,11 @@ import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
 
 import BurgerMenu from 'components/BurgerMenu';
-import Particles from 'components/Particles';
+import Particles from 'components/lib/Particles';
 import BurgerV2 from 'components/BurgerMenu/Burgerv2';
 import Chevron from 'components/svg/Icons/Chevron';
+
+import { toggleMenu } from 'actions/display';
 
 export const HEADER_HEIGHT = 60;
 
@@ -31,6 +33,7 @@ const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
         onClick={() => {
           console.log('click');
           setIsOpen(!isOpen);
+          dispatch(toggleMenu());
         }}
       />
       <Content>
@@ -66,6 +69,7 @@ const StyledBurgerMenu = styled(BurgerV2)`
   position: fixed;
   top: 15px;
   right: 15px;
+  z-index: 100;
 `;
 
 const Container = styled.header<any>`

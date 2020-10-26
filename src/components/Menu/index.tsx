@@ -13,32 +13,31 @@ import { useRouter } from 'next/router';
 
 import BurgerMenu from 'components/BurgerMenu';
 import Link from 'components/Elements/Link';
-import { allLinks } from 'utils/navigation';
+import { links } from 'utils/navigation';
 import { closeMenu } from 'actions/display';
 
 const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
+  //
   const animatedProps = useSpring({
     opacity: menuIsOpen ? 1 : 0,
   });
+  //
   const router = useRouter();
-  // console.log({ router });
+  //
+  const handleLinkClick = (evt) => {
+    evt.preventDefault();
+    dispatch(closeMenu());
+  };
   return (
     <Container menuIsOpen={menuIsOpen}>
       <AnimatedDiv style={animatedProps}>
-        <StyledMobile>
-          <BurgerMenu
-            color="#ffffff"
-            isOpen={menuIsOpen}
-            onClick={() => dispatch(closeMenu())}
-          />
-        </StyledMobile>
         <List>
-          {allLinks.map(({ href, text }) => (
+          {links.map(({ href, text }) => (
             <li key={href}>
               <StyledLink
                 href={href}
                 text={text}
-                onClick={() => dispatch(closeMenu())}
+                onClick={handleLinkClick}
                 isActive={router.pathname === href}
               />
             </li>
@@ -84,24 +83,31 @@ const AnimatedDiv = styled(animated.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+
+  background: linear-gradient(
+    -45deg,
+    rgba(162, 85, 255, 0.95) -50%,
+    rgba(101, 31, 255, 0.99)
+  );
 `;
 
 const List = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 2rem;
+  font-size: 2.3rem;
   text-align: center;
 
   li {
     margin-bottom: 30px;
-    font-family: 'NextPro-Light', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    /* font-size: 32px; */
+    text-transform: uppercase;
   }
 `;
 

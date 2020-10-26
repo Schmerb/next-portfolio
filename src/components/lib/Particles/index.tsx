@@ -122,9 +122,9 @@ const Particles = ({}: IParticlesProps) => {
     retina_detect: true,
   };
   return (
-    <Container>
-      <ReactParticles params={params} height="100vh" width="100vw" />
-    </Container>
+    <div style={{ position: 'absolute', left: 0, top: 0 }}>
+      <ReactParticles params={params} height="100vh" width="100vw" />;
+    </div>
   );
 };
 
@@ -132,6 +132,4 @@ export default memo(Particles);
 
 interface IParticlesProps {}
 
-const Container = styled.div`
-  border: 1px solid #000;
-`;
+const Container = styled.div``;

@@ -10,7 +10,7 @@ import styled from 'styled-components';
 // import { Transition, animated } from 'react-spring';
 // import { Transition } from 'react-spring/renderprops';
 
-import FadeIn from 'components/FadeIn';
+// import FadeIn from 'components/Utils/FadeIn';
 
 import withReduxStore from 'utils/withReduxStore';
 import AppWrapper from './AppWrapper';

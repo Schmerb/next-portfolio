@@ -1,41 +1,22 @@
 export const links = [
   {
-    href: '/product',
-    text: 'product',
+    href: '/projects',
+    text: 'projects',
   },
   {
-    href: '/industry',
-    text: 'industry',
+    href: '/work',
+    text: 'work',
   },
   {
-    href: '/team',
-    text: 'team',
+    href: '/about',
+    text: 'about',
   },
   {
-    href: '/resources',
-    text: 'resources',
-  },
-];
-
-export const allLinks = [
-  {
-    href: '/product',
-    text: 'product',
+    href: '/work-flow',
+    text: 'work flow',
   },
   {
-    href: '/industry',
-    text: 'industry',
-  },
-  {
-    href: '/team',
-    text: 'team',
-  },
-  {
-    href: '/resources',
-    text: 'resources',
-  },
-  {
-    href: '/contact-us',
+    href: '/contact',
     text: 'contact',
   },
 ];
