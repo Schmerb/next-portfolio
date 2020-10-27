@@ -7,14 +7,17 @@
 export interface ColorProps {
   alphaMod: (val: string, opacity: any) => string;
   Primary: string;
-  PrimaryLight: string;
   Secondary: string;
   Text: string;
   //
   OffWhite: string;
-  OffWhiteDark: string;
-  LightGrey: string;
-  Grey: string;
+  //
+  PrimaryBlue: string;
+  PrimaryGrey: string;
+  Blue: string;
+  DarkBlue: string;
+  Red: string;
+  GreyScale: string;
   // brands
   Facebook: string;
   Twitter: string;

@@ -15,6 +15,7 @@ export const MyGlobalStyle = createGlobalStyle`
   html, body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    font-family: 'Open Sans', sans-serif;
   }
   body {
     margin: 0;

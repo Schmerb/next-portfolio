@@ -7,20 +7,21 @@ import { css } from 'styled-components';
 
 import { hex2rgb } from 'utils/helperFunctions/colors';
 
-const cornflowerBlue = '#6495ED';
-const rebeccaPurple = '#663399';
+const Primary = '#262626';
+const Secondary = '#BFBFBF';
 
-const Primary = cornflowerBlue; // same as secondary for now
-const PrimaryLight = '#d1ecf3';
-const Secondary = rebeccaPurple;
+const PrimaryBlue = '#2896f0';
+const PrimaryGrey = '#262626';
+const Bone = '#e3dac9';
+
+const Blue = '#2294d1'; //'rgb(34, 148, 209)';
+const DarkBlue = '#566c73'; //'rgb(86, 108, 115)';
+const Red = '#d37161'; // 'rgb(211, 113, 97)';
+const GreyScale = '#dde2e4'; // 'rgb(221,226,228)';
 
 const LightBlue = 'rgb(209,235,242)';
 
-const OffWhite = '#f9f9f9';
-const OffWhiteDark = '#f4f4f4';
-const Grey = '#666666';
-const LightGrey = '#e5e5e5';
-const LightGrey2 = '#e6e6e6';
+const OffWhite = '#f2f2f2';
 
 export const Gradient = (
   angle = 'to right',
@@ -47,15 +48,18 @@ export const colors = {
   // values get cached in hex2rgb
   alphaMod: (val: string, opacity: any) => hex2rgb(val, opacity),
   Primary,
-  PrimaryLight,
-  PrimaryHover: '#52dae3',
   Secondary,
   Text: '#000',
   //
   OffWhite,
-  OffWhiteDark,
-  Grey,
-  LightGrey,
+  Bone,
+  //
+  PrimaryBlue,
+  PrimaryGrey,
+  Blue,
+  DarkBlue,
+  Red,
+  GreyScale,
   // --------------
   Loader: Primary, // for hash spinner
   // --------------
