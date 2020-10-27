@@ -17,22 +17,32 @@ import { toggleMenu } from 'actions/display';
 export const HEADER_HEIGHT = 60;
 
 const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  console.log({ isOpen });
-  useEffect(() => {
-    // setIsOpen(true);
-    // setTimeout(() => {
-    //   setIsOpen(false);
-    // }, 100);
-  }, []);
+  // const [hasMounted, setHasMounted] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  console.log({ menuIsOpen });
+  const handleMyWorkClick = () => {
+    dispatch(toggleMenu());
+  };
+  // useEffect(() => {
+  //   setIsOpen(true);
+  //   setTimeout(() => {
+  //     setIsOpen(false);
+  //     setHasMounted(true);
+  //   }, 100);
+  // }, []);
+
+  // if (!hasMounted) {
+  //   return null;
+  // }
+
   return (
     <Container>
       <Particles />
       <StyledBurgerMenu
-        isOpen={isOpen}
+        isOpen={menuIsOpen}
         onClick={() => {
           console.log('click');
-          setIsOpen(!isOpen);
+          // setIsOpen(!isOpen);
           dispatch(toggleMenu());
         }}
       />
@@ -45,7 +55,7 @@ const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
         </Title>
         <SkillsParagraph>MongoDB + Express + React + Node</SkillsParagraph>
       </Content>
-      <Button type="button">
+      <Button type="button" onClick={handleMyWorkClick}>
         Check My Work
         <Chevron
           width={20}

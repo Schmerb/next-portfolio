@@ -11,7 +11,7 @@ import styled, { css } from 'styled-components';
 
 const BurgerV2 = ({ className, isOpen, onClick }: IBurgerV2Props) => (
   <ContainerBtn onClick={onClick} className={className} type="button">
-    <Bars isOpen={isOpen} />
+    <Bars className={isOpen ? 'open' : ''} />
   </ContainerBtn>
 );
 
@@ -54,16 +54,14 @@ const Bars = styled.div`
   &::after {
     top: 5px;
   }
-  ${({ isOpen }) =>
-    isOpen &&
-    css`
-      &::before {
-        transform: rotate(225deg);
-        top: 3px;
-      }
-      &::after {
-        transform: rotate(135deg);
-        top: 0;
-      }
-    `}
+  &.open {
+    &::before {
+      transform: rotate(225deg);
+      top: 3px;
+    }
+    &::after {
+      transform: rotate(135deg);
+      top: 0;
+    }
+  }
 `;

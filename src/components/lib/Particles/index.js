@@ -8,9 +8,10 @@
 
 import React, { useState, memo } from 'react';
 import styled from 'styled-components';
+// @ts-ignore
 import ReactParticles from 'react-particles-js';
 
-const Particles = ({}: IParticlesProps) => {
+const Particles = ({}) => {
   const params = {
     particles: {
       number: {
@@ -123,13 +124,12 @@ const Particles = ({}: IParticlesProps) => {
   };
   return (
     <div style={{ position: 'absolute', left: 0, top: 0 }}>
+      {/* // @ts-ignore */}
       <ReactParticles params={params} height="100vh" width="100vw" />;
     </div>
   );
 };
 
 export default memo(Particles);
-
-interface IParticlesProps {}
 
 const Container = styled.div``;

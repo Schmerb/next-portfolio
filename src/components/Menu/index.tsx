@@ -29,7 +29,7 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
     dispatch(closeMenu());
   };
   return (
-    <Container menuIsOpen={menuIsOpen}>
+    <Container className={menuIsOpen ? 'open' : ''}>
       <AnimatedDiv style={animatedProps}>
         <List>
           {links.map(({ href, text }) => (
@@ -68,15 +68,10 @@ const Container = styled.div`
   right: 0;
   bottom: 0;
   z-index: 99;
-
-  ${({ menuIsOpen }) =>
-    menuIsOpen
-      ? css`
-          pointer-events: all;
-        `
-      : css`
-          pointer-events: none;
-        `}
+  pointer-events: none;
+  &.open {
+    pointer-events: all;
+  }
 `;
 
 const AnimatedDiv = styled(animated.div)`
