@@ -7,7 +7,6 @@
 import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
 
-import BurgerMenu from 'components/BurgerMenu';
 import Particles from 'components/lib/Particles';
 import BurgerV2 from 'components/BurgerMenu/Burgerv2';
 import Chevron from 'components/svg/Icons/Chevron';
@@ -17,24 +16,9 @@ import { toggleMenu } from 'actions/display';
 export const HEADER_HEIGHT = 60;
 
 const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
-  // const [hasMounted, setHasMounted] = useState(false);
-  // const [isOpen, setIsOpen] = useState(false);
-  console.log({ menuIsOpen });
   const handleMyWorkClick = () => {
-    dispatch(toggleMenu());
+    console.log('Scrolling to work!');
   };
-  // useEffect(() => {
-  //   setIsOpen(true);
-  //   setTimeout(() => {
-  //     setIsOpen(false);
-  //     setHasMounted(true);
-  //   }, 100);
-  // }, []);
-
-  // if (!hasMounted) {
-  //   return null;
-  // }
-
   return (
     <Container>
       <Particles />
@@ -57,11 +41,7 @@ const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
       </Content>
       <Button type="button" onClick={handleMyWorkClick}>
         Check My Work
-        <Chevron
-          width={20}
-          height={20}
-          style={{ transform: 'rotate(-90deg)' }}
-        />
+        <Chevron width={20} height={20} style={{}} />
       </Button>
     </Container>
   );
@@ -85,9 +65,9 @@ const StyledBurgerMenu = styled(BurgerV2)`
 const Container = styled.header<any>`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   position: relative;
-  background-image: url(/static/img/nicolas-cool-unsplash.jpg);
+  background-image: url('/static/img/nicolas-cool-unsplash.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -150,6 +130,7 @@ const Name = styled.span`
 `;
 
 const Button = styled.button`
+  position: relative;
   background-color: rgba(255, 255, 255, 0.85);
   color: #e69839;
   display: flex;
@@ -161,8 +142,43 @@ const Button = styled.button`
   padding: 10px;
   border-radius: 5px;
   border: none;
+  outline: none;
   cursor: pointer;
   margin: 0 auto;
   z-index: 1;
-  ${({ theme }) => theme.styles.boxShadows['1']};
+  overflow: hidden;
+  transition: 0.15s transform, 0.15s box-shadow;
+  ${({ theme }) => theme.styles.boxShadows['1']}
+
+  svg {
+    transition: 0.3s transform;
+    transform: rotate(-90deg);
+  }
+
+  &:active {
+    transform: translate3d(0, 2px, 0);
+    ${({ theme }) => theme.styles.boxShadows['0']}
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.55);
+    transform: translate3d(-80%, 0, 0) rotate(-45deg);
+    transition: 0.3s transform;
+    z-index: -1;
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(0deg);
+    }
+    &::after {
+      transform: translate3d(-55%, 0, 0) rotate(-45deg);
+    }
+  }
 `;
