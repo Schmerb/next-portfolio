@@ -42,5 +42,5 @@ interface IFadeInProps {
 const Container = styled.div`
   transition: opacity 5s ease 0.3s;
   opacity: ${({ loaded }) => (loaded ? 1 : 0)};
-  /* border: 1px solid #000; */
+  // border: 1px solid #000;
 `;

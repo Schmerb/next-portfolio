@@ -46,7 +46,6 @@ interface ProjectProps {
 
 const Container = styled.div`
   padding: 15px;
-  /* border: 1px solid #000; */
 `;
 
 const TitleWrapper = styled.div`
@@ -89,12 +88,18 @@ const Credit = styled.div`
 
 const LogoImagesList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   list-style: none;
   margin: 0;
   padding: 0;
   margin-top: 35px;
   margin-bottom: 35px;
+
+  li {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
 `;
 
 const LogoImage = styled.img`

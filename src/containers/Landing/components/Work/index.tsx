@@ -34,7 +34,7 @@ export default memo(Work);
 interface WorkProps {}
 
 const Container = styled.section`
-  border: 1px solid #000;
+  // border: 1px solid #000;
 `;
 
 const ProjectList = styled.ul`

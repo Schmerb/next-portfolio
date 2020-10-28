@@ -87,7 +87,7 @@ const SearchWrapper = styled.div`
 
 const Controls = styled.div`
   display: flex;
-  /* border: 1px solid #000; */
+  // border: 1px solid #000;
 `;
 
 const CloseBtn = styled.button`

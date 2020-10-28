@@ -39,7 +39,6 @@ const Container = styled.div`
   height: 400px;
   padding: 15px;
   margin-bottom: 50px;
-  border: 1px solid #000;
 `;
 
 const Title = styled.h2`

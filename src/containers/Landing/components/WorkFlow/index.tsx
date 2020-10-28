@@ -20,5 +20,5 @@ export default memo(WorkFlow);
 interface WorkFlowProps {}
 
 const Container = styled.section`
-  border: 1px solid #000;
+  // border: 1px solid #000;
 `;
