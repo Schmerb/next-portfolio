@@ -3,6 +3,7 @@
  * Thinkful Project Data
  *
  *  */
+import { v4 as uuidv4 } from 'uuid';
 
 import { ProjectType } from 'utils/data/types';
 
@@ -18,7 +19,7 @@ const projectSrc = '/static/img/projects';
 
 export const thinkfulProjects: ProjectType[] = [
   {
-    id: 1,
+    id: uuidv4(),
     title: 'CryptoKeeper',
     link: {
       title: 'cryptokeeper.co',
@@ -30,13 +31,34 @@ export const thinkfulProjects: ProjectType[] = [
     clientCode: 'https://github.com/Schmerb/cryptokeeper-client',
     apiCode: 'https://github.com/Schmerb/cryptokeeper-api',
     tools: [
-      logos.reactRedux,
-      logos.javascript,
-      logos.express,
-      logos.mongodb,
-      logos.mongoose,
-      logos.socketIO,
-      logos.sass,
+      {
+        imgSrc: logos.reactRedux,
+        href: 'https://reactjs.org/',
+      },
+      {
+        imgSrc: logos.javascript,
+        href: 'https://nodejs.org/en/',
+      },
+      {
+        imgSrc: logos.expressText,
+        href: 'http://expressjs.com/',
+      },
+      {
+        imgSrc: logos.mongodb,
+        href: 'https://www.mongodb.com/',
+      },
+      {
+        imgSrc: logos.mongoose,
+        href: 'https://reactjs.org/',
+      },
+      {
+        imgSrc: logos.socketIO,
+        href: 'http://socket.io/',
+      },
+      {
+        imgSrc: logos.sass,
+        href: 'https://reactjs.org/',
+      },
     ],
     images: {
       desktop: `${projectSrc}/crypto/crypto-currencies-black-desktop-compressor.png`,
@@ -45,7 +67,7 @@ export const thinkfulProjects: ProjectType[] = [
     },
   },
   {
-    id: 2,
+    id: uuidv4(),
     title: 'Droned Reviews',
     link: {
       title: 'droned.reviews',
@@ -70,7 +92,7 @@ export const thinkfulProjects: ProjectType[] = [
     },
   },
   {
-    id: 3,
+    id: uuidv4(),
     title: 'Stream It',
     link: {
       title: 'schmerb.github.io/stream-it',
@@ -89,7 +111,7 @@ export const thinkfulProjects: ProjectType[] = [
     },
   },
   {
-    id: 4,
+    id: uuidv4(),
     title: 'Toobverse',
     link: {
       title: 'schmerb.github.io/toobverse',

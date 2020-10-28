@@ -37,14 +37,14 @@ const Container = styled.div`
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   height: 400px;
+  padding: 15px;
+  margin-bottom: 50px;
   border: 1px solid #000;
 `;
 
 const Title = styled.h2`
   color: ${({ theme }) => theme.colors.Blue};
   font-size: 3rem;
-  /* font-size: 44px; */
-  /* font-weight: 400; */
   padding: 0;
   margin: 0;
   text-align: center;
@@ -53,8 +53,7 @@ const Title = styled.h2`
 
 const Text = styled.p`
   color: ${({ theme }) => theme.colors.Bone};
-  /* font-size: 22px; */
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   max-width: 800px;
   padding: 0;
   margin: 0 auto;

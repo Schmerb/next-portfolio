@@ -22,7 +22,7 @@ const Projects = ({}: ProjectsProps) => {
       <Banner title={title} text={text} />
       <ProjectList>
         {thinkfulProjects.map((project) => (
-          <Project project={project} />
+          <Project key={project.id} project={project} />
         ))}
       </ProjectList>
     </Container>
@@ -41,5 +41,5 @@ const ProjectList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  border: 1px solid limegreen;
+  /* border: 1px solid limegreen; */
 `;

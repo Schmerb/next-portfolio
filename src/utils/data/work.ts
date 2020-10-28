@@ -3,6 +3,8 @@
  * Work Data
  *
  *  */
+import { v4 as uuidv4 } from 'uuid';
+
 import { ProjectType } from 'utils/data/types';
 
 import logos from './logos';
@@ -17,8 +19,8 @@ const projectSrc = '/static/img/projects';
 
 export const workProjects: ProjectType[] = [
   {
-    id: 1,
-    title: 'Net Neutrality Microsite for Thinkful',
+    id: uuidv4(),
+    title: 'Net Neutrality Microsite for Thinkful©',
     link: {
       title: 'thinkful.com/net-neutrality',
       href: 'https:///www.thinkful.com/net-neutrality',
@@ -29,11 +31,26 @@ export const workProjects: ProjectType[] = [
     clientCode: 'https://github.com/Schmerb/net-neutrality-app-client',
     apiCode: 'https://github.com/Schmerb/net-neutrality-app-server',
     tools: [
-      logos.reactRedux,
-      logos.express,
-      logos.mongodb,
-      logos.mongoose,
-      logos.sass,
+      {
+        imgSrc: logos.reactRedux,
+        href: 'https://reactjs.org/',
+      },
+      {
+        imgSrc: logos.expressText,
+        href: 'http://expressjs.com/',
+      },
+      {
+        imgSrc: logos.mongodb,
+        href: 'https://www.mongodb.com/',
+      },
+      {
+        imgSrc: logos.mongoose,
+        href: 'https://reactjs.org/',
+      },
+      {
+        imgSrc: logos.sass,
+        href: 'https://reactjs.org/',
+      },
     ],
     images: {
       desktop: `${projectSrc}/net-neutrality/net-neutrality-desktop-compressor.png`,

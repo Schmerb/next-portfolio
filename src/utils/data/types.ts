@@ -7,18 +7,25 @@
 export interface ProjectType {
   id: number;
   title: string;
-  link: {
-    title: string;
-    href: string;
-  };
+  link: LinkType;
   description: string;
   credit?: string;
   clientCode: string;
   apiCode?: string;
-  tools: string[];
-  images: {
-    desktop: string;
-    laptop: string;
-    mobile: string;
-  };
+  tools: ToolType[];
+  images: ImagesType;
+}
+
+interface ToolType {
+  imgSrc: string;
+  href: string;
+}
+interface ImagesType {
+  desktop: string;
+  laptop: string;
+  mobile: string;
+}
+interface LinkType {
+  title: string;
+  href: string;
 }
