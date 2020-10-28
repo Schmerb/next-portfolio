@@ -42,6 +42,7 @@ export const thinkfulProjects: ProjectType[] = [
       {
         imgSrc: logos.expressText,
         href: 'http://expressjs.com/',
+        style: { width: 'auto', height: '40px' },
       },
       {
         imgSrc: logos.mongodb,
@@ -50,6 +51,7 @@ export const thinkfulProjects: ProjectType[] = [
       {
         imgSrc: logos.mongoose,
         href: 'https://reactjs.org/',
+        style: { width: 'auto', height: '90px' },
       },
       {
         imgSrc: logos.socketIO,
@@ -98,6 +100,7 @@ export const thinkfulProjects: ProjectType[] = [
       {
         imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
+        style: { width: 'auto', height: '80px' },
       },
     ],
     images: {
@@ -130,6 +133,7 @@ export const thinkfulProjects: ProjectType[] = [
       {
         imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
+        style: { width: 'auto', height: '80px' },
       },
       {
         imgSrc: logos.slick,
@@ -166,6 +170,7 @@ export const thinkfulProjects: ProjectType[] = [
       {
         imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
+        style: { width: 'auto', height: '80px' },
       },
       {
         imgSrc: logos.slick,

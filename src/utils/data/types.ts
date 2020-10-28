@@ -19,6 +19,7 @@ export interface ProjectType {
 interface ToolType {
   imgSrc: string;
   href: string;
+  style?: any;
 }
 interface ImagesType {
   desktop: string;

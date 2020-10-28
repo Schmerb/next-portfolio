@@ -26,10 +26,10 @@ const Project = ({ project }: ProjectProps) => {
         {project.credit && <Credit>{project.credit}</Credit>}
       </TextWrapper>
       <LogoImagesList>
-        {project.tools.map(({ imgSrc, href }) => (
+        {project.tools.map(({ imgSrc, href, style }) => (
           <li key={href}>
             <Link href={href} target="_blank">
-              <LogoImage src={imgSrc} />
+              <LogoImage src={imgSrc} style={style} />
             </Link>
           </li>
         ))}
@@ -97,6 +97,8 @@ const LogoImagesList = styled.ul`
   margin-bottom: 35px;
 
   li {
+    display: flex;
+    align-items: center;
     margin-left: 15px;
     margin-right: 15px;
   }
@@ -104,5 +106,5 @@ const LogoImagesList = styled.ul`
 
 const LogoImage = styled.img`
   width: auto;
-  height: 50px;
+  height: 70px;
 `;

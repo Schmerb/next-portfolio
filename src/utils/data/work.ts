@@ -38,6 +38,7 @@ export const workProjects: ProjectType[] = [
       {
         imgSrc: logos.expressText,
         href: 'http://expressjs.com/',
+        style: { width: 'auto', height: '40px' },
       },
       {
         imgSrc: logos.mongodb,
@@ -46,6 +47,7 @@ export const workProjects: ProjectType[] = [
       {
         imgSrc: logos.mongoose,
         href: 'https://reactjs.org/',
+        style: { width: 'auto', height: '90px' },
       },
       {
         imgSrc: logos.sass,
