@@ -12,6 +12,8 @@ const Secondary = '#BFBFBF';
 
 const PrimaryBlue = '#2896f0';
 const PrimaryGrey = '#262626';
+const PrimaryPurple = '#a255ff';
+const PrimaryBluePurple = '#651fff';
 const Bone = '#e3dac9';
 
 const Blue = '#2294d1'; //'rgb(34, 148, 209)';
@@ -56,6 +58,9 @@ export const colors = {
   //
   PrimaryBlue,
   PrimaryGrey,
+  PrimaryPurple,
+  PrimaryBluePurple,
+  //
   Blue,
   DarkBlue,
   Red,

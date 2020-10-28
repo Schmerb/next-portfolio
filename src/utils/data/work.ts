@@ -32,24 +32,29 @@ export const workProjects: ProjectType[] = [
     apiCode: 'https://github.com/Schmerb/net-neutrality-app-server',
     tools: [
       {
+        id: uuidv4(),
         imgSrc: logos.reactRedux,
         href: 'https://reactjs.org/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.expressText,
         href: 'http://expressjs.com/',
         style: { width: 'auto', height: '40px' },
       },
       {
+        id: uuidv4(),
         imgSrc: logos.mongodb,
         href: 'https://www.mongodb.com/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.mongoose,
         href: 'https://reactjs.org/',
         style: { width: 'auto', height: '90px' },
       },
       {
+        id: uuidv4(),
         imgSrc: logos.sass,
         href: 'https://reactjs.org/',
       },

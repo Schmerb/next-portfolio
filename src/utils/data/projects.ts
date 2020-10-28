@@ -12,7 +12,7 @@ import logos from './logos';
 export const headerData = {
   title: 'Projects',
   text:
-    'Below are a few of the projects I have created recently. I was the sole developer on each one, handling everything from frontend UI/UX design to configuring the API and database on the backend.',
+    'Below are a few personal projects I have created in the past. I was the sole developer on each one, handling everything from frontend UI/UX design to configuring the API and database on the backend.',
 };
 
 const projectSrc = '/static/img/projects';
@@ -32,32 +32,39 @@ export const thinkfulProjects: ProjectType[] = [
     apiCode: 'https://github.com/Schmerb/cryptokeeper-api',
     tools: [
       {
+        id: uuidv4(),
         imgSrc: logos.reactRedux,
         href: 'https://reactjs.org/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.javascript,
         href: 'https://nodejs.org/en/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.expressText,
         href: 'http://expressjs.com/',
         style: { width: 'auto', height: '40px' },
       },
       {
+        id: uuidv4(),
         imgSrc: logos.mongodb,
         href: 'https://www.mongodb.com/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.mongoose,
         href: 'https://reactjs.org/',
         style: { width: 'auto', height: '90px' },
       },
       {
+        id: uuidv4(),
         imgSrc: logos.socketIO,
         href: 'http://socket.io/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.sass,
         href: 'https://reactjs.org/',
       },
@@ -82,22 +89,27 @@ export const thinkfulProjects: ProjectType[] = [
     apiCode: '',
     tools: [
       {
+        id: uuidv4(),
         imgSrc: logos.javascript,
         href: 'https://nodejs.org/en/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.mongodb,
         href: 'https://www.mongodb.com/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.html5,
         href: 'https://www.w3.org/TR/html5/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.css3,
         href: 'https://www.w3.org/TR/css-2017/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
         style: { width: 'auto', height: '80px' },
@@ -123,19 +135,23 @@ export const thinkfulProjects: ProjectType[] = [
     apiCode: '',
     tools: [
       {
+        id: uuidv4(),
         imgSrc: logos.html5,
         href: 'https://www.w3.org/TR/html5/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.css3,
         href: 'https://www.w3.org/TR/css-2017/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
         style: { width: 'auto', height: '80px' },
       },
       {
+        id: uuidv4(),
         imgSrc: logos.slick,
         href: 'http://kenwheeler.github.io/slick/',
       },
@@ -160,19 +176,23 @@ export const thinkfulProjects: ProjectType[] = [
     apiCode: '',
     tools: [
       {
+        id: uuidv4(),
         imgSrc: logos.html5,
         href: 'https://www.w3.org/TR/html5/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.css3,
         href: 'https://www.w3.org/TR/css-2017/',
       },
       {
+        id: uuidv4(),
         imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
         style: { width: 'auto', height: '80px' },
       },
       {
+        id: uuidv4(),
         imgSrc: logos.slick,
         href: 'http://kenwheeler.github.io/slick/',
       },

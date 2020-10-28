@@ -11,7 +11,7 @@ import styled, { css } from 'styled-components';
 import { animated, useSpring } from 'react-spring';
 import { useRouter } from 'next/router';
 
-import BurgerMenu from 'components/BurgerMenu';
+// import BurgerMenu from 'components/BurgerMenu';
 import Link from 'components/Elements/Link';
 import { links } from 'utils/navigation';
 import { closeMenu } from 'actions/display';
@@ -32,8 +32,8 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
     <Container className={menuIsOpen ? 'open' : ''}>
       <AnimatedDiv style={animatedProps}>
         <List>
-          {links.map(({ href, text }) => (
-            <li key={href}>
+          {links.map(({ id, href, text }) => (
+            <li key={id}>
               <StyledLink
                 href={href}
                 text={text}

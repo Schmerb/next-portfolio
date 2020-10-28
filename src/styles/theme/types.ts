@@ -11,9 +11,13 @@ export interface ColorProps {
   Text: string;
   //
   OffWhite: string;
+  Bone: string;
   //
   PrimaryBlue: string;
   PrimaryGrey: string;
+  PrimaryPurple: string;
+  PrimaryBluePurple: string;
+  //
   Blue: string;
   DarkBlue: string;
   Red: string;

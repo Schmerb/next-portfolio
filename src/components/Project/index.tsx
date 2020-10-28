@@ -11,6 +11,8 @@ import styled from 'styled-components';
 
 import { ProjectType } from 'utils/data/types';
 
+import ProjectButton from './ProjectButton';
+
 const Project = ({ project }: ProjectProps) => {
   // const {} = project;
   return (
@@ -26,14 +28,32 @@ const Project = ({ project }: ProjectProps) => {
         {project.credit && <Credit>{project.credit}</Credit>}
       </TextWrapper>
       <LogoImagesList>
-        {project.tools.map(({ imgSrc, href, style }) => (
-          <li key={href}>
+        {project.tools.map(({ id, imgSrc, href, style }) => (
+          <li key={id}>
             <Link href={href} target="_blank">
               <LogoImage src={imgSrc} style={style} />
             </Link>
           </li>
         ))}
       </LogoImagesList>
+      <ButtonWrapper hasAPI={!!project.apiCode}>
+        <ProjectButton noIcon text="Check it Out" href={project.link.href} />
+        {!project.apiCode && (
+          <ProjectButton text="Code" href={project.clientCode} />
+        )}
+        {project.apiCode && (
+          <BottomButtonWrapper style={{ marginTop: '25px' }}>
+            {project.clientCode && (
+              <ProjectButton
+                text="Client Code"
+                href={project.clientCode}
+                style={{ marginRight: '25px' }}
+              />
+            )}
+            <ProjectButton text="Api Code" href={project.apiCode} />
+          </BottomButtonWrapper>
+        )}
+      </ButtonWrapper>
     </Container>
   );
 };
@@ -107,4 +127,16 @@ const LogoImagesList = styled.ul`
 const LogoImage = styled.img`
   width: auto;
   height: 70px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: ${({ hasAPI }) => (hasAPI ? 'column' : 'row')};
+  justify-content: center;
+  align-items: center;
+`;
+
+const BottomButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
 `;

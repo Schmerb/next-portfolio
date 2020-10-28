@@ -17,6 +17,7 @@ export interface ProjectType {
 }
 
 interface ToolType {
+  id: string;
   imgSrc: string;
   href: string;
   style?: any;
