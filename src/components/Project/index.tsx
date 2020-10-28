@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import { ProjectType } from 'utils/data/types';
 
 import ProjectButton from './ProjectButton';
+import ProjectImages from './ProjectImages';
 
 const Project = ({ project }: ProjectProps) => {
   // const {} = project;
@@ -37,23 +38,27 @@ const Project = ({ project }: ProjectProps) => {
         ))}
       </LogoImagesList>
       <ButtonWrapper hasAPI={!!project.apiCode}>
-        <ProjectButton noIcon text="Check it Out" href={project.link.href} />
+        <ProjectButton
+          noIcon
+          text="Check it Out"
+          href={project.link.href}
+          style={!project.apiCode ? { marginRight: '25px' } : {}}
+        />
         {!project.apiCode && (
           <ProjectButton text="Code" href={project.clientCode} />
         )}
         {project.apiCode && (
           <BottomButtonWrapper style={{ marginTop: '25px' }}>
-            {project.clientCode && (
-              <ProjectButton
-                text="Client Code"
-                href={project.clientCode}
-                style={{ marginRight: '25px' }}
-              />
-            )}
+            <ProjectButton
+              text="Client Code"
+              href={project.clientCode}
+              style={{ marginRight: '25px' }}
+            />
             <ProjectButton text="Api Code" href={project.apiCode} />
           </BottomButtonWrapper>
         )}
       </ButtonWrapper>
+      <ProjectImages images={project.images} />
     </Container>
   );
 };

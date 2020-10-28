@@ -18,7 +18,7 @@ const { title, text } = headerData;
 
 const Work = ({}: WorkProps) => {
   return (
-    <Container>
+    <Container id="work-section">
       <Banner title={title} text={text} />
       <ProjectList>
         {workProjects.map((project) => (

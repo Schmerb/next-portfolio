@@ -35,6 +35,7 @@ const StyledLink = styled.a`
   background-color: transparent;
   color: ${({ theme }) => theme.colors.PrimaryGrey};
   min-width: 140px;
+  height: 46px;
   padding: 7px 12px;
   border-radius: 5px;
   border: 1px solid ${({ theme }) => theme.colors.PrimaryBlue};

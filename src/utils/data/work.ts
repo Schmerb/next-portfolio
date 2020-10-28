@@ -33,30 +33,30 @@ export const workProjects: ProjectType[] = [
     tools: [
       {
         id: uuidv4(),
-        imgSrc: logos.reactRedux,
-        href: 'https://reactjs.org/',
+        imgSrc: logos.reactRedux.imgSrc,
+        href: logos.reactRedux.href,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.expressText,
-        href: 'http://expressjs.com/',
+        imgSrc: logos.expressText.imgSrc,
+        href: logos.expressText.href,
         style: { width: 'auto', height: '40px' },
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongodb,
-        href: 'https://www.mongodb.com/',
+        imgSrc: logos.mongodb.imgSrc,
+        href: logos.mongodb.href,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongoose,
-        href: 'https://reactjs.org/',
+        imgSrc: logos.mongoose.imgSrc,
+        href: logos.mongoose.href,
         style: { width: 'auto', height: '90px' },
       },
       {
         id: uuidv4(),
-        imgSrc: logos.sass,
-        href: 'https://reactjs.org/',
+        imgSrc: logos.sass.imgSrc,
+        href: logos.sass.href,
       },
     ],
     images: {

@@ -18,6 +18,9 @@ export const HEADER_HEIGHT = 60;
 const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
   const handleMyWorkClick = () => {
     console.log('Scrolling to work!');
+    document
+      .querySelector('#work-section')
+      .scrollIntoView({ behavior: 'smooth' });
   };
   return (
     <Container>
