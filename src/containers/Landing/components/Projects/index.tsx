@@ -21,8 +21,8 @@ const Projects = ({}: ProjectsProps) => {
     <Container>
       <Banner title={title} text={text} />
       <ProjectList>
-        {thinkfulProjects.map((project) => (
-          <Project key={project.id} project={project} />
+        {thinkfulProjects.map((project, index) => (
+          <Project key={project.id} project={project} index={index} />
         ))}
       </ProjectList>
     </Container>

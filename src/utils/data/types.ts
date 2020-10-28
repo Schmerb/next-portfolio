@@ -22,7 +22,7 @@ interface ToolType {
   href: string;
   style?: any;
 }
-interface ImagesType {
+export interface ImagesType {
   desktop: string;
   laptop: string;
   mobile: string;

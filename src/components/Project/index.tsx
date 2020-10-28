@@ -11,11 +11,11 @@ import styled from 'styled-components';
 
 import { ProjectType } from 'utils/data/types';
 
-import ProjectButton from './ProjectButton';
+import ProjectButtons from './ProjectButtons';
 import ProjectImages from './ProjectImages';
 
-const Project = ({ project }: ProjectProps) => {
-  // const {} = project;
+const Project = ({ project, index }: ProjectProps) => {
+  const isEven = index % 0 === 0;
   return (
     <Container>
       <TitleWrapper>
@@ -37,27 +37,7 @@ const Project = ({ project }: ProjectProps) => {
           </li>
         ))}
       </LogoImagesList>
-      <ButtonWrapper hasAPI={!!project.apiCode}>
-        <ProjectButton
-          noIcon
-          text="Check it Out"
-          href={project.link.href}
-          style={!project.apiCode ? { marginRight: '25px' } : {}}
-        />
-        {!project.apiCode && (
-          <ProjectButton text="Code" href={project.clientCode} />
-        )}
-        {project.apiCode && (
-          <BottomButtonWrapper style={{ marginTop: '25px' }}>
-            <ProjectButton
-              text="Client Code"
-              href={project.clientCode}
-              style={{ marginRight: '25px' }}
-            />
-            <ProjectButton text="Api Code" href={project.apiCode} />
-          </BottomButtonWrapper>
-        )}
-      </ButtonWrapper>
+      <ProjectButtons project={project} />
       <ProjectImages images={project.images} />
     </Container>
   );
@@ -67,6 +47,7 @@ export default memo(Project);
 
 interface ProjectProps {
   project: ProjectType;
+  index: number;
 }
 
 const Container = styled.div`
