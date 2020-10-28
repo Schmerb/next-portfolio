@@ -9,10 +9,18 @@
 import React, { useState, memo } from 'react';
 import styled from 'styled-components';
 
-const Work = ({}: WorkProps) => {
-  const [, set] = useState();
+import Banner from 'components/Banner';
 
-  return <Container>Work</Container>;
+import { headerData } from 'utils/data/work';
+
+const { title, text } = headerData;
+
+const Work = ({}: WorkProps) => {
+  return (
+    <Container>
+      <Banner title={title} text={text} />
+    </Container>
+  );
 };
 
 export default memo(Work);

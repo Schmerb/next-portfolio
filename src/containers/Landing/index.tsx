@@ -13,15 +13,13 @@ import About from './components/About';
 import WorkFlow from './components/WorkFlow';
 import Contact from './components/Contact';
 
-const size = { height: 50, width: 50 };
-
 export interface LandingPageProps {}
 
 const LandingPage = ({}: LandingPageProps) => {
   return (
     <Container>
-      <Projects />
       <Work />
+      <Projects />
       <About />
       <WorkFlow />
       <Contact />

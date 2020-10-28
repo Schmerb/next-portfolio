@@ -3,6 +3,7 @@
  * Work Data
  *
  *  */
+import { ProjectType } from 'utils/data/types';
 
 import logos from './logos';
 
@@ -14,7 +15,7 @@ export const headerData = {
 
 const projectSrc = '/static/img/projects';
 
-export const workProjects = [
+export const workProjects: ProjectType[] = [
   {
     id: 1,
     title: 'Net Neutrality Microsite for Thinkful',

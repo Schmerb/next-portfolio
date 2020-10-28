@@ -3,6 +3,9 @@
  * Thinkful Project Data
  *
  *  */
+
+import { ProjectType } from 'utils/data/types';
+
 import logos from './logos';
 
 export const headerData = {
@@ -13,7 +16,7 @@ export const headerData = {
 
 const projectSrc = '/static/img/projects';
 
-export const thinkfulProjects = [
+export const thinkfulProjects: ProjectType[] = [
   {
     id: 1,
     title: 'CryptoKeeper',
