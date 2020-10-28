@@ -15,7 +15,6 @@ import ProjectButtons from './ProjectButtons';
 import ProjectImages from './ProjectImages';
 
 const Project = ({ project, index }: ProjectProps) => {
-  const isEven = index % 0 === 0;
   return (
     <Container>
       <TitleWrapper>
@@ -38,7 +37,7 @@ const Project = ({ project, index }: ProjectProps) => {
         ))}
       </LogoImagesList>
       <ProjectButtons project={project} />
-      <ProjectImages images={project.images} />
+      <ProjectImages images={project.images} index={index} />
     </Container>
   );
 };
@@ -51,7 +50,21 @@ interface ProjectProps {
 }
 
 const Container = styled.div`
+  position: relative;
   padding: 15px;
+  padding-bottom: 50px;
+  &:not(:last-of-type) {
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 95%;
+      height: 2px;
+      margin: 0 auto;
+      background-color: grey;
+    }
+  }
 `;
 
 const TitleWrapper = styled.div`
