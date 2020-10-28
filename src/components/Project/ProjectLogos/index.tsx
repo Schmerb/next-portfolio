@@ -39,7 +39,8 @@ const LogoImagesList = styled.ul`
   flex-wrap: wrap;
   justify-content: space-evenly;
   list-style: none;
-  margin: 0;
+  max-width: ${({ theme }) => theme.media.MAX_WIDTH}px;
+  margin: 0 auto;
   padding: 0;
   margin-top: 35px;
   margin-bottom: 35px;
