@@ -79,11 +79,26 @@ export const thinkfulProjects: ProjectType[] = [
     clientCode: 'https://github.com/Schmerb/droned-reviews',
     apiCode: '',
     tools: [
-      logos.javascript,
-      logos.mongodb,
-      logos.html5,
-      logos.css3,
-      logos.jQuery,
+      {
+        imgSrc: logos.javascript,
+        href: 'https://nodejs.org/en/',
+      },
+      {
+        imgSrc: logos.mongodb,
+        href: 'https://www.mongodb.com/',
+      },
+      {
+        imgSrc: logos.html5,
+        href: 'https://www.w3.org/TR/html5/',
+      },
+      {
+        imgSrc: logos.css3,
+        href: 'https://www.w3.org/TR/css-2017/',
+      },
+      {
+        imgSrc: logos.jQuery,
+        href: 'https://jquery.com/',
+      },
     ],
     images: {
       desktop: `${projectSrc}/droned/droned-homepage-desktop-compressor.png`,
@@ -103,7 +118,24 @@ export const thinkfulProjects: ProjectType[] = [
     credit: '',
     clientCode: 'https://github.com/Schmerb/stream-it',
     apiCode: '',
-    tools: [logos.html5, logos.css3, logos.jQuery, logos.slick],
+    tools: [
+      {
+        imgSrc: logos.html5,
+        href: 'https://www.w3.org/TR/html5/',
+      },
+      {
+        imgSrc: logos.css3,
+        href: 'https://www.w3.org/TR/css-2017/',
+      },
+      {
+        imgSrc: logos.jQuery,
+        href: 'https://jquery.com/',
+      },
+      {
+        imgSrc: logos.slick,
+        href: 'http://kenwheeler.github.io/slick/',
+      },
+    ],
     images: {
       desktop: `${projectSrc}/streamit/streamit-interstellar-withsuggestions-compressor.png`,
       laptop: `${projectSrc}/streamit/streamit-home-laptop-compressor.png`,
@@ -122,7 +154,24 @@ export const thinkfulProjects: ProjectType[] = [
     credit: '',
     clientCode: 'https://github.com/Schmerb/stream-it',
     apiCode: '',
-    tools: [logos.html5, logos.css3, logos.jQuery, logos.slick],
+    tools: [
+      {
+        imgSrc: logos.html5,
+        href: 'https://www.w3.org/TR/html5/',
+      },
+      {
+        imgSrc: logos.css3,
+        href: 'https://www.w3.org/TR/css-2017/',
+      },
+      {
+        imgSrc: logos.jQuery,
+        href: 'https://jquery.com/',
+      },
+      {
+        imgSrc: logos.slick,
+        href: 'http://kenwheeler.github.io/slick/',
+      },
+    ],
     images: {
       desktop: `${projectSrc}/toob/toob-search-desktop-compressor.png`,
       laptop: `${projectSrc}/toob/toob-video-laptop-2-compressor.png`,
