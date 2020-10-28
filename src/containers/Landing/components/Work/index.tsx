@@ -16,13 +16,18 @@ import { headerData, workProjects } from 'utils/data/work';
 
 const { title, text } = headerData;
 
-const Work = ({}: WorkProps) => {
+const Work = ({ scrollTop }: WorkProps) => {
   return (
     <Container id="work-section">
       <Banner title={title} text={text} />
       <ProjectList>
-        {workProjects.map((project) => (
-          <Project key={project.id} project={project} />
+        {workProjects.map((project, index) => (
+          <Project
+            key={project.id}
+            project={project}
+            index={index}
+            scrollTop={scrollTop}
+          />
         ))}
       </ProjectList>
     </Container>
@@ -31,7 +36,9 @@ const Work = ({}: WorkProps) => {
 
 export default memo(Work);
 
-interface WorkProps {}
+interface WorkProps {
+  scrollTop: number;
+}
 
 const Container = styled.section`
   // border: 1px solid #000;

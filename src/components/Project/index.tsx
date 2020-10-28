@@ -6,18 +6,38 @@
  *
  */
 
-import React, { useState, memo } from 'react';
+import React, { useState, useEffect, memo, useRef } from 'react';
 import styled from 'styled-components';
 
 import { ProjectType } from 'utils/data/types';
 
 import ProjectButtons from './ProjectButtons';
 import ProjectImages from './ProjectImages';
+import useVisibilityState from './useVisibilityState';
 
-const Project = ({ project, index }: ProjectProps) => {
+const Project = ({ project, index, scrollTop }: ProjectProps) => {
+  const {
+    //
+    // node Ref's
+    //
+    containerRef,
+    titleRef,
+    logosRef,
+    buttonsRef,
+    imagesRef,
+    //
+    // inView bool's
+    //
+    containerInView,
+    titleInView,
+    logosInView,
+    buttonsInView,
+    imagesInView,
+  } = useVisibilityState({ scrollTop });
+
   return (
-    <Container>
-      <TitleWrapper>
+    <Container ref={containerRef} containerInView={containerInView}>
+      <TitleWrapper ref={titleRef}>
         <Title>{project.title}</Title>
         <Link href={project.link.href} target="_blank">
           {project.link.title}
@@ -27,7 +47,7 @@ const Project = ({ project, index }: ProjectProps) => {
         <Text>{project.description}</Text>
         {project.credit && <Credit>{project.credit}</Credit>}
       </TextWrapper>
-      <LogoImagesList>
+      <LogoImagesList ref={logosRef}>
         {project.tools.map(({ id, imgSrc, href, style }) => (
           <li key={id}>
             <Link href={href} target="_blank">
@@ -36,8 +56,17 @@ const Project = ({ project, index }: ProjectProps) => {
           </li>
         ))}
       </LogoImagesList>
-      <ProjectButtons project={project} />
-      <ProjectImages images={project.images} index={index} />
+      <ProjectButtons
+        passRef={buttonsRef}
+        project={project}
+        buttonsInView={buttonsInView}
+      />
+      <ProjectImages
+        passRef={imagesRef}
+        images={project.images}
+        index={index}
+        imagesInView={imagesInView}
+      />
     </Container>
   );
 };
@@ -47,12 +76,15 @@ export default memo(Project);
 interface ProjectProps {
   project: ProjectType;
   index: number;
+  scrollTop: number;
 }
 
 const Container = styled.div`
   position: relative;
   padding: 15px;
   padding-bottom: 50px;
+  opacity: ${({ containerInView }) => (containerInView ? 1 : 0)};
+  transition: opacity 2s;
   &:not(:last-of-type) {
     &::after {
       content: '';

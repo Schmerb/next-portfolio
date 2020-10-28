@@ -7,6 +7,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import useScrollTop from 'utils/hooks/useScrollTop';
+
 import Projects from './components/Projects';
 import Work from './components/Work';
 import About from './components/About';
@@ -16,10 +18,11 @@ import Contact from './components/Contact';
 export interface LandingPageProps {}
 
 const LandingPage = ({}: LandingPageProps) => {
+  const scrollTop = useScrollTop({});
   return (
     <Container>
-      <Work />
-      <Projects />
+      <Work scrollTop={scrollTop} />
+      <Projects scrollTop={scrollTop} />
       <About />
       <WorkFlow />
       <Contact />

@@ -16,13 +16,18 @@ import { headerData, thinkfulProjects } from 'utils/data/projects';
 
 const { title, text } = headerData;
 
-const Projects = ({}: ProjectsProps) => {
+const Projects = ({ scrollTop }: ProjectsProps) => {
   return (
     <Container>
       <Banner title={title} text={text} />
       <ProjectList>
         {thinkfulProjects.map((project, index) => (
-          <Project key={project.id} project={project} index={index} />
+          <Project
+            key={project.id}
+            project={project}
+            index={index}
+            scrollTop={scrollTop}
+          />
         ))}
       </ProjectList>
     </Container>
@@ -31,7 +36,9 @@ const Projects = ({}: ProjectsProps) => {
 
 export default memo(Projects);
 
-interface ProjectsProps {}
+interface ProjectsProps {
+  scrollTop: number;
+}
 
 const Container = styled.section`
   // border: 1px solid #000;

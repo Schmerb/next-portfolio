@@ -11,9 +11,14 @@ import styled from 'styled-components';
 
 import ProjectButton from './ProjectButton';
 
-const ProjectButtons = ({ project }: IProjectButtonsProps) => {
+const ProjectButtons = ({
+  project,
+  passRef,
+  buttonsInView,
+}: IProjectButtonsProps) => {
+  console.log({ buttonsInView });
   return (
-    <ButtonWrapper hasAPI={!!project.apiCode}>
+    <ButtonWrapper hasAPI={!!project.apiCode} ref={passRef}>
       <ProjectButton
         noIcon
         text="Check it Out"
@@ -41,6 +46,8 @@ export default memo(ProjectButtons);
 
 interface IProjectButtonsProps {
   project: any;
+  passRef: any;
+  buttonsInView: boolean;
 }
 
 const ButtonWrapper = styled.div`

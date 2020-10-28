@@ -13,10 +13,15 @@ import { ImagesType } from 'utils/data/types';
 
 const shadowSrc = '/static/img/shadow.png';
 
-const ProjectImages = ({ images, index }: ProjectImagesProps) => {
+const ProjectImages = ({
+  images,
+  index,
+  passRef,
+  imagesInView,
+}: ProjectImagesProps) => {
   const isEven = index % 2 === 0;
   return (
-    <Container>
+    <Container ref={passRef}>
       <DesktopImgWrapper>
         <DesktopImg src={images.desktop} />
         <ShadowImg src={shadowSrc} />
@@ -51,6 +56,8 @@ export default memo(ProjectImages);
 interface ProjectImagesProps {
   images: ImagesType;
   index: number;
+  passRef: any;
+  imagesInView: boolean;
 }
 
 const Container = styled.div`
