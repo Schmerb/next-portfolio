@@ -96,7 +96,7 @@ export const thinkfulProjects: ProjectType[] = [
         href: 'https://www.w3.org/TR/css-2017/',
       },
       {
-        imgSrc: logos.jQuery,
+        imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
       },
     ],
@@ -128,7 +128,7 @@ export const thinkfulProjects: ProjectType[] = [
         href: 'https://www.w3.org/TR/css-2017/',
       },
       {
-        imgSrc: logos.jQuery,
+        imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
       },
       {
@@ -164,7 +164,7 @@ export const thinkfulProjects: ProjectType[] = [
         href: 'https://www.w3.org/TR/css-2017/',
       },
       {
-        imgSrc: logos.jQuery,
+        imgSrc: logos.jqueryText,
         href: 'https://jquery.com/',
       },
       {
