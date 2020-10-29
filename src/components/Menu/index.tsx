@@ -10,9 +10,10 @@ import React, { useState, memo } from 'react';
 import styled, { css } from 'styled-components';
 import { animated, useSpring } from 'react-spring';
 import { useRouter } from 'next/router';
+import { Link } from 'react-scroll';
 
 // import BurgerMenu from 'components/BurgerMenu';
-import Link from 'components/Elements/Link';
+// import Link from 'components/Elements/Link';
 import { links } from 'utils/navigation';
 import { closeMenu } from 'actions/display';
 
@@ -36,14 +37,11 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
     <Container className={menuIsOpen ? 'open' : ''}>
       <AnimatedDiv style={animatedProps}>
         <List>
-          {links.map(({ id, href, text }) => (
+          {links.map(({ id, text }) => (
             <li key={id}>
-              <StyledLink
-                href={href}
-                text={text}
-                onClick={handleLinkClick(id)}
-                isActive={router.pathname === href}
-              />
+              <Link to={id} smooth={true} duration={1500}>
+                <StyledSpan onClick={handleLinkClick(id)}>{text}</StyledSpan>
+              </Link>
             </li>
           ))}
         </List>
@@ -109,13 +107,13 @@ const List = styled.ul`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledSpan = styled.span`
+  color: #fff;
   padding-bottom: 8px;
   font-family: 'Raleway', sans-serif;
-  ${({ isActive }) =>
-    isActive
-      ? css`
-          border-bottom: 2px solid #fff;
-        `
-      : css``}
+  cursor: pointer;
+  transition: color 0.15s;
+  &:hover {
+    color: lightgrey;
+  }
 `;
