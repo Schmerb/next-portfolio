@@ -103,7 +103,6 @@ const Content = styled.div`
   align-items: center;
   width: 100%;
   pointer-events: none;
-  /* border: 1px solid limegreen; */
   z-index: 1;
 `;
 

@@ -14,6 +14,12 @@ import { ImagesType } from 'utils/data/types';
 
 const shadowSrc = '/static/img/shadow.png';
 
+const springConfig = {
+  config: {
+    tension: 105,
+  },
+};
+
 const ProjectImages = ({
   images,
   index,
@@ -31,41 +37,41 @@ const ProjectImages = ({
   const isEven = index % 2 === 0;
 
   const desktopProps = useSpring({
+    ...springConfig,
     opacity: showDesktop ? 1 : 0,
     transform: showDesktop ? 'translate3d(0,0,0)' : `translate3d(0,50px,0)`,
-    config: {
-      tension: 105,
-    },
   });
   const laptopProps = useSpring({
+    ...springConfig,
     opacity: showLaptop ? 1 : 0,
     transform: showLaptop
       ? 'translate3d(0,0,0)'
       : `translate3d(${isEven ? '' : '-'}50px,50px,0)`,
-    config: {
-      tension: 105,
-    },
   });
   const mobileProps = useSpring({
+    ...springConfig,
     opacity: showMobile ? 1 : 0,
     transform: showMobile
       ? `translate3d(${isEven ? '25px' : '-25px'},0,0)`
       : `translate3d(${isEven ? '-' : ''}50px,50px,0)`,
-    config: {
-      tension: 105,
-    },
   });
 
   useEffect(() => {
+    let timeout1;
+    let timeout2;
     if (desktopInView) {
       setShowDesktop(true);
-      setTimeout(() => {
+      timeout1 = setTimeout(() => {
         setShowLaptop(true);
-        setTimeout(() => {
+        timeout2 = setTimeout(() => {
           setShowMobile(true);
-        }, 1000);
-      }, 1000);
+        }, 400);
+      }, 800);
     }
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+    };
   }, [desktopInView, laptopInView, mobileInView]);
 
   return (
