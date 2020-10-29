@@ -33,7 +33,10 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
       return () => {};
     }
     // to check if el is in viewport
-    const isInView = (box) => box.top < window.innerHeight && box.bottom >= 0;
+    const isInView = (box) => {
+      const targetHeight = window.innerHeight - window.innerHeight / 3;
+      return box.top < targetHeight && box.bottom >= 0;
+    };
 
     //
     // grab node client rect DOM info
