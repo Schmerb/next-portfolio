@@ -31,17 +31,20 @@ const Footer = ({}: FooterProps) => {
       </Wrapper>
       <IconList>
         <IconListItem>
-          <a href="https://github.com/Schmerb">
+          <a href="https://github.com/Schmerb" target="_blank">
             <GithubIcon {...props} />
           </a>
         </IconListItem>
         <IconListItem>
-          <a href="mailto:mikeschmerbeck@gmail.com">
+          <a href="mailto:mikeschmerbeck@gmail.com" target="_blank">
             <EmailIcon {...props} />
           </a>
         </IconListItem>
         <IconListItem>
-          <a href="https://www.linkedin.com/in/michael-schmerbeck/">
+          <a
+            href="https://www.linkedin.com/in/michael-schmerbeck/"
+            target="_blank"
+          >
             <LinkedInIcon {...props} />
           </a>
         </IconListItem>
@@ -59,7 +62,7 @@ const Container = styled.footer`
   background-color: ${({ theme }) => theme.colors.PrimaryGrey};
   color: #fff;
   min-height: ${FOOTER_HEIGHT}px;
-  padding: 15px;
+  padding: 50px 15px;
 `;
 
 const Wrapper = styled.div`

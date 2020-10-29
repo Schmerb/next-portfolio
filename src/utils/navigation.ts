@@ -8,14 +8,14 @@
 
 export const links = [
   {
-    id: 'projects-section',
-    href: '/projects',
-    text: 'projects',
-  },
-  {
     id: 'work-section',
     href: '/work',
     text: 'work',
+  },
+  {
+    id: 'projects-section',
+    href: '/projects',
+    text: 'projects',
   },
   {
     id: 'about-me-section',
