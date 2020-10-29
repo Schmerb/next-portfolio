@@ -104,7 +104,6 @@ const List = styled.ul`
 
   li {
     margin-bottom: 30px;
-    font-family: 'Raleway', sans-serif;
     /* font-size: 32px; */
     text-transform: uppercase;
   }
@@ -112,6 +111,7 @@ const List = styled.ul`
 
 const StyledLink = styled(Link)`
   padding-bottom: 8px;
+  font-family: 'Raleway', sans-serif;
   ${({ isActive }) =>
     isActive
       ? css`

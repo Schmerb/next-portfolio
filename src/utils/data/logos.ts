@@ -29,7 +29,7 @@ export const mongodb = `${logoSrc}/mongodb-logo.png`;
 export const mongoose = `${logoSrc}/mongoose.png`;
 export const javascript = `${logoSrc}/javascript.png`;
 export const vscode = `${logoSrc}/vscode.png`;
-export const git = `${logoSrc}/git-icon-blackpng`;
+export const git = `${logoSrc}/git-icon-black.png`;
 
 const Logos: LogosProps = {
   sketch: {
