@@ -90,6 +90,9 @@ const ShadowImg = styled.img`
   width: 100%;
   margin: 0 auto;
   z-index: -1;
+  ${({ theme }) => theme.media.max.mobile`
+    transform: translateY(-15px);
+  `}
 `;
 
 //
@@ -102,6 +105,9 @@ const LowerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  ${({ theme }) => theme.media.max.mobile`
+    transform: translateY(-15px);
+  `}
 `;
 
 //
