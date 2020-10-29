@@ -31,7 +31,6 @@ const Footer = ({}: FooterProps) => {
   useEffect(() => {
     const distanceFromBottom =
       document.body.scrollHeight - window.innerHeight - window.scrollY;
-    console.log({ distanceFromBottom });
 
     if (ref.current && distanceFromBottom < FOOTER_HEIGHT * 2) {
       // set state to show
@@ -59,15 +58,6 @@ const Footer = ({}: FooterProps) => {
               </Link>
             </li>
           ))}
-          {/* <li>
-            <Link to={id} smooth={true} duration={1500}>
-            PROJECTS
-            </Link>
-            </li>
-          <li>WORK</li>
-          <li>ABOUT</li>
-          <li>WORK FLOW</li>
-          <li>CONTACT</li> */}
         </NavList>
       </Wrapper>
       <IconList>
