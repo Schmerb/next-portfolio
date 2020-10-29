@@ -16,7 +16,10 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
   const titleRef: any = useRef();
   const logosRef: any = useRef();
   const buttonsRef: any = useRef();
-  const imagesRef: any = useRef();
+  //
+  const desktopRef: any = useRef();
+  const laptopRef: any = useRef();
+  const mobileRef: any = useRef();
   //
   // visibility states
   //
@@ -24,7 +27,10 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
   const [titleInView, setTitleInView] = useState(false);
   const [logosInView, setLogosInView] = useState(false);
   const [buttonsInView, setButtonsInView] = useState(false);
-  const [imagesInView, setImagesInView] = useState(false);
+  //
+  const [desktopInView, setDesktopInView] = useState(false);
+  const [laptopInView, setLaptopInView] = useState(false);
+  const [mobileInView, setMobileInView] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -32,9 +38,13 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
       return () => {};
     }
     // to check if el is in viewport
-    const isInView = (box) => {
-      const targetHeight = window.innerHeight - window.innerHeight / 4;
-      return box.top < targetHeight && box.bottom >= 0;
+    const isInView = (box: any) => {
+      const { innerHeight } = window;
+      const targetHeight = innerHeight - innerHeight / 4;
+      // top: distance from top of El to top of viewport
+      // bottom: distance from bottom of El to top of viewport
+      const { top, bottom } = box;
+      return top < targetHeight && bottom >= 0;
     };
 
     //
@@ -44,7 +54,10 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
     const titleRect = titleRef.current.getBoundingClientRect();
     const logosRect = logosRef.current.getBoundingClientRect();
     const buttonsRect = buttonsRef.current.getBoundingClientRect();
-    const imagesRect = imagesRef.current.getBoundingClientRect();
+    //
+    const desktopRect = desktopRef.current.getBoundingClientRect();
+    const laptopRect = laptopRef.current.getBoundingClientRect();
+    const mobileRect = mobileRef.current.getBoundingClientRect();
     //
     // check if is in view and set state
     //
@@ -52,7 +65,10 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
     if (isInView(titleRect)) setTitleInView(true);
     if (isInView(logosRect)) setLogosInView(true);
     if (isInView(buttonsRect)) setButtonsInView(true);
-    if (isInView(imagesRect)) setImagesInView(true);
+    //
+    if (isInView(desktopRect)) setDesktopInView(true);
+    if (isInView(laptopRect)) setLaptopInView(true);
+    if (isInView(mobileRect)) setMobileInView(true);
   }, [scrollTop]);
 
   return {
@@ -61,14 +77,20 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
       titleRef,
       logosRef,
       buttonsRef,
-      imagesRef,
+      //
+      desktopRef,
+      laptopRef,
+      mobileRef,
     },
     state: {
       containerInView,
       titleInView,
       logosInView,
       buttonsInView,
-      imagesInView,
+      //
+      desktopInView,
+      laptopInView,
+      mobileInView,
     },
   };
 };

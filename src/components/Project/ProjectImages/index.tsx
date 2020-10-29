@@ -6,8 +6,9 @@
  *
  */
 
-import React, { useState, memo } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
 import { ImagesType } from 'utils/data/types';
 
@@ -16,34 +17,81 @@ const shadowSrc = '/static/img/shadow.png';
 const ProjectImages = ({
   images,
   index,
-  passRef,
-  imagesInView,
+  passDesktopRef,
+  passLaptopRef,
+  passMobileRef,
+  desktopInView,
+  laptopInView,
+  mobileInView,
 }: ProjectImagesProps) => {
+  const [showDesktop, setShowDesktop] = useState(false);
+  const [showLaptop, setShowLaptop] = useState(false);
+  const [showMobile, setShowMobile] = useState(false);
+
   const isEven = index % 2 === 0;
+
+  const desktopProps = useSpring({
+    opacity: showDesktop ? 1 : 0,
+    transform: showDesktop ? 'translate3d(0,0,0)' : `translate3d(0,50px,0)`,
+    config: {
+      tension: 105,
+    },
+  });
+  const laptopProps = useSpring({
+    opacity: showLaptop ? 1 : 0,
+    transform: showLaptop
+      ? 'translate3d(0,0,0)'
+      : `translate3d(${isEven ? '' : '-'}50px,50px,0)`,
+    config: {
+      tension: 105,
+    },
+  });
+  const mobileProps = useSpring({
+    opacity: showMobile ? 1 : 0,
+    transform: showMobile
+      ? `translate3d(${isEven ? '25px' : '-25px'},0,0)`
+      : `translate3d(${isEven ? '-' : ''}50px,50px,0)`,
+    config: {
+      tension: 105,
+    },
+  });
+
+  useEffect(() => {
+    if (desktopInView) {
+      setShowDesktop(true);
+      setTimeout(() => {
+        setShowLaptop(true);
+        setTimeout(() => {
+          setShowMobile(true);
+        }, 1000);
+      }, 1000);
+    }
+  }, [desktopInView, laptopInView, mobileInView]);
+
   return (
-    <Container ref={passRef}>
-      <DesktopImgWrapper>
+    <Container>
+      <DesktopAnimatedDiv style={desktopProps} ref={passDesktopRef}>
         <DesktopImg src={images.desktop} />
         <ShadowImg src={shadowSrc} />
-      </DesktopImgWrapper>
+      </DesktopAnimatedDiv>
       <LowerWrapper>
         {isEven ? (
           <>
-            <MobileWrapper isEven>
+            <MobileAnimatedDiv isEven style={mobileProps} ref={passMobileRef}>
               <MobileImg src={images.mobile} isEven />
-            </MobileWrapper>
-            <LaptopWrapper>
+            </MobileAnimatedDiv>
+            <LaptopAnimatedDiv style={laptopProps} ref={passLaptopRef}>
               <LaptopImg src={images.laptop} />
-            </LaptopWrapper>
+            </LaptopAnimatedDiv>
           </>
         ) : (
           <>
-            <LaptopWrapper>
+            <LaptopAnimatedDiv style={laptopProps} ref={passLaptopRef}>
               <LaptopImg src={images.laptop} />
-            </LaptopWrapper>
-            <MobileWrapper>
+            </LaptopAnimatedDiv>
+            <MobileAnimatedDiv style={mobileProps} ref={passMobileRef}>
               <MobileImg src={images.mobile} />
-            </MobileWrapper>
+            </MobileAnimatedDiv>
           </>
         )}
       </LowerWrapper>
@@ -56,8 +104,12 @@ export default memo(ProjectImages);
 interface ProjectImagesProps {
   images: ImagesType;
   index: number;
-  passRef: any;
-  imagesInView: boolean;
+  passDesktopRef: any;
+  passLaptopRef: any;
+  passMobileRef: any;
+  desktopInView: boolean;
+  laptopInView: boolean;
+  mobileInView: boolean;
 }
 
 const Container = styled.div`
@@ -72,10 +124,11 @@ const Container = styled.div`
 //
 // Desktop
 //
-const DesktopImgWrapper = styled.div`
+const DesktopAnimatedDiv = styled(animated.div)`
   position: relative;
   text-align: center;
   width: 75%;
+  margin: 0 auto;
 `;
 
 const DesktopImg = styled.img`
@@ -101,10 +154,11 @@ const ShadowImg = styled.img`
 const LowerWrapper = styled.div`
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 30px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  width: 100%;
   ${({ theme }) => theme.media.max.mobile`
     transform: translateY(-15px);
   `}
@@ -113,7 +167,7 @@ const LowerWrapper = styled.div`
 //
 // Laptop
 //
-const LaptopWrapper = styled.div`
+const LaptopAnimatedDiv = styled(animated.div)`
   width: 55%;
 `;
 
@@ -125,9 +179,8 @@ const LaptopImg = styled.img`
 //
 // Mobile
 //
-const MobileWrapper = styled.div`
+const MobileAnimatedDiv = styled(animated.div)`
   width: 15%;
-  transform: translateX(${({ isEven }) => (isEven ? '25px' : '-25px')});
 `;
 
 const MobileImg = styled.img`

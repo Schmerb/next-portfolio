@@ -19,47 +19,47 @@ import AnimatedWrapper from './AnimatedWrapper';
 import useVisibilityState from './useVisibilityState';
 
 const Project = ({ project, index, scrollTop }: ProjectProps) => {
-  const {
-    // node Ref's
-    refs,
-    // inView bool's
-    state,
-  } = useVisibilityState({ scrollTop });
+  // node Ref's, inView bool's
+  const { refs, state } = useVisibilityState({ scrollTop });
 
   return (
-    // <AnimatedWrapper inView={state.containerInView}>
     <Container ref={refs.containerRef}>
-      <AnimatedWrapper inView={state.titleInView}>
+      <AnimatedWrapper inView={state.titleInView} scrollTop={scrollTop}>
         <ProjectInfo
           titleRef={refs.titleRef}
           project={project}
           inView={state.titleInView}
         />
       </AnimatedWrapper>
-      <AnimatedWrapper inView={state.logosInView}>
+      <AnimatedWrapper inView={state.logosInView} scrollTop={scrollTop}>
         <ProjectLogos
           logosRef={refs.logosRef}
           project={project}
           inView={state.logosInView}
         />
       </AnimatedWrapper>
-      <AnimatedWrapper inView={state.buttonsInView}>
+      <AnimatedWrapper inView={state.buttonsInView} scrollTop={scrollTop}>
         <ProjectButtons
           passRef={refs.buttonsRef}
           project={project}
           buttonsInView={state.buttonsInView}
         />
       </AnimatedWrapper>
-      <AnimatedWrapper inView={state.imagesInView}>
-        <ProjectImages
-          passRef={refs.imagesRef}
-          images={project.images}
-          index={index}
-          imagesInView={state.imagesInView}
-        />
-      </AnimatedWrapper>
+      {/* <AnimatedWrapper inView={state.imagesInView} scrollTop={scrollTop}> */}
+      <ProjectImages
+        index={index}
+        images={project.images}
+        // refs
+        passDesktopRef={refs.desktopRef}
+        passLaptopRef={refs.laptopRef}
+        passMobileRef={refs.mobileRef}
+        // inView state
+        desktopInView={state.desktopInView}
+        laptopInView={state.laptopInView}
+        mobileInView={state.mobileInView}
+      />
+      {/* </AnimatedWrapper> */}
     </Container>
-    // </AnimatedWrapper>
   );
 };
 

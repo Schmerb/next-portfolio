@@ -6,29 +6,67 @@
  *
  */
 
-import React, { useState, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import styled from 'styled-components';
+import { useTrail, useSprings, animated } from 'react-spring';
 
 import { ProjectType } from 'utils/data/types';
 
-const ProjectLogos = ({ logosRef, project, inView }: IProjectLogosProps) => {
+const ProjectLogos = ({ logosRef, project, inView }: ProjectLogosProps) => {
+  const [trail, set, stop]: any = useTrail(project.tools.length, () => ({
+    opacity: 0,
+    transform: 'translate3d(55px,0,0)',
+    config: {
+      tension: 105,
+    },
+  }));
+
+  // const [springs, set, stop]: any = useSprings(
+  //   project.tools.length,
+  //   (index) => {
+  //     console.log({ index });
+  //     const isEven = index % 2 === 0;
+  //     return {
+  //       opacity: 0,
+  //       transform: `translate3d(${isEven ? '-' : ''}55px,0,0)`,
+  //     };
+  //   },
+  // );
+
+  useEffect(() => {
+    if (inView) {
+      set({ opacity: 1, transform: 'translate3d(0,0,0)' });
+    }
+  }, [inView]);
+
   console.log({ inView });
   return (
     <LogoImagesList ref={logosRef}>
-      {project.tools.map(({ id, imgSrc, href, style }) => (
-        <li key={id}>
-          <Link href={href} target="_blank">
-            <LogoImage src={imgSrc} style={style} />
-          </Link>
-        </li>
-      ))}
+      {trail.map((props, index) => {
+        const { id, imgSrc, href, style } = project.tools[index];
+        return (
+          <animated.li style={props} key={id}>
+            <Link href={href} target="_blank">
+              <LogoImage src={imgSrc} style={style} />
+            </Link>
+          </animated.li>
+        );
+      })}
     </LogoImagesList>
   );
 };
 
 export default memo(ProjectLogos);
 
-interface IProjectLogosProps {
+/* {project.tools.map(({ id, imgSrc, href, style }) => (
+    <li key={id}>
+      <Link href={href} target="_blank">
+        <LogoImage src={imgSrc} style={style} />
+      </Link>
+    </li>
+  ))} */
+
+interface ProjectLogosProps {
   logosRef: any;
   project: ProjectType;
   inView: boolean;
