@@ -45,7 +45,6 @@ const Project = ({ project, index, scrollTop }: ProjectProps) => {
           buttonsInView={state.buttonsInView}
         />
       </AnimatedWrapper>
-      {/* <AnimatedWrapper inView={state.imagesInView} scrollTop={scrollTop}> */}
       <ProjectImages
         index={index}
         images={project.images}
@@ -58,7 +57,6 @@ const Project = ({ project, index, scrollTop }: ProjectProps) => {
         laptopInView={state.laptopInView}
         mobileInView={state.mobileInView}
       />
-      {/* </AnimatedWrapper> */}
     </Container>
   );
 };
