@@ -4,29 +4,64 @@
  *
  *  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 import LinkedInIcon from 'components/svg/Brands/LinkedIn';
 import GithubIcon from 'components/svg/Brands/Github';
 import EmailIcon from 'components/svg/Icons/Email';
+import UpArrowIcon from 'components/svg/Icons/UpArrow';
+
+import useScrollTop from 'utils/hooks/useScrollTop';
+import { links } from 'utils/navigation';
 
 interface FooterProps {}
 
-export const FOOTER_HEIGHT = 200;
+export const FOOTER_HEIGHT = 477;
 
 const props = { width: 30, height: 30, fill: '#555' };
 
 const Footer = ({}: FooterProps) => {
+  const [showUpArrow, setShowUpArrow] = useState(false);
+
+  const scrollTop = useScrollTop({});
+  useEffect(() => {
+    const distanceFromBottom =
+      document.body.scrollHeight - window.innerHeight - window.scrollY;
+    if (distanceFromBottom < FOOTER_HEIGHT * 2) {
+      // set state to show
+      setShowUpArrow(true);
+    } else {
+      setShowUpArrow(false);
+    }
+  }, [scrollTop]);
   return (
     <Container>
+      <UpArrowWrapper
+        onClick={() => scroll.scrollToTop()}
+        showUpArrow={showUpArrow}
+      >
+        <UpArrowIcon width={30} height={30} />
+      </UpArrowWrapper>
       <Wrapper>
         <NavList>
-          <li>PROJECTS</li>
+          {links.map(({ id, text }) => (
+            <li key={id}>
+              <Link to={id} smooth={true} duration={1500}>
+                <span>{text}</span>
+              </Link>
+            </li>
+          ))}
+          {/* <li>
+            <Link to={id} smooth={true} duration={1500}>
+            PROJECTS
+            </Link>
+            </li>
           <li>WORK</li>
           <li>ABOUT</li>
           <li>WORK FLOW</li>
-          <li>CONTACT</li>
+          <li>CONTACT</li> */}
         </NavList>
       </Wrapper>
       <IconList>
@@ -61,8 +96,39 @@ export default Footer;
 const Container = styled.footer`
   background-color: ${({ theme }) => theme.colors.PrimaryGrey};
   color: #fff;
-  min-height: ${FOOTER_HEIGHT}px;
+  height: ${FOOTER_HEIGHT}px;
   padding: 50px 15px;
+`;
+
+const UpArrowWrapper = styled.div`
+  position: fixed;
+  right: 15px;
+  bottom: ${FOOTER_HEIGHT - 50}px;
+  opacity: ${({ showUpArrow }) => (showUpArrow ? 1 : 0)};
+  z-index: 1;
+  transition: opacity 0.15s;
+  svg,
+  path {
+    fill: ${({ theme }) => theme.colors.PrimaryBluePurple};
+  }
+  svg {
+    @keyframes bounce {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(0, -5px);
+      }
+      100% {
+        transform: translateY(0, 0);
+      }
+    }
+    cursor: pointer;
+
+    &:hover {
+      animation: bounce 2s ease-in-out infinite;
+    }
+  }
 `;
 
 const Wrapper = styled.div`
@@ -102,6 +168,14 @@ const NavList = styled(List)`
 
   li {
     margin-bottom: 15px;
+    text-transform: uppercase;
+    a {
+      transition: color 0.15s;
+      cursor: pointer;
+      &:hover {
+        color: lightgrey;
+      }
+    }
   }
 `;
 
