@@ -6,25 +6,71 @@
  *
  */
 
-import React, { useState, memo } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
 
 import { ProjectType } from 'utils/data/types';
 
+const springConfig = {
+  config: {
+    tension: 105,
+  },
+};
+
+const useAnimation = (isReady: boolean) =>
+  useSpring({
+    ...springConfig,
+    opacity: isReady ? 1 : 0,
+    transform: isReady ? 'translate3d(0,0,0)' : `translate3d(0,50px,0)`,
+  });
+
 const ProjectInfo = ({ titleRef, project, inView }: ProjectInfoProps) => {
-  console.log({ inView });
+  const [titleReady, setTitleReady] = useState(false);
+  const [linkReady, setLinkReady] = useState(false);
+  const [textReady, setTextReady] = useState(false);
+
+  const titleProps = useAnimation(titleReady);
+  const linkProps = useAnimation(linkReady);
+  const textProps = useAnimation(textReady);
+
+  useEffect(() => {
+    let timeout1;
+    let timeout2;
+    // create cascade effect
+    if (inView) {
+      setTitleReady(true);
+      timeout1 = setTimeout(() => {
+        setLinkReady(true);
+        timeout2 = setTimeout(() => {
+          setTextReady(true);
+        }, 250);
+      }, 250);
+    }
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+    };
+  }, [inView]);
+
   return (
     <>
       <TitleWrapper ref={titleRef}>
-        <Title>{project.title}</Title>
-        <Link href={project.link.href} target="_blank">
-          {project.link.title}
-        </Link>
+        <animated.div style={titleProps}>
+          <Title>{project.title}</Title>
+        </animated.div>
+        <animated.div style={linkProps}>
+          <Link href={project.link.href} target="_blank">
+            {project.link.title}
+          </Link>
+        </animated.div>
       </TitleWrapper>
-      <TextWrapper>
-        <Text>{project.description}</Text>
-        {project.credit && <Credit>{project.credit}</Credit>}
-      </TextWrapper>
+      <animated.div style={textProps}>
+        <TextWrapper>
+          <Text>{project.description}</Text>
+          {project.credit && <Credit>{project.credit}</Credit>}
+        </TextWrapper>
+      </animated.div>
     </>
   );
 };
