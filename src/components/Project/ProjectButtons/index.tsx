@@ -18,25 +18,28 @@ const springConfig = {
   },
 };
 
-const useAnimation = (isReady: boolean) =>
+const useAnimation = (isReady: boolean, direction: string) =>
   useSpring({
     ...springConfig,
     opacity: isReady ? 1 : 0,
-    transform: isReady ? 'translate3d(0,0,0)' : `translate3d(0,50px,0)`,
+    transform: isReady
+      ? 'translate3d(0,0,0)'
+      : `translate3d(0,${direction === 'up' ? '-' : ''}50px,0)`,
   });
 
 const ProjectButtons = ({
   project,
   passRef,
   buttonsInView,
+  direction,
 }: IProjectButtonsProps) => {
   const [topBtnReady, setTopBtnReady] = useState(false);
   const [leftBtnReady, setLeftBtnReady] = useState(false);
   const [rightBtnReady, setRightBtnReady] = useState(false);
 
-  const topBtnProps = useAnimation(topBtnReady);
-  const leftBtnProps = useAnimation(leftBtnReady);
-  const rightBtnProps = useAnimation(rightBtnReady);
+  const topBtnProps = useAnimation(topBtnReady, direction);
+  const leftBtnProps = useAnimation(leftBtnReady, direction);
+  const rightBtnProps = useAnimation(rightBtnReady, direction);
 
   useEffect(() => {
     let timeout1;
@@ -96,6 +99,7 @@ interface IProjectButtonsProps {
   project: any;
   passRef: any;
   buttonsInView: boolean;
+  direction: string;
 }
 
 const ButtonWrapper = styled.div`

@@ -29,6 +29,7 @@ const ProjectImages = ({
   desktopInView,
   laptopInView,
   mobileInView,
+  direction,
 }: ProjectImagesProps) => {
   const [showDesktop, setShowDesktop] = useState(false);
   const [showLaptop, setShowLaptop] = useState(false);
@@ -39,21 +40,27 @@ const ProjectImages = ({
   const desktopProps = useSpring({
     ...springConfig,
     opacity: showDesktop ? 1 : 0,
-    transform: showDesktop ? 'translate3d(0,0,0)' : `translate3d(0,50px,0)`,
+    transform: showDesktop
+      ? 'translate3d(0,0,0)'
+      : `translate3d(0,${direction === 'up' ? '-' : ''}50px,0)`,
   });
   const laptopProps = useSpring({
     ...springConfig,
     opacity: showLaptop ? 1 : 0,
     transform: showLaptop
       ? 'translate3d(0,0,0)'
-      : `translate3d(${isEven ? '' : '-'}50px,50px,0)`,
+      : `translate3d(${isEven ? '' : '-'}50px,${
+          direction === 'up' ? '-' : ''
+        }50px,0)`,
   });
   const mobileProps = useSpring({
     ...springConfig,
     opacity: showMobile ? 1 : 0,
     transform: showMobile
       ? `translate3d(${isEven ? '25px' : '-25px'},0,0)`
-      : `translate3d(${isEven ? '-' : ''}50px,50px,0)`,
+      : `translate3d(${isEven ? '-' : ''}50px,${
+          direction === 'up' ? '-' : ''
+        }50px,0)`,
   });
 
   useEffect(() => {
@@ -116,6 +123,7 @@ interface ProjectImagesProps {
   desktopInView: boolean;
   laptopInView: boolean;
   mobileInView: boolean;
+  direction: string;
 }
 
 const Container = styled.div`

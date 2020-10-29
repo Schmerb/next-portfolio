@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import useScrollTop from 'utils/hooks/useScrollTop';
+import usePrevious from 'utils/hooks/usePrevious';
 
 import Projects from './components/Projects';
 import Work from './components/Work';
@@ -19,12 +20,14 @@ export interface LandingPageProps {}
 
 const LandingPage = ({}: LandingPageProps) => {
   const scrollTop = useScrollTop({});
+  const prevScrolltop: number = usePrevious(scrollTop);
+  const direction = scrollTop < prevScrolltop ? 'up' : 'down';
   return (
     <Container>
-      <Work scrollTop={scrollTop} />
-      <Projects scrollTop={scrollTop} />
+      <Work scrollTop={scrollTop} direction={direction} />
+      <Projects scrollTop={scrollTop} direction={direction} />
       <About />
-      <WorkFlow scrollTop={scrollTop} />
+      <WorkFlow scrollTop={scrollTop} direction={direction} />
       <Contact scrollTop={scrollTop} />
     </Container>
   );

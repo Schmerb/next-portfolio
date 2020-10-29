@@ -16,11 +16,11 @@ import tools from './tools';
 const title = 'Work Flow';
 const text = 'Some of the tools I use to develop efficiently';
 
-const WorkFlow = ({ scrollTop }: WorkFlowProps) => {
+const WorkFlow = ({ scrollTop, direction }: WorkFlowProps) => {
   // inView handler
   const { containerRef, containerInView } = useVisibilityState({ scrollTop });
   // animation
-  const trail = useTrailAnimation({ containerInView });
+  const trail = useTrailAnimation({ containerInView, direction });
   return (
     <Container id="work-flow-section" ref={containerRef}>
       <Title>{title}</Title>
@@ -45,6 +45,7 @@ export default memo(WorkFlow);
 
 interface WorkFlowProps {
   scrollTop: number;
+  direction: string;
 }
 
 const Container = styled.section`
@@ -124,11 +125,11 @@ const LogoImage = styled.img`
  * @param {*} { containerInView }
  * @returns
  */
-const useTrailAnimation = ({ containerInView }) => {
+const useTrailAnimation = ({ containerInView, direction }) => {
   // animation
   const [trail, set, stop]: any = useTrail(tools.length, () => ({
     opacity: 0,
-    transform: 'translate3d(55px,25px,0)',
+    transform: `translate3d(55px,${direction === 'up' ? '-' : ''}25px,0)`,
     config: {
       tension: 105,
     },

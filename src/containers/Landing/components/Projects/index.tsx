@@ -16,7 +16,7 @@ import { headerData, thinkfulProjects } from 'utils/data/projects';
 
 const { title, text } = headerData;
 
-const Projects = ({ scrollTop }: ProjectsProps) => {
+const Projects = ({ scrollTop, direction }: ProjectsProps) => {
   return (
     <Container id="projects-section">
       <Banner title={title} text={text} scrollTop={scrollTop} />
@@ -27,6 +27,7 @@ const Projects = ({ scrollTop }: ProjectsProps) => {
             project={project}
             index={index}
             scrollTop={scrollTop}
+            direction={direction}
           />
         ))}
       </ProjectList>
@@ -38,6 +39,7 @@ export default memo(Projects);
 
 interface ProjectsProps {
   scrollTop: number;
+  direction: string;
 }
 
 const Container = styled.section`

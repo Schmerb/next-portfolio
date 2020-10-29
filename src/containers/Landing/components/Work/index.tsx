@@ -16,7 +16,7 @@ import { headerData, workProjects } from 'utils/data/work';
 
 const { title, text } = headerData;
 
-const Work = ({ scrollTop }: WorkProps) => {
+const Work = ({ scrollTop, direction }: WorkProps) => {
   return (
     <Container id="work-section">
       <Banner title={title} text={text} scrollTop={scrollTop} />
@@ -27,6 +27,7 @@ const Work = ({ scrollTop }: WorkProps) => {
             project={project}
             index={index}
             scrollTop={scrollTop}
+            direction={direction}
           />
         ))}
       </ProjectList>
@@ -38,6 +39,7 @@ export default memo(Work);
 
 interface WorkProps {
   scrollTop: number;
+  direction: string;
 }
 
 const Container = styled.section`

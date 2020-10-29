@@ -18,21 +18,28 @@ const springConfig = {
   },
 };
 
-const useAnimation = (isReady: boolean) =>
+const useAnimation = (isReady: boolean, direction: string) =>
   useSpring({
     ...springConfig,
     opacity: isReady ? 1 : 0,
-    transform: isReady ? 'translate3d(0,0,0)' : `translate3d(0,50px,0)`,
+    transform: isReady
+      ? 'translate3d(0,0,0)'
+      : `translate3d(0,${direction === 'up' ? '-' : ''}50px,0)`,
   });
 
-const ProjectInfo = ({ titleRef, project, inView }: ProjectInfoProps) => {
+const ProjectInfo = ({
+  titleRef,
+  project,
+  inView,
+  direction,
+}: ProjectInfoProps) => {
   const [titleReady, setTitleReady] = useState(false);
   const [linkReady, setLinkReady] = useState(false);
   const [textReady, setTextReady] = useState(false);
 
-  const titleProps = useAnimation(titleReady);
-  const linkProps = useAnimation(linkReady);
-  const textProps = useAnimation(textReady);
+  const titleProps = useAnimation(titleReady, direction);
+  const linkProps = useAnimation(linkReady, direction);
+  const textProps = useAnimation(textReady, direction);
 
   useEffect(() => {
     let timeout1;
@@ -81,6 +88,7 @@ interface ProjectInfoProps {
   titleRef: any;
   project: ProjectType;
   inView: boolean;
+  direction: string;
 }
 
 const TitleWrapper = styled.div`

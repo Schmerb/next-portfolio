@@ -18,7 +18,7 @@ import ProjectImages from './ProjectImages';
 import AnimatedWrapper from './AnimatedWrapper';
 import useVisibilityState from './useVisibilityState';
 
-const Project = ({ project, index, scrollTop }: ProjectProps) => {
+const Project = ({ project, index, scrollTop, direction }: ProjectProps) => {
   // node Ref's, inView bool's
   const { refs, state } = useVisibilityState({ scrollTop });
 
@@ -27,6 +27,7 @@ const Project = ({ project, index, scrollTop }: ProjectProps) => {
       <ProjectInfo
         titleRef={refs.titleRef}
         project={project}
+        direction={direction}
         inView={state.titleInView}
       />
       <ProjectLogos
@@ -37,11 +38,13 @@ const Project = ({ project, index, scrollTop }: ProjectProps) => {
       <ProjectButtons
         passRef={refs.buttonsRef}
         project={project}
+        direction={direction}
         buttonsInView={state.buttonsInView}
       />
       <ProjectImages
         index={index}
         images={project.images}
+        direction={direction}
         // refs
         passDesktopRef={refs.desktopRef}
         passLaptopRef={refs.laptopRef}
@@ -61,6 +64,7 @@ interface ProjectProps {
   project: ProjectType;
   index: number;
   scrollTop: number;
+  direction: string;
 }
 
 const Container = styled.div`
