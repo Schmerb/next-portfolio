@@ -6,14 +6,11 @@
  *
  */
 
-import React, { useState, memo } from 'react';
-import styled, { css } from 'styled-components';
+import React, { memo } from 'react';
+import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
-import { useRouter } from 'next/router';
 import { Link } from 'react-scroll';
 
-// import BurgerMenu from 'components/BurgerMenu';
-// import Link from 'components/Elements/Link';
 import { links } from 'utils/navigation';
 import { closeMenu } from 'actions/display';
 
@@ -23,15 +20,13 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
     opacity: menuIsOpen ? 1 : 0,
   });
   //
-  const router = useRouter();
-  //
   const handleLinkClick = (id: string) => (evt: any) => {
     evt.preventDefault();
     dispatch(closeMenu());
-    const El = document.querySelector(`#${id}`);
-    setTimeout(() => {
-      El.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    // const El = document.querySelector(`#${id}`);
+    // setTimeout(() => {
+    //   El.scrollIntoView({ behavior: 'smooth' });
+    // }, 100);
   };
   return (
     <Container className={menuIsOpen ? 'open' : ''}>
