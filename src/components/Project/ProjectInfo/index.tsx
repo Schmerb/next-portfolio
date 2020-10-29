@@ -11,7 +11,8 @@ import styled from 'styled-components';
 
 import { ProjectType } from 'utils/data/types';
 
-const ProjectInfo = ({ titleRef, project }: ProjectInfoProps) => {
+const ProjectInfo = ({ titleRef, project, inView }: ProjectInfoProps) => {
+  console.log({ inView });
   return (
     <>
       <TitleWrapper ref={titleRef}>
@@ -33,6 +34,7 @@ export default memo(ProjectInfo);
 interface ProjectInfoProps {
   titleRef: any;
   project: ProjectType;
+  inView: boolean;
 }
 
 const TitleWrapper = styled.div`

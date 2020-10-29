@@ -10,7 +10,6 @@ interface useVisibilityStateProps {
 }
 
 export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
-  //
   // DOM node Refs
   //
   const containerRef: any = useRef();
@@ -34,7 +33,7 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
     }
     // to check if el is in viewport
     const isInView = (box) => {
-      const targetHeight = window.innerHeight - window.innerHeight / 3;
+      const targetHeight = window.innerHeight - window.innerHeight / 4;
       return box.top < targetHeight && box.bottom >= 0;
     };
 
@@ -46,47 +45,31 @@ export const useVisibilityState = ({ scrollTop }: useVisibilityStateProps) => {
     const logosRect = logosRef.current.getBoundingClientRect();
     const buttonsRect = buttonsRef.current.getBoundingClientRect();
     const imagesRect = imagesRef.current.getBoundingClientRect();
-
-    if (isInView(containerRect)) {
-      setContainerInView(true);
-      // console.log(`${project.title} is in the viewport!`);
-    }
     //
-    if (isInView(titleRect)) {
-      setTitleInView(true);
-      // console.log(`${project.title} is in the viewport!`);
-    }
+    // check if is in view and set state
     //
-    if (isInView(logosRect)) {
-      setLogosInView(true);
-      // console.log(`${project.title} is in the viewport!`);
-    }
-    //
-    if (isInView(buttonsRect)) {
-      setButtonsInView(true);
-      // console.log(`${project.title} is in the viewport!`);
-    }
-    //
-    if (isInView(imagesRect)) {
-      setImagesInView(true);
-      // console.log(`${project.title} is in the viewport!`);
-    }
+    if (isInView(containerRect)) setContainerInView(true);
+    if (isInView(titleRect)) setTitleInView(true);
+    if (isInView(logosRect)) setLogosInView(true);
+    if (isInView(buttonsRect)) setButtonsInView(true);
+    if (isInView(imagesRect)) setImagesInView(true);
   }, [scrollTop]);
 
   return {
-    containerRef,
-    titleRef,
-    logosRef,
-    buttonsRef,
-    imagesRef,
-    //
-    //
-    //
-    containerInView,
-    titleInView,
-    logosInView,
-    buttonsInView,
-    imagesInView,
+    refs: {
+      containerRef,
+      titleRef,
+      logosRef,
+      buttonsRef,
+      imagesRef,
+    },
+    state: {
+      containerInView,
+      titleInView,
+      logosInView,
+      buttonsInView,
+      imagesInView,
+    },
   };
 };
 

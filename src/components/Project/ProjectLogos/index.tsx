@@ -11,9 +11,8 @@ import styled from 'styled-components';
 
 import { ProjectType } from 'utils/data/types';
 
-const ProjectLogos = ({ logosRef, project }: IProjectLogosProps) => {
-  const [, set] = useState();
-
+const ProjectLogos = ({ logosRef, project, inView }: IProjectLogosProps) => {
+  console.log({ inView });
   return (
     <LogoImagesList ref={logosRef}>
       {project.tools.map(({ id, imgSrc, href, style }) => (
@@ -32,6 +31,7 @@ export default memo(ProjectLogos);
 interface IProjectLogosProps {
   logosRef: any;
   project: ProjectType;
+  inView: boolean;
 }
 
 const LogoImagesList = styled.ul`

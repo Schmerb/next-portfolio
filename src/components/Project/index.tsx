@@ -1,7 +1,7 @@
 /**
  *
  *
- *    Project UI
+ * Project UI
  *
  *
  */
@@ -20,42 +20,46 @@ import useVisibilityState from './useVisibilityState';
 
 const Project = ({ project, index, scrollTop }: ProjectProps) => {
   const {
-    //
     // node Ref's
-    //
-    containerRef,
-    titleRef,
-    logosRef,
-    buttonsRef,
-    imagesRef,
-    //
+    refs,
     // inView bool's
-    //
-    containerInView,
-    titleInView,
-    logosInView,
-    buttonsInView,
-    imagesInView,
+    state,
   } = useVisibilityState({ scrollTop });
 
   return (
-    <AnimatedWrapper inView={containerInView}>
-      <Container ref={containerRef}>
-        <ProjectInfo titleRef={titleRef} project={project} />
-        <ProjectLogos logosRef={logosRef} project={project} />
-        <ProjectButtons
-          passRef={buttonsRef}
+    // <AnimatedWrapper inView={state.containerInView}>
+    <Container ref={refs.containerRef}>
+      <AnimatedWrapper inView={state.titleInView}>
+        <ProjectInfo
+          titleRef={refs.titleRef}
           project={project}
-          buttonsInView={buttonsInView}
+          inView={state.titleInView}
         />
+      </AnimatedWrapper>
+      <AnimatedWrapper inView={state.logosInView}>
+        <ProjectLogos
+          logosRef={refs.logosRef}
+          project={project}
+          inView={state.logosInView}
+        />
+      </AnimatedWrapper>
+      <AnimatedWrapper inView={state.buttonsInView}>
+        <ProjectButtons
+          passRef={refs.buttonsRef}
+          project={project}
+          buttonsInView={state.buttonsInView}
+        />
+      </AnimatedWrapper>
+      <AnimatedWrapper inView={state.imagesInView}>
         <ProjectImages
-          passRef={imagesRef}
+          passRef={refs.imagesRef}
           images={project.images}
           index={index}
-          imagesInView={imagesInView}
+          imagesInView={state.imagesInView}
         />
-      </Container>
-    </AnimatedWrapper>
+      </AnimatedWrapper>
+    </Container>
+    // </AnimatedWrapper>
   );
 };
 
