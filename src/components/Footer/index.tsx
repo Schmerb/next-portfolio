@@ -4,7 +4,7 @@
  *
  *  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, animateScroll as scroll } from 'react-scroll';
 
@@ -23,18 +23,24 @@ export const FOOTER_HEIGHT = 477;
 const props = { width: 30, height: 30, fill: '#555' };
 
 const Footer = ({}: FooterProps) => {
+  const ref = useRef(false); // used to prevent arrowUp/distanceFromBottom bug
+
   const [showUpArrow, setShowUpArrow] = useState(false);
 
   const scrollTop = useScrollTop({});
   useEffect(() => {
     const distanceFromBottom =
       document.body.scrollHeight - window.innerHeight - window.scrollY;
-    if (distanceFromBottom < FOOTER_HEIGHT * 2) {
+    console.log({ distanceFromBottom });
+
+    if (ref.current && distanceFromBottom < FOOTER_HEIGHT * 2) {
       // set state to show
       setShowUpArrow(true);
     } else {
       setShowUpArrow(false);
     }
+    // this prevents bug where distanceFromBottom is not correct on page load
+    ref.current = true;
   }, [scrollTop]);
   return (
     <Container>
