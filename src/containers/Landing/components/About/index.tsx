@@ -18,7 +18,7 @@ const About = ({}: IAboutProps) => {
   const [, set] = useState();
 
   return (
-    <Container>
+    <Container id="about-me-section">
       <Content>
         <Title>Get To Know Me</Title>
         <Text>{text1}</Text>
@@ -35,7 +35,7 @@ interface IAboutProps {}
 const Container = styled.section`
   background-color: ${({ theme }) => theme.colors.PrimaryBlue};
   color: #fff;
-  padding: 15px;
+  padding: 50px 15px;
   // border: 1px solid #000;
 `;
 

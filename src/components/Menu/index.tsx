@@ -24,9 +24,13 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
   //
   const router = useRouter();
   //
-  const handleLinkClick = (evt) => {
+  const handleLinkClick = (id: string) => (evt: any) => {
     evt.preventDefault();
     dispatch(closeMenu());
+    const El = document.querySelector(`#${id}`);
+    setTimeout(() => {
+      El.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
   return (
     <Container className={menuIsOpen ? 'open' : ''}>
@@ -37,7 +41,7 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
               <StyledLink
                 href={href}
                 text={text}
-                onClick={handleLinkClick}
+                onClick={handleLinkClick(id)}
                 isActive={router.pathname === href}
               />
             </li>

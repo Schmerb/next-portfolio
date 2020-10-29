@@ -83,7 +83,7 @@ const ProjectImages = ({
       <LowerWrapper>
         {isEven ? (
           <>
-            <MobileAnimatedDiv isEven style={mobileProps} ref={passMobileRef}>
+            <MobileAnimatedDiv style={mobileProps} ref={passMobileRef}>
               <MobileImg src={images.mobile} isEven />
             </MobileAnimatedDiv>
             <LaptopAnimatedDiv style={laptopProps} ref={passLaptopRef}>

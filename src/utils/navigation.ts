@@ -4,31 +4,31 @@
  *
  *  */
 
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 export const links = [
   {
-    id: uuidv4(),
+    id: 'projects-section',
     href: '/projects',
     text: 'projects',
   },
   {
-    id: uuidv4(),
+    id: 'work-section',
     href: '/work',
     text: 'work',
   },
   {
-    id: uuidv4(),
+    id: 'about-me-section',
     href: '/about',
     text: 'about',
   },
   {
-    id: uuidv4(),
+    id: 'work-flow-section',
     href: '/work-flow',
     text: 'work flow',
   },
   {
-    id: uuidv4(),
+    id: 'contact-section',
     href: '/contact',
     text: 'contact',
   },

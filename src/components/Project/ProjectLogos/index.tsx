@@ -21,25 +21,12 @@ const ProjectLogos = ({ logosRef, project, inView }: ProjectLogosProps) => {
     },
   }));
 
-  // const [springs, set, stop]: any = useSprings(
-  //   project.tools.length,
-  //   (index) => {
-  //     console.log({ index });
-  //     const isEven = index % 2 === 0;
-  //     return {
-  //       opacity: 0,
-  //       transform: `translate3d(${isEven ? '-' : ''}55px,0,0)`,
-  //     };
-  //   },
-  // );
-
   useEffect(() => {
     if (inView) {
       set({ opacity: 1, transform: 'translate3d(0,0,0)' });
     }
   }, [inView]);
 
-  console.log({ inView });
   return (
     <LogoImagesList ref={logosRef}>
       {trail.map((props, index) => {
@@ -57,14 +44,6 @@ const ProjectLogos = ({ logosRef, project, inView }: ProjectLogosProps) => {
 };
 
 export default memo(ProjectLogos);
-
-/* {project.tools.map(({ id, imgSrc, href, style }) => (
-    <li key={id}>
-      <Link href={href} target="_blank">
-        <LogoImage src={imgSrc} style={style} />
-      </Link>
-    </li>
-  ))} */
 
 interface ProjectLogosProps {
   logosRef: any;

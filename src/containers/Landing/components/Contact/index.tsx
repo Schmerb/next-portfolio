@@ -12,7 +12,7 @@ import styled from 'styled-components';
 const Contact = ({}: ContactProps) => {
   const [, set] = useState();
 
-  return <Container>Contact</Container>;
+  return <Container id="contact-section">Contact</Container>;
 };
 
 export default memo(Contact);
