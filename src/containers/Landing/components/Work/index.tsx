@@ -19,7 +19,7 @@ const { title, text } = headerData;
 const Work = ({ scrollTop }: WorkProps) => {
   return (
     <Container id="work-section">
-      <Banner title={title} text={text} />
+      <Banner title={title} text={text} scrollTop={scrollTop} />
       <ProjectList>
         {workProjects.map((project, index) => (
           <Project

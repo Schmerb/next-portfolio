@@ -6,14 +6,51 @@
  *
  */
 
-import React, { useState, memo } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import styled from 'styled-components';
+import { animated, useSpring } from 'react-spring';
 
-const Banner = ({ title = '', text = '' }: BannerProps) => {
+const Banner = ({ title = '', text = '', scrollTop }: BannerProps) => {
+  const { containerRef, inView } = useVisibilityState({ scrollTop });
+
+  const [showTitle, setShowTitle] = useState(false);
+  const [showText, setShowText] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+    if (inView) {
+      setShowTitle(true);
+      timeout = setTimeout(() => {
+        setShowText(true);
+      }, 500);
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [inView]);
+
+  const containerProps = useSpring({
+    opacity: showTitle ? 1 : 0,
+    config: {
+      tension: 105,
+    },
+  });
+
+  const textProps = useSpring({
+    opacity: showText ? 1 : 0,
+    config: {
+      tension: 105,
+    },
+  });
+
   return (
-    <Container>
-      <Title>{title}</Title>
-      <Text>{text}</Text>
+    <Container ref={containerRef}>
+      <animated.div style={containerProps}>
+        <Title>{title}</Title>
+      </animated.div>
+      <animated.div style={textProps}>
+        <Text>{text}</Text>
+      </animated.div>
     </Container>
   );
 };
@@ -23,6 +60,7 @@ export default memo(Banner);
 interface BannerProps {
   title: string;
   text: string;
+  scrollTop: number;
 }
 
 const Container = styled.div`
@@ -58,3 +96,40 @@ const Text = styled.p`
   margin: 0 auto;
   text-align: center;
 `;
+
+const useVisibilityState = ({ scrollTop }) => {
+  // ref
+  const containerRef: any = useRef();
+  // state
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!containerRef.current) {
+      // return if not mounted yet
+      return () => {};
+    }
+    // to check if el is in viewport
+    const isInView = (box: any) => {
+      const { innerHeight } = window;
+      const targetHeight = innerHeight - innerHeight / 4;
+      // top: distance from top of El to top of viewport
+      // bottom: distance from bottom of El to top of viewport
+      const { top, bottom } = box;
+      return top < targetHeight && bottom >= 0;
+    };
+
+    //
+    // grab node client rect DOM info
+    //
+    const containerRect = containerRef.current.getBoundingClientRect();
+    //
+    // check if is in view and set state
+    //
+    if (isInView(containerRect)) setInView(true);
+  }, [scrollTop]);
+
+  return {
+    containerRef,
+    inView,
+  };
+};

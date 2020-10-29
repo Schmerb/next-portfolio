@@ -19,7 +19,7 @@ const { title, text } = headerData;
 const Projects = ({ scrollTop }: ProjectsProps) => {
   return (
     <Container id="projects-section">
-      <Banner title={title} text={text} />
+      <Banner title={title} text={text} scrollTop={scrollTop} />
       <ProjectList>
         {thinkfulProjects.map((project, index) => (
           <Project
