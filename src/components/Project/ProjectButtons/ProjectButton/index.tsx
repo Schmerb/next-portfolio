@@ -46,7 +46,7 @@ const StyledLink = styled.a`
   ${({ noIcon }) =>
     !noIcon &&
     css`
-      justify-content: space-between;
+      justify-content: space-evenly;
     `}
 
   svg,

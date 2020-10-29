@@ -41,7 +41,7 @@ const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
           <div>
             Hey, I'm <Name>Mike Schmerbeck</Name>
           </div>
-          <div>I'm A Full-stack Developer.</div>
+          <div>I'm A Full-stack JavaScript Egnineer.</div>
         </Title>
         <SkillsParagraph>MongoDB + Express + React + Node</SkillsParagraph>
       </Content>
