@@ -6,6 +6,7 @@
 
 import React, { useState, useEffect, memo } from 'react';
 import styled from 'styled-components';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 import Particles from 'components/lib/Particles';
 import BurgerV2 from 'components/BurgerMenu/Burgerv2';
@@ -18,9 +19,11 @@ export const HEADER_HEIGHT = 60;
 const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
   const handleMyWorkClick = () => {
     console.log('Scrolling to work!');
-    document
-      .querySelector('#work-section')
-      .scrollIntoView({ behavior: 'smooth' });
+    // scroll.scrollTo('#work-section');
+    // scroll.scrollToBottom();
+    // document
+    //   .querySelector('#work-section')
+    //   .scrollIntoView({ behavior: 'smooth' });
   };
   return (
     <Container>
@@ -42,10 +45,12 @@ const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
         </Title>
         <SkillsParagraph>MongoDB + Express + React + Node</SkillsParagraph>
       </Content>
-      <Button type="button" onClick={handleMyWorkClick}>
-        Check My Work
-        <Chevron width={20} height={20} style={{}} />
-      </Button>
+      <Link to="work-section" smooth={true}>
+        <Button type="button" onClick={handleMyWorkClick}>
+          Check My Work
+          <Chevron width={20} height={20} style={{}} />
+        </Button>
+      </Link>
     </Container>
   );
 };
