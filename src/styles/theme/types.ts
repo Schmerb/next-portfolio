@@ -17,6 +17,7 @@ export interface ColorProps {
   PrimaryGrey: string;
   PrimaryPurple: string;
   PrimaryBluePurple: string;
+  PrimaryGreen: string;
   //
   Blue: string;
   DarkBlue: string;

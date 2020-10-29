@@ -89,11 +89,10 @@ const TitleWrapper = styled.div`
 
 const Title = styled.h2`
   color: ${({ theme }) => theme.colors.PrimaryBlue};
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.2rem;
   padding: 0;
   margin: 0;
-
-  font-family: 'Montserrat', sans-serif;
 `;
 
 const Link = styled.a`
@@ -110,7 +109,7 @@ const TextWrapper = styled.div`
 
 const Text = styled.p`
   color: ${({ theme }) => theme.colors.PrimaryGrey};
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   padding: 0;
   margin: 0;
   text-align: justify;

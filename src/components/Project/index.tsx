@@ -23,7 +23,7 @@ const Project = ({ project, index, scrollTop }: ProjectProps) => {
   const { refs, state } = useVisibilityState({ scrollTop });
 
   return (
-    <Container ref={refs.containerRef}>
+    <Container ref={refs.containerRef} inView={state.containerInView}>
       <ProjectInfo
         titleRef={refs.titleRef}
         project={project}
@@ -78,9 +78,11 @@ const Container = styled.div`
       left: 0;
       right: 0;
       width: 95%;
-      height: 2px;
+      height: 1px;
       margin: 0 auto;
-      background-color: grey;
+      background-color: rgba(100, 100, 100, 0.4);
+      transition: opacity 1s;
+      opacity: ${({ inView }) => (inView ? 1 : 0)};
     }
   }
 `;

@@ -24,8 +24,16 @@ export const MyGlobalStyle = createGlobalStyle`
     /* font-family: "NextPro-Regular", sans-serif; */
   }
 
-  h1 {
-    /* font-family: "NextPro-Regular", sans-serif; */
+  h1,h2,h3,h4,h5 {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  a {
+    font-family: 'Roboto', sans-serif;
   }
 
   .wf-loading body {
