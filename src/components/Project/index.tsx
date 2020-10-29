@@ -29,20 +29,16 @@ const Project = ({ project, index, scrollTop }: ProjectProps) => {
         project={project}
         inView={state.titleInView}
       />
-      <AnimatedWrapper inView={state.logosInView} scrollTop={scrollTop}>
-        <ProjectLogos
-          logosRef={refs.logosRef}
-          project={project}
-          inView={state.logosInView}
-        />
-      </AnimatedWrapper>
-      <AnimatedWrapper inView={state.buttonsInView} scrollTop={scrollTop}>
-        <ProjectButtons
-          passRef={refs.buttonsRef}
-          project={project}
-          buttonsInView={state.buttonsInView}
-        />
-      </AnimatedWrapper>
+      <ProjectLogos
+        logosRef={refs.logosRef}
+        project={project}
+        inView={state.logosInView}
+      />
+      <ProjectButtons
+        passRef={refs.buttonsRef}
+        project={project}
+        buttonsInView={state.buttonsInView}
+      />
       <ProjectImages
         index={index}
         images={project.images}

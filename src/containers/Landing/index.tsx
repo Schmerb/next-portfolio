@@ -25,7 +25,7 @@ const LandingPage = ({}: LandingPageProps) => {
       <Projects scrollTop={scrollTop} />
       <About />
       <WorkFlow scrollTop={scrollTop} />
-      <Contact />
+      <Contact scrollTop={scrollTop} />
     </Container>
   );
 };

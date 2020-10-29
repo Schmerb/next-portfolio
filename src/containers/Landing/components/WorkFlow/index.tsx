@@ -9,6 +9,8 @@ import React, { useEffect, useState, memo, useRef } from 'react';
 import styled from 'styled-components';
 import { useTrail, animated } from 'react-spring';
 
+import useVisibilityState from 'utils/hooks/useVisibilityState';
+
 import tools from './tools';
 
 const title = 'Work Flow';
@@ -48,8 +50,20 @@ interface WorkFlowProps {
 const Container = styled.section`
   padding: 50px 15px;
   max-width: ${({ theme }) => theme.media.MAX_WIDTH}px;
-  margin: 0 auto;
-  border: 1px solid #000;
+  margin: 50px auto;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 95%;
+    height: 1px;
+    margin: 0 auto;
+    background-color: rgba(100, 100, 100, 0.4);
+    transition: opacity 1s;
+    opacity: ${({ inView }) => (inView ? 1 : 0)};
+  }
 `;
 
 const Title = styled.h2`
@@ -103,46 +117,6 @@ const LogoImage = styled.img`
     transform: translate3d(0, -2px, 0);
   }
 `;
-
-/**
- * useVisibilityState
- *
- * @param {*} { scrollTop }
- * @returns
- */
-export const useVisibilityState = ({ scrollTop }) => {
-  // ref
-  const containerRef: any = useRef();
-  // visibility
-  const [containerInView, setContainerInView] = useState(false);
-  //
-  useEffect(() => {
-    if (!containerRef.current) {
-      // return if not mounted yet
-      return () => {};
-    }
-    // to check if el is in viewport
-    const isInView = (box: any) => {
-      const { innerHeight } = window;
-      const targetHeight = innerHeight - innerHeight / 4;
-      // top: distance from top of El to top of viewport
-      // bottom: distance from bottom of El to top of viewport
-      const { top, bottom } = box;
-      return top < targetHeight && bottom >= 0;
-    };
-
-    //
-    // grab node client rect DOM info
-    //
-    const containerRect = containerRef.current.getBoundingClientRect();
-    //
-    // check if is in view and set state
-    //
-    if (isInView(containerRect)) setContainerInView(true);
-  }, [scrollTop]);
-
-  return { containerRef, containerInView };
-};
 
 /**
  * useTrailAnimation

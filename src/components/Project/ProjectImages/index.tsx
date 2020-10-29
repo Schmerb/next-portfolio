@@ -66,7 +66,7 @@ const ProjectImages = ({
         timeout2 = setTimeout(() => {
           setShowMobile(true);
         }, 250);
-      }, 800);
+      }, 250);
     }
     return () => {
       clearTimeout(timeout1);
