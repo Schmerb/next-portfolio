@@ -24,13 +24,11 @@ const Project = ({ project, index, scrollTop }: ProjectProps) => {
 
   return (
     <Container ref={refs.containerRef}>
-      <AnimatedWrapper inView={state.titleInView} scrollTop={scrollTop}>
-        <ProjectInfo
-          titleRef={refs.titleRef}
-          project={project}
-          inView={state.titleInView}
-        />
-      </AnimatedWrapper>
+      <ProjectInfo
+        titleRef={refs.titleRef}
+        project={project}
+        inView={state.titleInView}
+      />
       <AnimatedWrapper inView={state.logosInView} scrollTop={scrollTop}>
         <ProjectLogos
           logosRef={refs.logosRef}

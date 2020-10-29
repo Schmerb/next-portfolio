@@ -65,7 +65,7 @@ const ProjectImages = ({
         setShowLaptop(true);
         timeout2 = setTimeout(() => {
           setShowMobile(true);
-        }, 400);
+        }, 250);
       }, 800);
     }
     return () => {
