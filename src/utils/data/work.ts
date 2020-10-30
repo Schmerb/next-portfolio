@@ -27,43 +27,32 @@ export const workProjects: ProjectType[] = [
       href: 'https://dev.talnt.sh/',
     },
     description:
-      'A React/Redux news aggregator with a backend utilizing machine learning algorithms to curate articles for each user based on their individual interests. By scraping other websites, SH was designed to make finding news articles of particular interest an easy, seamless and hands-off process.',
+      'A React/Redux news aggregator frontend that consumes a backend utilizing machine learning algorithms to curate articles for each user based on their individual interests. By scraping other websites, TALNT was designed to make finding news articles of particular interest an easy, seamless and hands-off process.',
     credit: '',
     clientCode: '',
     apiCode: '',
     tools: [
       {
         id: uuidv4(),
-        imgSrc: logos.reactRedux.imgSrc,
-        href: logos.reactRedux.href,
+        ...logos.reactRedux,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.expressText.imgSrc,
-        href: logos.expressText.href,
-        style: { width: 'auto', height: '40px' },
+        ...logos.reactBoilerplate,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongodb.imgSrc,
-        href: logos.mongodb.href,
+        ...logos.styledComponents,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongoose.imgSrc,
-        href: logos.mongoose.href,
-        style: { width: 'auto', height: '90px' },
-      },
-      {
-        id: uuidv4(),
-        imgSrc: logos.sass.imgSrc,
-        href: logos.sass.href,
+        ...logos.reactSpring,
       },
     ],
     images: {
-      desktop: `${projectSrc}/net-neutrality/net-neutrality-desktop-compressor.png`,
-      laptop: `${projectSrc}/net-neutrality/net-neutrality-laptop-compressor.png`,
-      mobile: `${projectSrc}/net-neutrality/net-neutrality-mobile-compressor.png`,
+      desktop: `${projectSrc}/SH/SH-desktop-homepage-XL.png`,
+      laptop: `${projectSrc}/SH/SH-laptop.png`,
+      mobile: `${projectSrc}/SH/SH-mobile-iphone6.png`,
     },
   },
   {

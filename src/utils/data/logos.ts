@@ -30,6 +30,10 @@ export const mongoose = `${logoSrc}/mongoose.png`;
 export const javascript = `${logoSrc}/javascript.png`;
 export const vscode = `${logoSrc}/vscode.png`;
 export const git = `${logoSrc}/git-icon-black.png`;
+// NEW
+export const reactBoilerplate = `${logoSrc}/rb-logo.png`;
+export const styledComponents = `${logoSrc}/styled-components-logo-color.png`;
+export const reactSpring = `${logoSrc}/react-spring.png`;
 
 const Logos: LogosProps = {
   sketch: {
@@ -129,6 +133,19 @@ const Logos: LogosProps = {
     imgSrc: git,
     href: 'https://git-scm.com/',
   },
+  // NEW!
+  reactBoilerplate: {
+    imgSrc: reactBoilerplate,
+    href: 'https://www.reactboilerplate.com/',
+  },
+  styledComponents: {
+    imgSrc: styledComponents,
+    href: 'https://styled-components.com/',
+  },
+  reactSpring: {
+    imgSrc: reactSpring,
+    href: 'https://www.react-spring.io/',
+  },
 };
 
 export default Logos;
@@ -158,6 +175,10 @@ interface LogosProps {
   javascript: LogoProps;
   vscode: LogoProps;
   git: LogoProps;
+  // NEW
+  reactBoilerplate: LogoProps;
+  styledComponents: LogoProps;
+  reactSpring: LogoProps;
 }
 
 interface LogoProps {
