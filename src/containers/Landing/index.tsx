@@ -18,10 +18,19 @@ import Contact from './components/Contact';
 
 export interface LandingPageProps {}
 
+let direction = '';
+
 const LandingPage = ({}: LandingPageProps) => {
   const scrollTop = useScrollTop({});
-  const prevScrolltop: number = usePrevious(scrollTop);
-  const direction = scrollTop < prevScrolltop ? 'up' : 'down';
+  const prevScrollTop: number = usePrevious(scrollTop);
+  if (
+    prevScrollTop > scrollTop ||
+    (direction === 'up' && prevScrollTop === scrollTop) // handles same value when already scrolling up
+  ) {
+    direction = 'up';
+  } else {
+    direction = 'down';
+  }
   return (
     <Container>
       <Work scrollTop={scrollTop} direction={direction} />
