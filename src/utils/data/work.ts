@@ -12,12 +12,60 @@ import logos from './logos';
 export const headerData = {
   title: 'Work',
   text:
-    'Below is a project I was hired to build. I was the only developer and worked closely with the designer.',
+    'Below are a few of the projects I have been contracted to build. I was the only front-end engineer.',
+  // 'Below is a project I was hired to build. I was the only developer and worked closely with the designer.',
 };
 
 const projectSrc = '/static/img/projects';
 
 export const workProjects: ProjectType[] = [
+  {
+    id: uuidv4(),
+    title: 'Sheffield Haworth: TALNT',
+    link: {
+      title: 'dev.talnt.sh/',
+      href: 'https://dev.talnt.sh/',
+    },
+    description:
+      'A React/Redux news aggregator with a backend utilizing machine learning algorithms to curate articles for each user based on their individual interests. By scraping other websites, SH was designed to make finding news articles of particular interest an easy, seamless and hands-off process.',
+    credit: '',
+    clientCode: '',
+    apiCode: '',
+    tools: [
+      {
+        id: uuidv4(),
+        imgSrc: logos.reactRedux.imgSrc,
+        href: logos.reactRedux.href,
+      },
+      {
+        id: uuidv4(),
+        imgSrc: logos.expressText.imgSrc,
+        href: logos.expressText.href,
+        style: { width: 'auto', height: '40px' },
+      },
+      {
+        id: uuidv4(),
+        imgSrc: logos.mongodb.imgSrc,
+        href: logos.mongodb.href,
+      },
+      {
+        id: uuidv4(),
+        imgSrc: logos.mongoose.imgSrc,
+        href: logos.mongoose.href,
+        style: { width: 'auto', height: '90px' },
+      },
+      {
+        id: uuidv4(),
+        imgSrc: logos.sass.imgSrc,
+        href: logos.sass.href,
+      },
+    ],
+    images: {
+      desktop: `${projectSrc}/net-neutrality/net-neutrality-desktop-compressor.png`,
+      laptop: `${projectSrc}/net-neutrality/net-neutrality-laptop-compressor.png`,
+      mobile: `${projectSrc}/net-neutrality/net-neutrality-mobile-compressor.png`,
+    },
+  },
   {
     id: uuidv4(),
     title: 'Net Neutrality Microsite for Thinkful©',

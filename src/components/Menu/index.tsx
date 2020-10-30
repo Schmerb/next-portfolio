@@ -6,7 +6,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
 import { Link } from 'react-scroll';
@@ -23,10 +23,6 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
   const handleLinkClick = (id: string) => (evt: any) => {
     evt.preventDefault();
     dispatch(closeMenu());
-    // const El = document.querySelector(`#${id}`);
-    // setTimeout(() => {
-    //   El.scrollIntoView({ behavior: 'smooth' });
-    // }, 100);
   };
   return (
     <Container className={menuIsOpen ? 'open' : ''}>

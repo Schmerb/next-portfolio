@@ -4,9 +4,10 @@
  *
  *  */
 
-import React, { useState, useEffect, memo } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link } from 'react-scroll';
+import { animated } from 'react-spring';
 
 import Particles from 'components/lib/Particles';
 import BurgerV2 from 'components/BurgerMenu/Burgerv2';
@@ -14,28 +15,25 @@ import Chevron from 'components/svg/Icons/Chevron';
 
 import { toggleMenu } from 'actions/display';
 
+import useBurgerAnimation from './useBurgerAnimation';
+
 export const HEADER_HEIGHT = 60;
 
 const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
-  const handleMyWorkClick = () => {
-    console.log('Scrolling to work!');
-    // scroll.scrollTo('#work-section');
-    // scroll.scrollToBottom();
-    // document
-    //   .querySelector('#work-section')
-    //   .scrollIntoView({ behavior: 'smooth' });
-  };
+  const props = useBurgerAnimation({ menuIsOpen });
   return (
     <Container>
       <Particles />
-      <StyledBurgerMenu
-        isOpen={menuIsOpen}
-        onClick={() => {
-          console.log('click');
-          // setIsOpen(!isOpen);
-          dispatch(toggleMenu());
-        }}
-      />
+      <animated.div style={props}>
+        <StyledBurgerMenu
+          isOpen={menuIsOpen}
+          onClick={() => {
+            console.log('click');
+            // setIsOpen(!isOpen);
+            dispatch(toggleMenu());
+          }}
+        />
+      </animated.div>
       <Content>
         <Title>
           <div>
@@ -46,7 +44,7 @@ const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
         <SkillsParagraph>MongoDB + Express + React + Node</SkillsParagraph>
       </Content>
       <Link to="work-section" smooth={true}>
-        <Button type="button" onClick={handleMyWorkClick}>
+        <Button type="button">
           Check My Work
           <Chevron width={20} height={20} style={{}} />
         </Button>
