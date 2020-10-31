@@ -166,6 +166,7 @@ const NavList = styled(List)`
     margin-bottom: 15px;
     text-transform: uppercase;
     a {
+      color: ${({ theme }) => theme.colors.Bone};
       transition: color 0.15s;
       cursor: pointer;
       &:hover {
