@@ -8,6 +8,7 @@ import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
 import { animated } from 'react-spring';
+import { isBrowser, isMobile } from 'react-device-detect';
 
 import Particles from 'components/lib/Particles';
 import BurgerV2 from 'components/BurgerMenu/Burgerv2';
@@ -22,7 +23,7 @@ export const HEADER_HEIGHT = 60;
 const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
   const props = useBurgerAnimation({ menuIsOpen });
   return (
-    <Container>
+    <Container className={isMobile ? 'isMobile' : 'isNotMobile'}>
       <Particles />
       <animated.div style={props}>
         <StyledBurgerMenu
@@ -76,8 +77,12 @@ const Container = styled.header<any>`
   background-image: url('/static/img/nicolas-cool-unsplash.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-position: center;
+
+  &.isNotMobile {
+    background-attachment: fixed;
+  }
+
   color: #fff;
   height: 100vh;
   padding: 15px;

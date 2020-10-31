@@ -27,7 +27,7 @@ export const workProjects: ProjectType[] = [
       href: 'https://dev.talnt.sh/',
     },
     description:
-      'A React/Redux news aggregator frontend that consumes a backend utilizing machine learning algorithms to curate articles for each user based on their individual interests. By scraping other websites, TALNT was designed to make finding news articles of particular interest an easy, seamless and hands-off process.',
+      'A React/Redux/React-Boilerplate news aggregator frontend that consumes a backend utilizing machine learning algorithms to curate articles for each user based on their individual interests. By scraping other websites, TALNT was designed to make finding news articles of particular interest an easy, seamless and hands-off process.',
     credit: '',
     clientCode: '',
     apiCode: '',
