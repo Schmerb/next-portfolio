@@ -34,6 +34,8 @@ export const git = `${logoSrc}/git-icon-black.png`;
 export const reactBoilerplate = `${logoSrc}/rb-logo.png`;
 export const styledComponents = `${logoSrc}/styled-components-logo-color.png`;
 export const reactSpring = `${logoSrc}/react-spring.png`;
+export const nextJs = `${logoSrc}/nextjs.png`;
+export const netlify = `${logoSrc}/netlify.png`;
 
 const Logos: LogosProps = {
   sketch: {
@@ -146,6 +148,14 @@ const Logos: LogosProps = {
     imgSrc: reactSpring,
     href: 'https://www.react-spring.io/',
   },
+  nextJs: {
+    imgSrc: nextJs,
+    href: 'https://nextjs.org/',
+  },
+  netlify: {
+    imgSrc: netlify,
+    href: 'https://www.netlify.com/',
+  },
 };
 
 export default Logos;
@@ -179,6 +189,8 @@ interface LogosProps {
   reactBoilerplate: LogoProps;
   styledComponents: LogoProps;
   reactSpring: LogoProps;
+  nextJs: LogoProps;
+  netlify: LogoProps;
 }
 
 interface LogoProps {

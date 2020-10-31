@@ -32,7 +32,7 @@ const Project = ({ project, index, scrollTop, direction }: ProjectProps) => {
       />
       <ProjectLogos
         logosRef={refs.logosRef}
-        project={project}
+        tools={project.tools}
         inView={state.logosInView}
       />
       <ProjectButtons

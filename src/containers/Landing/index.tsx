@@ -13,6 +13,7 @@ import usePrevious from 'utils/hooks/usePrevious';
 import Projects from './components/Projects';
 import Work from './components/Work';
 import About from './components/About';
+import AboutThisSite from './components/AboutThisSite';
 import WorkFlow from './components/WorkFlow';
 import Contact from './components/Contact';
 
@@ -37,6 +38,7 @@ const LandingPage = ({}: LandingPageProps) => {
       <Projects scrollTop={scrollTop} direction={direction} />
       <About />
       <WorkFlow scrollTop={scrollTop} direction={direction} />
+      <AboutThisSite scrollTop={scrollTop} />
       <Contact scrollTop={scrollTop} />
     </Container>
   );

@@ -10,10 +10,10 @@ import React, { useEffect, memo } from 'react';
 import styled from 'styled-components';
 import { useTrail, useSprings, animated } from 'react-spring';
 
-import { ProjectType } from 'utils/data/types';
+import { ToolType } from 'utils/data/types';
 
-const ProjectLogos = ({ logosRef, project, inView }: ProjectLogosProps) => {
-  const [trail, set, stop]: any = useTrail(project.tools.length, () => ({
+const ProjectLogos = ({ logosRef, tools, inView }: ProjectLogosProps) => {
+  const [trail, set, stop]: any = useTrail(tools.length, () => ({
     opacity: 0,
     transform: 'translate3d(55px,0,0)',
     config: {
@@ -30,7 +30,7 @@ const ProjectLogos = ({ logosRef, project, inView }: ProjectLogosProps) => {
   return (
     <LogoImagesList ref={logosRef}>
       {trail.map((props, index) => {
-        const { id, imgSrc, href, style } = project.tools[index];
+        const { id, imgSrc, href, style } = tools[index];
         return (
           <animated.li style={props} key={id}>
             <Link href={href} target="_blank">
@@ -47,7 +47,7 @@ export default memo(ProjectLogos);
 
 interface ProjectLogosProps {
   logosRef: any;
-  project: ProjectType;
+  tools: ToolType[];
   inView: boolean;
 }
 
@@ -67,6 +67,13 @@ const LogoImagesList = styled.ul`
     align-items: center;
     margin-left: 15px;
     margin-right: 15px;
+    img {
+      transition: transform 0.15s;
+      &:hover {
+        /* transform: translate3d(0, -2px, 0); */
+        transform: scale(0.9);
+      }
+    }
   }
 `;
 

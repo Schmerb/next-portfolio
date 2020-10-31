@@ -12,7 +12,7 @@ import { colorShade } from 'utils/helperFunctions/colors';
 
 interface Props {
   href: string;
-  text: string;
+  text?: string;
   children?: any;
   className?: string;
   isActive?: boolean;
