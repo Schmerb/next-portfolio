@@ -16,6 +16,7 @@ import colors from 'styles/theme/colors';
 import { toastSuccess, toastError } from 'utils/lib/Toastify';
 
 import ContactFormik from './ContactFormik';
+import Copy from './Copy';
 import useAnimation from './useAnimation';
 
 const title = 'Get in TOUCH';
@@ -38,15 +39,6 @@ const Contact = ({ scrollTop }: ContactProps) => {
     showLink,
     showTitle,
   } = useAnimation({ scrollTop });
-
-  const inputRef: any = useRef();
-  const copyEmail = () => {
-    /* Select the text field */
-    inputRef.current.select();
-    // inputRef.current.setSelectionRange(0, 99999); /*For mobile devices*/
-    /* Copy the text inside the text field */
-    document.execCommand('copy');
-  };
 
   useEffect(() => {
     //
@@ -79,13 +71,16 @@ const Contact = ({ scrollTop }: ContactProps) => {
       if (response.status === 200) {
         // toast notification
         toastSuccess('Email has been sent!');
-        // reset form here
-        resetForm();
+        setTimeout(() => {
+          // allow toast to display right before form values reset
+          // and loader disappears - minimizes flashes in UI
+          resetForm(); // reset form here
+          setIsSending(false); // stop loader
+        }, 300);
       } else {
         toastError('Sorry, something went wrong!');
+        setIsSending(false); // stop loader
       }
-      // stop loader
-      setIsSending(false);
     } catch (err) {
       // log error here
       console.error(err);
@@ -104,16 +99,8 @@ const Contact = ({ scrollTop }: ContactProps) => {
         </animated.div>
         <animated.div style={linkProps}>
           <Link href={href}>{text}</Link>
-          <CopyButton type="button" onClick={copyEmail}>
-            Copy
-          </CopyButton>
+          <Copy />
         </animated.div>
-        <HiddenInput
-          type="text"
-          value={text}
-          ref={inputRef}
-          onChange={() => {}}
-        />
       </TitleWrapper>
       <LoaderWrapper>
         {isSending && (
@@ -192,15 +179,4 @@ const FormWrapper = styled.div`
       opacity: 0.5;
       pointer-events: none;
     `}
-`;
-
-const CopyButton = styled.button`
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-`;
-
-const HiddenInput = styled.input`
-  position: absolute;
-  opacity: 0;
 `;
