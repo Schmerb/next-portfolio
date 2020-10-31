@@ -11,6 +11,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 import styled from 'styled-components';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Header, { HEADER_HEIGHT } from 'components/Header';
 import Footer, { FOOTER_HEIGHT } from 'components/Footer';
@@ -19,6 +20,8 @@ import LoadingScreen from 'components/LoadingScreen';
 
 // this will take place of any "main.css" base style files
 import { MyGlobalStyle } from 'styles/globalStyles';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 require('es6-promise').polyfill();
 require('fetch-everywhere');
@@ -41,6 +44,7 @@ const Layout = ({
       <Header {...menuProps} isScrolled={isScrolled} />
       <Menu {...menuProps} />
       <LoadingScreen />
+      <ToastContainer />
       <Main role="main">
         <Container>{children}</Container>
       </Main>

@@ -7,63 +7,93 @@
  */
 
 import React, { useEffect, useState, useRef, memo } from 'react';
-import styled from 'styled-components';
-import { useSpring, animated } from 'react-spring';
+import styled, { css } from 'styled-components';
+import { animated } from 'react-spring';
+import emailjs, { init } from 'emailjs-com';
+import ReactLoading from 'react-loading';
 
-import useVisibilityState from 'utils/hooks/useVisibilityState';
+import colors from 'styles/theme/colors';
+import { toastSuccess, toastError } from 'utils/lib/Toastify';
 
 import ContactFormik from './ContactFormik';
-
-const springConfig = {
-  config: {
-    tension: 105,
-  },
-};
+import useAnimation from './useAnimation';
 
 const title = 'Get in TOUCH';
 const text = 'mikeschmerbeck@gmail.com';
 const href = 'mailto:mikeschmerbeck@gmail.com';
 
 const Contact = ({ scrollTop }: ContactProps) => {
-  const inputRef: any = useRef();
+  const [isSending, setIsSending] = useState(false);
+
   const [initialValues, setInitialValues] = useState(() => {
     // fetch values from localStorage?
     return { name: '', email: '', message: '' };
   });
 
-  // inView handler
-  const { containerRef, containerInView } = useVisibilityState({ scrollTop });
-  // animation show states
-  const [showTitle, setShowtitle] = useState(false);
-  const [showLink, setShowLink] = useState(false);
+  const {
+    containerRef,
+    // containerInView,
+    titleProps,
+    linkProps,
+    showLink,
+    showTitle,
+  } = useAnimation({ scrollTop });
 
-  useEffect(() => {
-    if (containerInView) {
-      setShowtitle(true);
-      setTimeout(() => {
-        setShowLink(true);
-      }, 250);
-    }
-  }, [containerInView]);
-
-  const titleProps = useSpring({
-    ...springConfig,
-    opacity: showTitle ? 1 : 0,
-    transform: `translate3d(0,${showTitle ? '0px' : '55px'},0)`,
-  });
-
-  const linkProps = useSpring({
-    ...springConfig,
-    opacity: showLink ? 1 : 0,
-    transform: `translate3d(0,${showLink ? '0px' : '55px'},0)`,
-  });
-
+  const inputRef: any = useRef();
   const copyEmail = () => {
     /* Select the text field */
     inputRef.current.select();
     // inputRef.current.setSelectionRange(0, 99999); /*For mobile devices*/
     /* Copy the text inside the text field */
     document.execCommand('copy');
+  };
+
+  useEffect(() => {
+    //
+    // initialize our email client
+    //
+    init('user_oYupYFGxNAdubi0HHerti');
+  }, []);
+
+  const handleSubmit = async (
+    { name, email, message }: any,
+    resetForm: any,
+  ) => {
+    setIsSending(true);
+    // create template variables
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      message: message,
+    };
+
+    try {
+      //
+      // send email
+      //
+      const response = await emailjs.send(
+        'contact_service',
+        'contact_form',
+        templateParams,
+      );
+      if (response.status === 200) {
+        // toast notification
+        toastSuccess('Email has been sent!');
+        // reset form here
+        resetForm();
+      } else {
+        toastError('Sorry, something went wrong!');
+      }
+      // stop loader
+      setIsSending(false);
+    } catch (err) {
+      // log error here
+      console.error(err);
+      setIsSending(false);
+      toastError(
+        err.toString ? err.toString() : 'Sorry, something went wrong!',
+      );
+    }
   };
 
   return (
@@ -78,17 +108,25 @@ const Contact = ({ scrollTop }: ContactProps) => {
             Copy
           </CopyButton>
         </animated.div>
-        <HiddenInput type="text" value={text} ref={inputRef} />
+        <HiddenInput
+          type="text"
+          value={text}
+          ref={inputRef}
+          onChange={() => {}}
+        />
       </TitleWrapper>
-      <FormWrapper>
+      <LoaderWrapper>
+        {isSending && (
+          <ReactLoading type="bars" color={colors.PrimaryBluePurple} />
+        )}
+      </LoaderWrapper>
+      <FormWrapper isSending={isSending}>
         <ContactFormik
           showForm={showLink}
           initialValues={initialValues}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
+          onSubmit={(values, { setSubmitting, resetForm }) => {
+            handleSubmit(values, resetForm);
+            setSubmitting(false);
           }}
         />
       </FormWrapper>
@@ -103,7 +141,16 @@ interface ContactProps {
 }
 
 const Container = styled.section`
+  position: relative;
   padding: 50px 15px;
+`;
+
+const LoaderWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 `;
 
 const TitleWrapper = styled.div`
@@ -139,6 +186,12 @@ const Link = styled.a`
 
 const FormWrapper = styled.div`
   margin-top: 25px;
+  ${({ isSending }) =>
+    isSending &&
+    css`
+      opacity: 0.5;
+      pointer-events: none;
+    `}
 `;
 
 const CopyButton = styled.button`
@@ -151,18 +204,3 @@ const HiddenInput = styled.input`
   position: absolute;
   opacity: 0;
 `;
-
-/**
- * useTrailAnimation
- *
- * @param {*} { containerInView }
- * @returns
- */
-// const useAnimation = ({ containerInView }) => {
-//   // animation
-//   const animatedProps = useSpring({
-//     opacity: containerInView ? 1 : 0,
-//   });
-
-//   return animatedProps;
-// };

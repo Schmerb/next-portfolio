@@ -6,50 +6,15 @@
  *
  */
 
-import React, { useState, useRef, memo } from 'react';
+import React, { useRef, memo } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
-import { v4 as uuidv4 } from 'uuid';
 
 import ProjectLogos from 'components/Project/ProjectLogos';
-import Link from 'components/Elements/Link';
 
 import useVisibilityState from 'utils/hooks/useVisibilityState';
 
-import logos from 'utils/data/logos';
-
-const title = 'Built With';
-const text = () => (
-  <>
-    This site is a statically generated build using{' '}
-    <Link href="https://nextjs.org/">NextJS</Link> and hosted on{' '}
-    <Link href="https://www.netlify.com/">Netlify</Link>. It uses{' '}
-    <Link href="https://www.react-spring.io/">react-spring</Link> to harness
-    smooth animations based on spring-physics.
-  </>
-);
-const tools = [
-  {
-    id: uuidv4(),
-    ...logos.reactRedux,
-  },
-  {
-    id: uuidv4(),
-    ...logos.nextJs,
-  },
-  {
-    id: uuidv4(),
-    ...logos.styledComponents,
-  },
-  {
-    id: uuidv4(),
-    ...logos.reactSpring,
-  },
-  {
-    id: uuidv4(),
-    ...logos.netlify,
-  },
-];
+import { title, text, tools } from './data';
 
 const AboutThisSite = ({ scrollTop }: AboutThisSiteProps) => {
   const { containerRef, containerInView } = useVisibilityState({ scrollTop });
@@ -117,4 +82,11 @@ const Text = styled.p`
   padding: 0 15px;
   margin: 20px auto;
   text-align: center;
+
+  a {
+    color: ${({ theme }) => theme.colors.PrimaryPurple};
+    &:hover {
+      color: ${({ theme }) => theme.colors.PrimaryBluePurple};
+    }
+  }
 `;

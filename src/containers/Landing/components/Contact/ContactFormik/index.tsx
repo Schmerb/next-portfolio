@@ -124,14 +124,14 @@ const Controls = styled.div`
 
 const StyledButton = styled.button`
   background-color: transparent;
-  color: ${({ theme }) => theme.colors.PrimaryBlue};
+  color: ${({ theme }) => theme.colors.PrimaryBluePurple};
   font-family: 'NextPro-Light', sans-serif;
   font-size: 1.3rem;
   width: 180px;
   border-radius: 5px;
   padding: 12px 15px;
   margin-top: 10px;
-  border: 1px solid ${({ theme }) => theme.colors.PrimaryBlue};
+  border: 1px solid ${({ theme }) => theme.colors.PrimaryBluePurple};
   transition: 0.15s box-shadow, 0.15s transform;
   cursor: pointer;
   box-shadow: 1px 3px 2px -1px rgba(0, 0, 0, 0.43);
