@@ -14,28 +14,28 @@ import { ToolType } from 'utils/data/types';
 export const tools: ToolType[] = [
   {
     id: uuidv4(),
-    imgSrc: logos.vscode.imgSrc,
-    href: logos.vscode.href,
+    ...logos.vscode,
   },
   {
     id: uuidv4(),
-    imgSrc: logos.sketch.imgSrc,
-    href: logos.sketch.href,
+    ...logos.sketch,
   },
   {
     id: uuidv4(),
-    imgSrc: logos.gulp.imgSrc,
-    href: logos.gulp.href,
+    ...logos.gulp,
   },
   {
     id: uuidv4(),
-    imgSrc: logos.bsync.imgSrc,
-    href: logos.bsync.href,
+    ...logos.bsync,
   },
   {
     id: uuidv4(),
-    imgSrc: logos.git.imgSrc,
-    href: logos.git.href,
+    ...logos.git,
+  },
+  {
+    id: uuidv4(),
+    ...logos.spotify,
+    style: { width: 'auto', height: '90px' },
   },
 ];
 

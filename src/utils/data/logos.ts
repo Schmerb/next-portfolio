@@ -36,6 +36,7 @@ export const styledComponents = `${logoSrc}/styled-components-logo-color.png`;
 export const reactSpring = `${logoSrc}/react-spring.png`;
 export const nextJs = `${logoSrc}/nextjs.png`;
 export const netlify = `${logoSrc}/netlify.png`;
+export const spotify = `${logoSrc}/spotify.png`;
 
 const Logos: LogosProps = {
   sketch: {
@@ -156,6 +157,10 @@ const Logos: LogosProps = {
     imgSrc: netlify,
     href: 'https://www.netlify.com/',
   },
+  spotify: {
+    imgSrc: spotify,
+    href: 'https://www.spotify.com/',
+  },
 };
 
 export default Logos;
@@ -191,6 +196,7 @@ interface LogosProps {
   reactSpring: LogoProps;
   nextJs: LogoProps;
   netlify: LogoProps;
+  spotify: LogoProps;
 }
 
 interface LogoProps {

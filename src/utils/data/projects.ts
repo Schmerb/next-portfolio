@@ -33,40 +33,33 @@ export const thinkfulProjects: ProjectType[] = [
     tools: [
       {
         id: uuidv4(),
-        imgSrc: logos.reactRedux.imgSrc,
-        href: logos.reactRedux.href,
+        ...logos.reactRedux,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.javascript.imgSrc,
-        href: logos.javascript.href,
+        ...logos.javascript,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.expressText.imgSrc,
-        href: logos.expressText.href,
+        ...logos.expressText,
         style: { width: 'auto', height: '40px' },
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongodb.imgSrc,
-        href: logos.mongodb.href,
+        ...logos.mongodb,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongoose.imgSrc,
-        href: logos.mongoose.href,
+        ...logos.mongoose,
         style: { width: 'auto', height: '90px' },
       },
       {
         id: uuidv4(),
-        imgSrc: logos.socketIO.imgSrc,
-        href: logos.socketIO.href,
+        ...logos.socketIO,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.sass.imgSrc,
-        href: logos.sass.href,
+        ...logos.sass,
       },
     ],
     images: {
@@ -90,28 +83,23 @@ export const thinkfulProjects: ProjectType[] = [
     tools: [
       {
         id: uuidv4(),
-        imgSrc: logos.javascript.imgSrc,
-        href: logos.javascript.href,
+        ...logos.javascript,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongodb.imgSrc,
-        href: logos.mongodb.href,
+        ...logos.mongodb,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.html5.imgSrc,
-        href: logos.html5.href,
+        ...logos.html5,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.css3.imgSrc,
-        href: logos.css3.href,
+        ...logos.css3,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.jqueryText.imgSrc,
-        href: logos.jqueryText.href,
+        ...logos.jqueryText,
         style: { width: 'auto', height: '80px' },
       },
     ],
@@ -136,24 +124,20 @@ export const thinkfulProjects: ProjectType[] = [
     tools: [
       {
         id: uuidv4(),
-        imgSrc: logos.html5.imgSrc,
-        href: logos.html5.href,
+        ...logos.html5,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.css3.imgSrc,
-        href: logos.css3.href,
+        ...logos.css3,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.jqueryText.imgSrc,
-        href: logos.jqueryText.href,
+        ...logos.jqueryText,
         style: { width: 'auto', height: '80px' },
       },
       {
         id: uuidv4(),
-        imgSrc: logos.slick.imgSrc,
-        href: logos.slick.href,
+        ...logos.slick,
       },
     ],
     images: {
@@ -177,24 +161,20 @@ export const thinkfulProjects: ProjectType[] = [
     tools: [
       {
         id: uuidv4(),
-        imgSrc: logos.html5.imgSrc,
-        href: logos.html5.href,
+        ...logos.html5,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.css3.imgSrc,
-        href: logos.css3.href,
+        ...logos.css3,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.jqueryText.imgSrc,
-        href: logos.jqueryText.href,
+        ...logos.jqueryText,
         style: { width: 'auto', height: '80px' },
       },
       {
         id: uuidv4(),
-        imgSrc: logos.slick.imgSrc,
-        href: logos.slick.href,
+        ...logos.slick,
       },
     ],
     images: {

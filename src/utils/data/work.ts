@@ -70,30 +70,25 @@ export const workProjects: ProjectType[] = [
     tools: [
       {
         id: uuidv4(),
-        imgSrc: logos.reactRedux.imgSrc,
-        href: logos.reactRedux.href,
+        ...logos.reactRedux,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.expressText.imgSrc,
-        href: logos.expressText.href,
+        ...logos.expressText,
         style: { width: 'auto', height: '40px' },
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongodb.imgSrc,
-        href: logos.mongodb.href,
+        ...logos.mongodb,
       },
       {
         id: uuidv4(),
-        imgSrc: logos.mongoose.imgSrc,
-        href: logos.mongoose.href,
+        ...logos.mongoose,
         style: { width: 'auto', height: '90px' },
       },
       {
         id: uuidv4(),
-        imgSrc: logos.sass.imgSrc,
-        href: logos.sass.href,
+        ...logos.sass,
       },
     ],
     images: {
