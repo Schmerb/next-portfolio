@@ -25,7 +25,7 @@ const text = () => (
     <Link href="https://nextjs.org/">NextJS</Link> and hosted on{' '}
     <Link href="https://www.netlify.com/">Netlify</Link>. It uses{' '}
     <Link href="https://www.react-spring.io/">react-spring</Link> to harness
-    animations based on spring-physics.
+    smooth animations based on spring-physics.
   </>
 );
 const tools = [
@@ -114,7 +114,7 @@ const Text = styled.p`
   color: ${({ theme }) => theme.colors.Bone};
   font-size: 1.5rem;
   max-width: 800px;
-  padding: 0;
+  padding: 0 15px;
   margin: 20px auto;
   text-align: center;
 `;
