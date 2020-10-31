@@ -16,6 +16,7 @@ import FadeIn from 'components/Utils/FadeIn';
 import Header, { HEADER_HEIGHT } from 'components/Header';
 import Footer, { FOOTER_HEIGHT } from 'components/Footer';
 import Menu from 'components/Menu';
+import LoadingScreen from 'components/LoadingScreen';
 
 // this will take place of any "main.css" base style files
 import { MyGlobalStyle } from 'styles/globalStyles';
@@ -41,6 +42,7 @@ const Layout = ({
       {/* <FadeIn loaded={fontIsLoaded}> */}
       <Header {...menuProps} isScrolled={isScrolled} />
       <Menu {...menuProps} />
+      <LoadingScreen />
       <Main role="main">
         <Container>{children}</Container>
       </Main>
