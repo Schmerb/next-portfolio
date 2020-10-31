@@ -67,6 +67,7 @@ const LogoImagesList = styled.ul`
     align-items: center;
     margin-left: 15px;
     margin-right: 15px;
+    margin-top: 15px;
     img {
       transition: transform 0.15s;
       &:hover {
