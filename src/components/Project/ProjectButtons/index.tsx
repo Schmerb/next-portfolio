@@ -60,22 +60,30 @@ const ProjectButtons = ({
     };
   }, [buttonsInView]);
 
+  const hasApiAndClient = project.apiCode && project.clientCode;
+  const hasOnlyClientCode = !project.apiCode && project.clientCode;
+  // const noCode = !project.apiCode && !project.clientCode;
+
   return (
-    <ButtonWrapper hasAPI={!!project.apiCode} ref={passRef}>
+    <ButtonWrapper
+      hasAPI={!!project.apiCode}
+      noCode={!project.apiCode && !project.clientCode}
+      ref={passRef}
+    >
       <animated.div style={topBtnProps}>
         <ProjectButton
           noIcon
           text="Check it Out"
           href={project.link.href}
-          style={!project.apiCode ? { marginRight: '25px' } : {}}
+          style={hasOnlyClientCode ? { marginRight: '25px' } : {}}
         />
       </animated.div>
-      {!project.apiCode && (
+      {hasOnlyClientCode && (
         <animated.div style={leftBtnProps}>
           <ProjectButton text="Code" href={project.clientCode} />
         </animated.div>
       )}
-      {project.apiCode && (
+      {hasApiAndClient && (
         <BottomButtonWrapper style={{ marginTop: '25px' }}>
           <animated.div style={leftBtnProps}>
             <ProjectButton
