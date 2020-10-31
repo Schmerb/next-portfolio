@@ -7,12 +7,11 @@
  *
  *  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Head from 'next/head';
 import styled from 'styled-components';
 
-import FadeIn from 'components/Utils/FadeIn';
 import Header, { HEADER_HEIGHT } from 'components/Header';
 import Footer, { FOOTER_HEIGHT } from 'components/Footer';
 import Menu from 'components/Menu';
@@ -33,13 +32,12 @@ const Layout = ({
   fontIsLoaded,
 }: LayoutProps) => {
   const menuProps = { dispatch, menuIsOpen };
+
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-
-      {/* <FadeIn loaded={fontIsLoaded}> */}
       <Header {...menuProps} isScrolled={isScrolled} />
       <Menu {...menuProps} />
       <LoadingScreen />
@@ -47,7 +45,6 @@ const Layout = ({
         <Container>{children}</Container>
       </Main>
       <Footer />
-      {/* </FadeIn> */}
       <MyGlobalStyle />
     </>
   );
