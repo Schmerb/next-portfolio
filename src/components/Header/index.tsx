@@ -52,12 +52,26 @@ const Header = ({ dispatch, menuIsOpen, hasData }: HeaderProps) => {
           </Title>
           <SkillsParagraph>MongoDB + Express + React + Node</SkillsParagraph>
         </Content>
-        <Link to="work-section" smooth={true}>
-          <Button type="button">
-            Check My Work
-            <Chevron width={20} height={20} style={{}} />
-          </Button>
-        </Link>
+        {/* <Link to="work-section" smooth={true}> */}
+        <Button
+          type="button"
+          onClick={() => {
+            setTimeout(() => {
+              const El = document.querySelector('#work-section');
+              const box = El.getBoundingClientRect();
+              const elDistanceToTop = window.pageYOffset + box.top;
+              window.scroll({
+                top: elDistanceToTop,
+                left: 0,
+                behavior: 'smooth',
+              });
+            }, 100);
+          }}
+        >
+          Check My Work
+          <Chevron width={20} height={20} style={{}} />
+        </Button>
+        {/* </Link> */}
       </Container>
     )
   );
