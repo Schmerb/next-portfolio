@@ -22,35 +22,47 @@ export const HEADER_HEIGHT = 60;
 
 const Header = ({ dispatch, menuIsOpen, hasData }: HeaderProps) => {
   const props = useBurgerAnimation({ menuIsOpen });
+  let className = '';
+  if (isMobile) {
+    className = `${className} isMobile`;
+  }
+  if (isBrowser) {
+    className = `${className} isBrowser`;
+  }
+  console.log({ isMobile });
+  console.log({ isBrowser });
+  console.log({ className });
   return (
-    <Container className={isMobile ? 'isMobile' : 'isNotMobile'}>
-      {hasData && <Particles />}
-      <animated.div style={props}>
-        <StyledBurgerMenu
-          isOpen={menuIsOpen}
-          onClick={() => {
-            console.log('click');
-            // setIsOpen(!isOpen);
-            dispatch(toggleMenu());
-          }}
-        />
-      </animated.div>
-      <Content>
-        <Title>
-          <div>
-            Hey, I'm <Name>Mike Schmerbeck</Name>
-          </div>
-          <div>I'm A Full-stack JavaScript Egnineer.</div>
-        </Title>
-        <SkillsParagraph>MongoDB + Express + React + Node</SkillsParagraph>
-      </Content>
-      <Link to="work-section" smooth={true}>
-        <Button type="button">
-          Check My Work
-          <Chevron width={20} height={20} style={{}} />
-        </Button>
-      </Link>
-    </Container>
+    hasData && (
+      <Container className={className}>
+        <Particles />
+        <animated.div style={props}>
+          <StyledBurgerMenu
+            isOpen={menuIsOpen}
+            onClick={() => {
+              console.log('click');
+              // setIsOpen(!isOpen);
+              dispatch(toggleMenu());
+            }}
+          />
+        </animated.div>
+        <Content>
+          <Title>
+            <div>
+              Hey, I'm <Name>Mike Schmerbeck</Name>
+            </div>
+            <div>I'm A Full-stack JavaScript Egnineer.</div>
+          </Title>
+          <SkillsParagraph>MongoDB + Express + React + Node</SkillsParagraph>
+        </Content>
+        <Link to="work-section" smooth={true}>
+          <Button type="button">
+            Check My Work
+            <Chevron width={20} height={20} style={{}} />
+          </Button>
+        </Link>
+      </Container>
+    )
   );
 };
 
@@ -80,7 +92,7 @@ const Container = styled.header<any>`
   background-repeat: no-repeat;
   background-position: center;
 
-  &.isNotMobile {
+  &.isBrowser {
     background-attachment: fixed;
   }
 
