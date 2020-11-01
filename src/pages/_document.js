@@ -67,6 +67,7 @@ export default class MyDocument extends NextDocument {
         <body>
           <Main />
           <NextScript />
+          {/* Bug with Chrome: https://stackoverflow.com/questions/14389566/stop-css-transition-from-firing-on-page-load/42969608#42969608 */}
           <script> </script>
         </body>
       </Html>
