@@ -13,6 +13,8 @@ import { setContent } from 'actions/content';
 import useScrollTop from 'utils/hooks/useScrollTop';
 import usePrevious from 'utils/hooks/usePrevious';
 
+import { toastError } from 'utils/lib/Toastify';
+
 import useGetContentState from './useGetContentState';
 
 import Projects from './components/Projects';
@@ -46,6 +48,16 @@ const LandingPage = ({}: LandingPageProps) => {
       dispatch(setContent(projectState));
     }
   }, [projectState]);
+
+  useEffect(() => {
+    if (error) {
+      toastError(
+        error.toString
+          ? error.toString()
+          : 'Sorry, something went wrong fetching content.',
+      );
+    }
+  }, [error]);
 
   return (
     <Container>
