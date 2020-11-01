@@ -16,16 +16,25 @@ const FADE_OUT_DELAY = 1000;
 
 const LoadingScreen = ({ hasData }: LoadingScreenProps) => {
   const [isFading, setIsFading] = useState(false);
+  const [oneSecondPassed, setOneSecondPassed] = useState(false);
 
   useEffect(() => {
     // block vertical scrolling on html and body elements
     document.body.style.overflowY = 'hidden';
     document.documentElement.style.overflowY = 'hidden';
+
+    const timeout = setTimeout(() => {
+      setOneSecondPassed(true);
+    }, 1000);
+    return () => {
+      // cleanup timer
+      clearTimeout(timeout);
+    };
   }, []);
 
   useEffect(() => {
     let timeout;
-    if (hasData) {
+    if (hasData && oneSecondPassed) {
       // set state to start fade out animation
       timeout = setTimeout(() => {
         setIsFading(true);
@@ -38,7 +47,7 @@ const LoadingScreen = ({ hasData }: LoadingScreenProps) => {
       // cleanup timer
       clearTimeout(timeout);
     };
-  }, [hasData]);
+  }, [hasData, oneSecondPassed]);
 
   const props = useSpring({
     opacity: isFading ? 0 : 1,
@@ -52,6 +61,12 @@ const LoadingScreen = ({ hasData }: LoadingScreenProps) => {
 
   return (
     <Container className={className} style={props}>
+      <HiddenImg
+        src="/static/img/nicolas-cool-unsplash.jpg"
+        onLoad={() => {
+          console.log('onLoad');
+        }}
+      />
       <SVGWrapper className={className}>
         <LoadingIcon />
       </SVGWrapper>
@@ -64,6 +79,11 @@ export default memo(LoadingScreen);
 interface LoadingScreenProps {
   hasData: boolean;
 }
+
+const HiddenImg = styled.img`
+  position: absolute;
+  visibility: hidden;
+`;
 
 const Container = styled(animated.div)`
   background-color: #313a46;

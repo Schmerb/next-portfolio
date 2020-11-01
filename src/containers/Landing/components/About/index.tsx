@@ -18,10 +18,9 @@ import styled from 'styled-components';
 // const text2 =
 //   'When I am not solving problems, I enjoy piloting my drone and taking videos, catching deep powder on my snowboard, scuba diving, seeing live music, and riding roller coasters.';
 
-const About = ({ data }: IAboutProps) => {
+const About = ({ data }: AboutProps) => {
   if (!data) return null;
-  console.log({ data });
-  const split = data.text
+  const [paragraph1, paragraph2] = data.text
     .trim()
     .split('\n')
     .filter((v) => v);
@@ -29,8 +28,8 @@ const About = ({ data }: IAboutProps) => {
     <Container id="about-me-section">
       <Content>
         <Title>{data.title}</Title>
-        <Text>{split[0]}</Text>
-        <Text>{split[1]}</Text>
+        <Text>{paragraph1}</Text>
+        <Text>{paragraph2}</Text>
       </Content>
     </Container>
   );
@@ -38,7 +37,7 @@ const About = ({ data }: IAboutProps) => {
 
 export default memo(About);
 
-interface IAboutProps {
+interface AboutProps {
   data: any;
 }
 
