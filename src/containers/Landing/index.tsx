@@ -19,7 +19,7 @@ import WorkFlow from './components/WorkFlow';
 import Contact from './components/Contact';
 
 export interface LandingPageProps {
-  content: {
+  content?: {
     data: any;
   };
 }
