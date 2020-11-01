@@ -6,10 +6,10 @@
  *
  */
 
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
-import { Link } from 'react-scroll';
+// import { Link } from 'react-scroll';
 
 import { links } from 'utils/navigation';
 import { closeMenu } from 'actions/display';
@@ -23,6 +23,17 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
   const handleLinkClick = (id: string) => (evt: any) => {
     evt.preventDefault();
     dispatch(closeMenu());
+    const El = document.querySelector(`#${id}`);
+    const box = El.getBoundingClientRect();
+    console.log({ box });
+    const elDistanceToTop = window.pageYOffset + box.top;
+    console.log({ elDistanceToTop });
+    window.scroll({
+      // top: top - 10,
+      top: elDistanceToTop,
+      left: 0,
+      behavior: 'smooth',
+    });
   };
   return (
     <Container className={menuIsOpen ? 'open' : ''}>
@@ -30,9 +41,9 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
         <List>
           {links.map(({ id, text }) => (
             <li key={id}>
-              <Link to={id} smooth={true} duration={1500} delay={250}>
-                <StyledSpan onClick={handleLinkClick(id)}>{text}</StyledSpan>
-              </Link>
+              {/* <Link to={id} smooth={true} duration={1500} delay={250}> */}
+              <StyledSpan onClick={handleLinkClick(id)}>{text}</StyledSpan>
+              {/* </Link> */}
             </li>
           ))}
         </List>
