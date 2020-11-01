@@ -4,8 +4,11 @@
  *
  *  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+
+import { setContent } from 'actions/content';
 
 import useScrollTop from 'utils/hooks/useScrollTop';
 import usePrevious from 'utils/hooks/usePrevious';
@@ -24,6 +27,7 @@ export interface LandingPageProps {}
 let direction = '';
 
 const LandingPage = ({}: LandingPageProps) => {
+  const dispatch = useDispatch();
   const { projectState, error }: any = useGetContentState();
 
   const scrollTop = useScrollTop({});
@@ -36,6 +40,12 @@ const LandingPage = ({}: LandingPageProps) => {
   } else {
     direction = 'down';
   }
+
+  useEffect(() => {
+    if (projectState) {
+      dispatch(setContent(projectState));
+    }
+  }, [projectState]);
 
   return (
     <Container>

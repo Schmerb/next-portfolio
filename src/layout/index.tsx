@@ -33,17 +33,19 @@ const Layout = ({
   menuIsOpen,
   isScrolled,
   fontIsLoaded,
+  content,
 }: LayoutProps) => {
   const menuProps = { dispatch, menuIsOpen };
-
+  const hasData = content && content.data;
+  console.log({ content });
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-      <Header {...menuProps} isScrolled={isScrolled} />
+      <Header {...menuProps} isScrolled={isScrolled} hasData={hasData} />
       <Menu {...menuProps} />
-      <LoadingScreen />
+      <LoadingScreen hasData={hasData} />
       <ToastContainer />
       <Main role="main">
         <Container>{children}</Container>
@@ -61,12 +63,14 @@ interface LayoutProps {
   menuIsOpen: boolean;
   isScrolled: boolean;
   fontIsLoaded: boolean;
+  content: any;
 }
 
-const mapStateToProps = ({ display }) => ({
+const mapStateToProps = ({ display, content }) => ({
   menuIsOpen: display.menuIsOpen,
   isScrolled: display.isScrolled,
   fontIsLoaded: display.fontIsLoaded,
+  content,
 });
 
 export default connect(mapStateToProps)(Layout);

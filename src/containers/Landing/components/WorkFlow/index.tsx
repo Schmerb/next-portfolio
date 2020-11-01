@@ -12,8 +12,8 @@ import { useTrail, animated } from 'react-spring';
 import useVisibilityState from 'utils/hooks/useVisibilityState';
 import Logos from 'utils/data/logos';
 
-const title = 'Work Flow';
-const text = 'Some of the tools I use to develop efficiently';
+// const title = 'Work Flow';
+// const text = 'Some of the tools I use to develop efficiently';
 
 const WorkFlow = ({ scrollTop, direction, workFlow }: WorkFlowProps) => {
   const { title, text, tools } = workFlow;
@@ -136,7 +136,6 @@ const LogoImage = styled.img`
  * @returns
  */
 const useTrailAnimation = ({ containerInView, direction, tools }) => {
-  console.log({ tools });
   // animation
   const [trail, set, stop]: any = useTrail(tools.length, () => ({
     opacity: 0,

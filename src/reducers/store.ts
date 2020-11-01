@@ -8,10 +8,11 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 
-import displayReducer from 'reducers/display';
-import { userReducer } from './user';
+import displayReducer from './display';
+import userReducer from './user';
+import contentReducer from './content';
 
-import { FONT_LOADED, FONT_LOADING, SET_IS_SCROLLED } from 'actions/display';
+// import { FONT_LOADED, FONT_LOADING, SET_IS_SCROLLED } from 'actions/display';
 
 const logger = createLogger({
   predicate: (getState: any, action: any) => true,
@@ -25,6 +26,7 @@ export function initializeStore(initialState = {}) {
     combineReducers({
       user: userReducer,
       display: displayReducer,
+      content: contentReducer,
     }),
     initialState,
     applyMiddleware(thunkMiddleware, logger),

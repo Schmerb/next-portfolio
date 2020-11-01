@@ -7,11 +7,8 @@
  */
 
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 import Link from 'components/Elements/Link';
-
-import logos from 'utils/data/logos';
 
 export const title = 'Built With';
 
@@ -26,24 +23,31 @@ export const text = () => (
 );
 
 export const tools = [
-  {
-    id: uuidv4(),
-    ...logos.reactRedux,
-  },
-  {
-    id: uuidv4(),
-    ...logos.nextJs,
-  },
-  {
-    id: uuidv4(),
-    ...logos.styledComponents,
-  },
-  {
-    id: uuidv4(),
-    ...logos.reactSpring,
-  },
-  {
-    id: uuidv4(),
-    ...logos.netlify,
-  },
+  'reactRedux',
+  'nextJs',
+  'styledComponents',
+  'reactSpring',
+  'netlify',
 ];
+// export const tools = [
+//   {
+//     id: uuidv4(),
+//     ...logos.reactRedux,
+//   },
+//   {
+//     id: uuidv4(),
+//     ...logos.nextJs,
+//   },
+//   {
+//     id: uuidv4(),
+//     ...logos.styledComponents,
+//   },
+//   {
+//     id: uuidv4(),
+//     ...logos.reactSpring,
+//   },
+//   {
+//     id: uuidv4(),
+//     ...logos.netlify,
+//   },
+// ];

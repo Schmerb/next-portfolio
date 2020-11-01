@@ -34,7 +34,7 @@ export const useGetContentState = () => {
         const workflowRes: any = await getWorkFlow();
         const projectsHeadersRes: any = await getProjectsHeaders();
         const aboutMeRes: any = await getAboutMe();
-        console.log({ aboutMeRes });
+        // console.log({ aboutMeRes });
         // sort work/personal projects
         const projects: any = projectsRes.items.reduce(
           (acc, proj) => {

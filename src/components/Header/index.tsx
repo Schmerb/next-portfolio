@@ -20,11 +20,11 @@ import useBurgerAnimation from './useBurgerAnimation';
 
 export const HEADER_HEIGHT = 60;
 
-const Header = ({ dispatch, menuIsOpen }: HeaderProps) => {
+const Header = ({ dispatch, menuIsOpen, hasData }: HeaderProps) => {
   const props = useBurgerAnimation({ menuIsOpen });
   return (
     <Container className={isMobile ? 'isMobile' : 'isNotMobile'}>
-      <Particles />
+      {hasData && <Particles />}
       <animated.div style={props}>
         <StyledBurgerMenu
           isOpen={menuIsOpen}
@@ -58,6 +58,7 @@ interface HeaderProps {
   dispatch: (action: any) => void;
   menuIsOpen: boolean;
   isScrolled?: boolean;
+  hasData: boolean;
 }
 
 export default memo(Header);

@@ -14,26 +14,31 @@ import LoadingIcon from 'components/svg/Icons/LoadingIcon';
 
 const FADE_OUT_DELAY = 1000;
 
-const LoadingScreen = ({}: LoadingScreenProps) => {
+const LoadingScreen = ({ hasData }: LoadingScreenProps) => {
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
     // block vertical scrolling on html and body elements
     document.body.style.overflowY = 'hidden';
     document.documentElement.style.overflowY = 'hidden';
-    const timeout = setTimeout(() => {
-      // set state to start fade out animation
-      setIsFading(true);
-      // allow vertical scrolling on html/body
-      document.body.style.overflowY = 'auto';
-      document.documentElement.style.overflowY = 'auto';
-    }, FADE_OUT_DELAY);
+  }, []);
 
+  useEffect(() => {
+    let timeout;
+    if (hasData) {
+      // set state to start fade out animation
+      timeout = setTimeout(() => {
+        setIsFading(true);
+        // allow vertical scrolling on html/body
+        document.body.style.overflowY = 'auto';
+        document.documentElement.style.overflowY = 'auto';
+      }, 250);
+    }
     return () => {
       // cleanup timer
       clearTimeout(timeout);
     };
-  }, []);
+  }, [hasData]);
 
   const props = useSpring({
     opacity: isFading ? 0 : 1,
@@ -56,7 +61,9 @@ const LoadingScreen = ({}: LoadingScreenProps) => {
 
 export default memo(LoadingScreen);
 
-interface LoadingScreenProps {}
+interface LoadingScreenProps {
+  hasData: boolean;
+}
 
 const Container = styled(animated.div)`
   position: fixed;
@@ -65,7 +72,6 @@ const Container = styled(animated.div)`
   right: 0;
   bottom: 0;
   z-index: 9999;
-  border: 1px solid #000;
   pointer-events: none;
 
   &:before {

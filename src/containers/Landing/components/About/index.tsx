@@ -9,24 +9,28 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 
-const text1 =
-  'I am a full-stack JavaScript Engineer and recent graduate of the Full Stack Web Development Program at Thinkful. From a young age, I have always been inclined to build things and see what I can make. Since coding has come into my life, I have had the opportunity to do just that and create projects from scratch. The feeling of taking an idea and turning it into a fully functional, working application is unparalleled. My technology of choice is the MERN stack and I equally enjoy both frontend and backend development.';
+// const text1 =
+//   'I am a full-stack JavaScript Engineer and recent graduate of the Full Stack Web Development Program at Thinkful. From a young age, I have always been inclined to build things and see what I can make. Since coding has come into my life, I have had the opportunity to do just that and create projects from scratch. The feeling of taking an idea and turning it into a fully functional, working application is unparalleled. My technology of choice is the MERN stack and I equally enjoy both frontend and backend development.';
 
-const newText1 =
-  'I am a full-stack JavaScript Engineer with over 4+ years of professional full-stack JavaScript experience, creating Isomorphic web-applications utilizing React/Redux in the front-end and NodeJs/Express running on the backend.';
+// const newText1 =
+//   'I am a full-stack JavaScript Engineer with over 4+ years of professional full-stack JavaScript experience, creating Isomorphic web-applications utilizing React/Redux in the front-end and NodeJs/Express running on the backend.';
 
-const text2 =
-  'When I am not solving problems, I enjoy piloting my drone and taking videos, catching deep powder on my snowboard, scuba diving, seeing live music, and riding roller coasters.';
+// const text2 =
+//   'When I am not solving problems, I enjoy piloting my drone and taking videos, catching deep powder on my snowboard, scuba diving, seeing live music, and riding roller coasters.';
 
 const About = ({ data }: IAboutProps) => {
   if (!data) return null;
   console.log({ data });
+  const split = data.text
+    .trim()
+    .split('\n')
+    .filter((v) => v);
   return (
     <Container id="about-me-section">
       <Content>
-        <Title>Get To Know Me</Title>
-        <Text>{newText1}</Text>
-        <Text>{text2}</Text>
+        <Title>{data.title}</Title>
+        <Text>{split[0]}</Text>
+        <Text>{split[1]}</Text>
       </Content>
     </Container>
   );
