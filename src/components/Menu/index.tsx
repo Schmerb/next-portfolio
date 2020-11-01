@@ -30,7 +30,7 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
         <List>
           {links.map(({ id, text }) => (
             <li key={id}>
-              <Link to={id} smooth={true} duration={1500}>
+              <Link to={id} smooth={true} duration={1500} delay={250}>
                 <StyledSpan onClick={handleLinkClick(id)}>{text}</StyledSpan>
               </Link>
             </li>
