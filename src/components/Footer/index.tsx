@@ -6,7 +6,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { Link, animateScroll as scroll } from 'react-scroll';
+// import { Link, animateScroll as scroll } from 'react-scroll';
 
 import LinkedInIcon from 'components/svg/Brands/LinkedIn';
 import GithubIcon from 'components/svg/Brands/Github';
@@ -41,21 +41,39 @@ const Footer = ({}: FooterProps) => {
     // this prevents bug where distanceFromBottom is not correct on page load
     ref.current = true;
   }, [scrollTop]);
+
+  const handleLinkClick = (id: string) => (evt: any) => {
+    evt.preventDefault();
+    const El = document.querySelector(`#${id}`);
+    const box = El.getBoundingClientRect();
+    const elDistanceToTop = window.pageYOffset + box.top;
+    window.scroll({
+      top: elDistanceToTop,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const scrollToTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <Container>
-      <UpArrowWrapper
-        onClick={() => scroll.scrollToTop()}
-        showUpArrow={showUpArrow}
-      >
+      <UpArrowWrapper onClick={scrollToTop} showUpArrow={showUpArrow}>
         <UpArrowIcon width={30} height={30} />
       </UpArrowWrapper>
       <Wrapper>
         <NavList>
           {links.map(({ id, text }) => (
             <li key={id}>
-              <Link to={id} smooth={true} duration={1500} delay={250}>
-                <span>{text}</span>
-              </Link>
+              {/* <Link to={id} smooth={true} duration={1500} delay={250}> */}
+              <span onClick={handleLinkClick(id)}>{text}</span>
+              {/* </Link> */}
             </li>
           ))}
         </NavList>

@@ -25,11 +25,8 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
     dispatch(closeMenu());
     const El = document.querySelector(`#${id}`);
     const box = El.getBoundingClientRect();
-    console.log({ box });
     const elDistanceToTop = window.pageYOffset + box.top;
-    console.log({ elDistanceToTop });
     window.scroll({
-      // top: top - 10,
       top: elDistanceToTop,
       left: 0,
       behavior: 'smooth',
