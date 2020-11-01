@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { useTrail, useSprings, animated } from 'react-spring';
 
 import { ToolType } from 'utils/data/types';
+import Logos from 'utils/data/logos';
 
 const ProjectLogos = ({ logosRef, tools, inView }: ProjectLogosProps) => {
   const [trail, set, stop]: any = useTrail(tools.length, () => ({
@@ -30,9 +31,29 @@ const ProjectLogos = ({ logosRef, tools, inView }: ProjectLogosProps) => {
   return (
     <LogoImagesList ref={logosRef}>
       {trail.map((props, index) => {
-        const { id, imgSrc, href, style } = tools[index];
+        const toolName: string = tools[index];
+
+        const tool: ToolType = Logos[toolName];
+
+        if (!tool) {
+          // console.log('\n\n');
+          // console.log({ tools });
+          // console.log({ index });
+          // console.log({ toolName });
+          // console.log({ tool });
+          // console.log('\n\n');
+
+          return null;
+        }
+
+        const { imgSrc, href, style } = tool;
+
+        // const imgSrc = '';
+        // const href = '';
+        // const style = {};
+
         return (
-          <animated.li style={props} key={id}>
+          <animated.li style={props} key={`_${index}_${href}`}>
             <Link href={href} target="_blank">
               <LogoImage src={imgSrc} style={style} />
             </Link>
@@ -47,7 +68,7 @@ export default memo(ProjectLogos);
 
 interface ProjectLogosProps {
   logosRef: any;
-  tools: ToolType[];
+  tools: string[];
   inView: boolean;
 }
 

@@ -62,6 +62,7 @@ const Logos: LogosProps = {
   expressText: {
     imgSrc: expressText,
     href: 'http://expressjs.com/',
+    style: { width: 'auto', height: '40px' },
   },
   gulp: {
     imgSrc: gulp,
@@ -87,6 +88,7 @@ const Logos: LogosProps = {
   jqueryText: {
     imgSrc: jqueryText,
     href: 'https://jquery.com/',
+    style: { width: 'auto', height: '80px' },
   },
   mernstack: {
     imgSrc: mernstack,
@@ -123,6 +125,7 @@ const Logos: LogosProps = {
   mongoose: {
     imgSrc: mongoose,
     href: 'https://mongoosejs.com/',
+    style: { width: 'auto', height: '90px' },
   },
   javascript: {
     imgSrc: javascript,
@@ -160,6 +163,7 @@ const Logos: LogosProps = {
   spotify: {
     imgSrc: spotify,
     href: 'https://www.spotify.com/',
+    style: { width: 'auto', height: '90px' },
   },
 };
 
@@ -202,4 +206,5 @@ interface LogosProps {
 interface LogoProps {
   imgSrc: string;
   href: string;
+  style?: any;
 }

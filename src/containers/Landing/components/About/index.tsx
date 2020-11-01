@@ -6,7 +6,7 @@
  *
  */
 
-import React, { useState, memo } from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 
 const text1 =
@@ -18,9 +18,9 @@ const newText1 =
 const text2 =
   'When I am not solving problems, I enjoy piloting my drone and taking videos, catching deep powder on my snowboard, scuba diving, seeing live music, and riding roller coasters.';
 
-const About = ({}: IAboutProps) => {
-  const [, set] = useState();
-
+const About = ({ data }: IAboutProps) => {
+  if (!data) return null;
+  console.log({ data });
   return (
     <Container id="about-me-section">
       <Content>
@@ -34,7 +34,9 @@ const About = ({}: IAboutProps) => {
 
 export default memo(About);
 
-interface IAboutProps {}
+interface IAboutProps {
+  data: any;
+}
 
 const Container = styled.section`
   background-color: ${({ theme }) => theme.colors.PrimaryBlue};

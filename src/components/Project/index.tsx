@@ -32,7 +32,7 @@ const Project = ({ project, index, scrollTop, direction }: ProjectProps) => {
       />
       <ProjectLogos
         logosRef={refs.logosRef}
-        tools={project.tools}
+        tools={project.fields.tools}
         inView={state.logosInView}
       />
       <ProjectButtons
@@ -43,7 +43,7 @@ const Project = ({ project, index, scrollTop, direction }: ProjectProps) => {
       />
       <ProjectImages
         index={index}
-        images={project.images}
+        images={project.fields.images}
         direction={direction}
         // refs
         passDesktopRef={refs.desktopRef}
@@ -61,7 +61,7 @@ const Project = ({ project, index, scrollTop, direction }: ProjectProps) => {
 export default memo(Project);
 
 interface ProjectProps {
-  project: ProjectType;
+  project: any;
   index: number;
   scrollTop: number;
   direction: string;

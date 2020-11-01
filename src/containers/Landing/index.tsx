@@ -4,11 +4,13 @@
  *
  *  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import useScrollTop from 'utils/hooks/useScrollTop';
 import usePrevious from 'utils/hooks/usePrevious';
+
+import useGetContentState from './useGetContentState';
 
 import Projects from './components/Projects';
 import Work from './components/Work';
@@ -22,6 +24,8 @@ export interface LandingPageProps {}
 let direction = '';
 
 const LandingPage = ({}: LandingPageProps) => {
+  const { projectState, error }: any = useGetContentState();
+
   const scrollTop = useScrollTop({});
   const prevScrollTop: number = usePrevious(scrollTop);
   if (
@@ -32,12 +36,27 @@ const LandingPage = ({}: LandingPageProps) => {
   } else {
     direction = 'down';
   }
+
   return (
     <Container>
-      <Work scrollTop={scrollTop} direction={direction} />
-      <Projects scrollTop={scrollTop} direction={direction} />
-      <About />
-      <WorkFlow scrollTop={scrollTop} direction={direction} />
+      <Work
+        scrollTop={scrollTop}
+        direction={direction}
+        projects={projectState.work}
+        projectHeader={projectState.projectHeaders.work}
+      />
+      <Projects
+        scrollTop={scrollTop}
+        direction={direction}
+        projects={projectState.personal}
+        projectHeader={projectState.projectHeaders.personal}
+      />
+      <About data={projectState.aboutMe} />
+      <WorkFlow
+        scrollTop={scrollTop}
+        direction={direction}
+        workFlow={projectState.workFlow}
+      />
       <AboutThisSite scrollTop={scrollTop} />
       <Contact scrollTop={scrollTop} />
     </Container>

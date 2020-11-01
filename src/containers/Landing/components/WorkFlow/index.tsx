@@ -10,26 +10,33 @@ import styled from 'styled-components';
 import { useTrail, animated } from 'react-spring';
 
 import useVisibilityState from 'utils/hooks/useVisibilityState';
-
-import tools from './tools';
+import Logos from 'utils/data/logos';
 
 const title = 'Work Flow';
 const text = 'Some of the tools I use to develop efficiently';
 
-const WorkFlow = ({ scrollTop, direction }: WorkFlowProps) => {
+const WorkFlow = ({ scrollTop, direction, workFlow }: WorkFlowProps) => {
+  const { title, text, tools } = workFlow;
   // inView handler
   const { containerRef, containerInView } = useVisibilityState({ scrollTop });
   // animation
-  const trail = useTrailAnimation({ containerInView, direction });
+  const trail = useTrailAnimation({
+    containerInView,
+    direction,
+    tools,
+  });
   return (
     <Container id="work-flow-section" ref={containerRef}>
       <Title>{title}</Title>
       <Text>{text}</Text>
       <List>
         {trail.map((props, index) => {
-          const { id, imgSrc, href, style } = tools[index];
+          const toolName = tools[index];
+          const tool = Logos[toolName];
+          if (!tool) return null;
+          const { imgSrc, href, style } = tool;
           return (
-            <animated.li style={props} key={id}>
+            <animated.li style={props} key={`_${index}_${href}`}>
               <Link href={href} target="_blank">
                 <LogoImage src={imgSrc} style={style} />
               </Link>
@@ -46,6 +53,7 @@ export default memo(WorkFlow);
 interface WorkFlowProps {
   scrollTop: number;
   direction: string;
+  workFlow: any;
 }
 
 const Container = styled.section`
@@ -127,7 +135,8 @@ const LogoImage = styled.img`
  * @param {*} { containerInView }
  * @returns
  */
-const useTrailAnimation = ({ containerInView, direction }) => {
+const useTrailAnimation = ({ containerInView, direction, tools }) => {
+  console.log({ tools });
   // animation
   const [trail, set, stop]: any = useTrail(tools.length, () => ({
     opacity: 0,

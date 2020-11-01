@@ -84,26 +84,26 @@ const ProjectImages = ({
   return (
     <Container>
       <DesktopAnimatedDiv style={desktopProps} ref={passDesktopRef}>
-        <DesktopImg src={images.desktop} />
+        <DesktopImg src={images[0].fields.file.url} />
         <ShadowImg src={shadowSrc} />
       </DesktopAnimatedDiv>
       <LowerWrapper>
         {isEven ? (
           <>
             <MobileAnimatedDiv style={mobileProps} ref={passMobileRef}>
-              <MobileImg src={images.mobile} isEven />
+              <MobileImg src={images[2].fields.file.url} isEven />
             </MobileAnimatedDiv>
             <LaptopAnimatedDiv style={laptopProps} ref={passLaptopRef}>
-              <LaptopImg src={images.laptop} />
+              <LaptopImg src={images[1].fields.file.url} />
             </LaptopAnimatedDiv>
           </>
         ) : (
           <>
             <LaptopAnimatedDiv style={laptopProps} ref={passLaptopRef}>
-              <LaptopImg src={images.laptop} />
+              <LaptopImg src={images[1].fields.file.url} />
             </LaptopAnimatedDiv>
             <MobileAnimatedDiv style={mobileProps} ref={passMobileRef}>
-              <MobileImg src={images.mobile} />
+              <MobileImg src={images[2].fields.file.url} />
             </MobileAnimatedDiv>
           </>
         )}

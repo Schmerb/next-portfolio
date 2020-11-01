@@ -60,27 +60,27 @@ const ProjectButtons = ({
     };
   }, [buttonsInView]);
 
-  const hasApiAndClient = project.apiCode && project.clientCode;
-  const hasOnlyClientCode = !project.apiCode && project.clientCode;
-  // const noCode = !project.apiCode && !project.clientCode;
+  const hasApiAndClient = project.fields.apiCode && project.fields.clientCode;
+  const hasOnlyClientCode =
+    !project.fields.apiCode && project.fields.clientCode;
 
   return (
     <ButtonWrapper
-      hasAPI={!!project.apiCode}
-      noCode={!project.apiCode && !project.clientCode}
+      hasAPI={!!project.fields.apiCode}
+      noCode={!project.fields.apiCode && !project.fields.clientCode}
       ref={passRef}
     >
       <animated.div style={topBtnProps}>
         <ProjectButton
           noIcon
           text="Check it Out"
-          href={project.link.href}
+          href={project.fields.linkHref}
           style={hasOnlyClientCode ? { marginRight: '25px' } : {}}
         />
       </animated.div>
       {hasOnlyClientCode && (
         <animated.div style={leftBtnProps}>
-          <ProjectButton text="Code" href={project.clientCode} />
+          <ProjectButton text="Code" href={project.fields.clientCode} />
         </animated.div>
       )}
       {hasApiAndClient && (
@@ -88,12 +88,12 @@ const ProjectButtons = ({
           <animated.div style={leftBtnProps}>
             <ProjectButton
               text="Client Code"
-              href={project.clientCode}
+              href={project.fields.clientCode}
               style={{ marginRight: '25px' }}
             />
           </animated.div>
           <animated.div style={rightBtnProps}>
-            <ProjectButton text="Api Code" href={project.apiCode} />
+            <ProjectButton text="Api Code" href={project.fields.apiCode} />
           </animated.div>
         </BottomButtonWrapper>
       )}

@@ -12,6 +12,8 @@ import { useSpring, animated } from 'react-spring';
 
 import { ProjectType } from 'utils/data/types';
 
+import { getName } from 'utils/contentful';
+
 const springConfig = {
   config: {
     tension: 105,
@@ -64,18 +66,18 @@ const ProjectInfo = ({
     <>
       <TitleWrapper ref={titleRef}>
         <animated.div style={titleProps}>
-          <Title>{project.title}</Title>
+          <Title>{project.fields.title}</Title>
         </animated.div>
         <animated.div style={linkProps}>
-          <Link href={project.link.href} target="_blank">
-            {project.link.title}
+          <Link href={project.fields.linkHref} target="_blank">
+            {project.fields.linkTitle}
           </Link>
         </animated.div>
       </TitleWrapper>
       <animated.div style={textProps}>
         <TextWrapper>
-          <Text>{project.description}</Text>
-          {project.credit && <Credit>{project.credit}</Credit>}
+          <Text>{project.fields.description}</Text>
+          {project.fields.credit && <Credit>{project.fields.credit}</Credit>}
         </TextWrapper>
       </animated.div>
     </>
@@ -86,7 +88,7 @@ export default memo(ProjectInfo);
 
 interface ProjectInfoProps {
   titleRef: any;
-  project: ProjectType;
+  project: any;
   inView: boolean;
   direction: string;
 }

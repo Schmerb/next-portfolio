@@ -12,18 +12,26 @@ import styled from 'styled-components';
 import Banner from 'components/Banner';
 import Project from 'components/Project';
 
-import { headerData, thinkfulProjects } from 'utils/data/projects';
-
-const { title, text } = headerData;
-
-const Projects = ({ scrollTop, direction }: ProjectsProps) => {
+const Projects = ({
+  scrollTop,
+  direction,
+  projects,
+  projectHeader,
+}: ProjectsProps) => {
+  if (!projectHeader || !projectHeader.fields) {
+    return null;
+  }
   return (
     <Container id="projects-section">
-      <Banner title={title} text={text} scrollTop={scrollTop} />
+      <Banner
+        title={projectHeader.fields.title}
+        text={projectHeader.fields.text}
+        scrollTop={scrollTop}
+      />
       <ProjectList>
-        {thinkfulProjects.map((project, index) => (
+        {projects.map((project, index) => (
           <Project
-            key={project.id}
+            key={project.sys.id}
             project={project}
             index={index}
             scrollTop={scrollTop}
@@ -40,6 +48,8 @@ export default memo(Projects);
 interface ProjectsProps {
   scrollTop: number;
   direction: string;
+  projects: any[];
+  projectHeader: any;
 }
 
 const Container = styled.section`
