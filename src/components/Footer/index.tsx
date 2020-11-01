@@ -53,7 +53,7 @@ const Footer = ({}: FooterProps) => {
         <NavList>
           {links.map(({ id, text }) => (
             <li key={id}>
-              <Link to={id} smooth={true} duration={1500}>
+              <Link to={id} smooth={true} duration={1500} delay={250}>
                 <span>{text}</span>
               </Link>
             </li>
