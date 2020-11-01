@@ -34,7 +34,7 @@ function MyApp({ Component, reduxStore, router, pageProps }) {
   return (
     <Provider store={reduxStore}>
       <ThemeProvider theme={Theme}>
-        <Layout title="Title | 2019">
+        <Layout title="Mike Schmerbeck | 2020">
           {loaded && <Component key={router.route} {...pageProps} />}
         </Layout>
       </ThemeProvider>
