@@ -26,8 +26,13 @@ import { toastError } from 'utils/lib/Toastify';
 // this will take place of any "main.css" base style files
 import { MyGlobalStyle } from 'styles/globalStyles';
 
+import smoothscroll from 'smoothscroll-polyfill';
+
+// kick off the polyfill!
+smoothscroll.polyfill();
+
 import 'react-toastify/dist/ReactToastify.css';
-import 'scroll-behavior-polyfill';
+// import 'scroll-behavior-polyfill';
 
 require('es6-promise').polyfill();
 require('fetch-everywhere');
