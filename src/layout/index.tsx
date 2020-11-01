@@ -27,6 +27,7 @@ import { toastError } from 'utils/lib/Toastify';
 import { MyGlobalStyle } from 'styles/globalStyles';
 
 import 'react-toastify/dist/ReactToastify.css';
+import 'scroll-behavior-polyfill';
 
 require('es6-promise').polyfill();
 require('fetch-everywhere');
