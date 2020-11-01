@@ -72,7 +72,7 @@ const Footer = ({}: FooterProps) => {
           {links.map(({ id, text }) => (
             <li key={id}>
               {/* <Link to={id} smooth={true} duration={1500} delay={250}> */}
-              <span onClick={handleLinkClick(id)}>{text}</span>
+              <a onClick={handleLinkClick(id)}>{text}</a>
               {/* </Link> */}
             </li>
           ))}
