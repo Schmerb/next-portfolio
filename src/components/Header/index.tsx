@@ -29,9 +29,6 @@ const Header = ({ dispatch, menuIsOpen, hasData }: HeaderProps) => {
   if (isBrowser) {
     className = `${className} isBrowser`;
   }
-  console.log({ isMobile });
-  console.log({ isBrowser });
-  console.log({ className });
   return (
     hasData && (
       <Container className={className}>
