@@ -17,6 +17,11 @@ import Header, { HEADER_HEIGHT } from 'components/Header';
 import Footer, { FOOTER_HEIGHT } from 'components/Footer';
 import Menu from 'components/Menu';
 import LoadingScreen from 'components/LoadingScreen';
+import useGetContentState from 'containers/Landing/useGetContentState';
+
+import { setContent } from 'actions/content';
+
+import { toastError } from 'utils/lib/Toastify';
 
 // this will take place of any "main.css" base style files
 import { MyGlobalStyle } from 'styles/globalStyles';
@@ -35,22 +40,44 @@ const Layout = ({
   fontIsLoaded,
   content,
 }: LayoutProps) => {
+  const { projectState, error }: any = useGetContentState();
+
+  useEffect(() => {
+    if (projectState) {
+      dispatch(setContent(projectState));
+    }
+  }, [projectState]);
+
+  useEffect(() => {
+    if (error) {
+      toastError(
+        error.toString
+          ? error.toString()
+          : 'Sorry, something went wrong fetching content.',
+      );
+    }
+  }, [error]);
+
   const menuProps = { dispatch, menuIsOpen };
-  const hasData = content && content.data;
-  console.log({ content });
+  const hasData = !!(content && content.data);
+
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-      <Header {...menuProps} isScrolled={isScrolled} hasData={hasData} />
-      <Menu {...menuProps} />
       <LoadingScreen hasData={hasData} />
-      <ToastContainer />
-      <Main role="main">
-        <Container>{children}</Container>
-      </Main>
-      <Footer />
+      {hasData && (
+        <>
+          <Header {...menuProps} isScrolled={isScrolled} hasData={hasData} />
+          <Menu {...menuProps} />
+          <ToastContainer />
+          <Main role="main">
+            <Container>{children}</Container>
+          </Main>
+          <Footer />
+        </>
+      )}
       <MyGlobalStyle />
     </>
   );

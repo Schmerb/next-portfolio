@@ -35,6 +35,12 @@ const WorkFlow = ({ scrollTop, direction, workFlow }: WorkFlowProps) => {
           const tool = Logos[toolName];
           if (!tool) return null;
           const { imgSrc, href, style } = tool;
+
+          // console.log('\n\n');
+          // console.log({ Logos });
+          // console.log({ toolName });
+          // console.log({ tool });
+          // console.log({ imgSrc, href, style });
           return (
             <animated.li style={props} key={`_${index}_${href}`}>
               <Link href={href} target="_blank">

@@ -6,16 +6,10 @@
 
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-
-import { setContent } from 'actions/content';
+import { connect } from 'react-redux';
 
 import useScrollTop from 'utils/hooks/useScrollTop';
 import usePrevious from 'utils/hooks/usePrevious';
-
-import { toastError } from 'utils/lib/Toastify';
-
-import useGetContentState from './useGetContentState';
 
 import Projects from './components/Projects';
 import Work from './components/Work';
@@ -24,13 +18,16 @@ import AboutThisSite from './components/AboutThisSite';
 import WorkFlow from './components/WorkFlow';
 import Contact from './components/Contact';
 
-export interface LandingPageProps {}
+export interface LandingPageProps {
+  content: {
+    data: any;
+  };
+}
 
 let direction = '';
 
-const LandingPage = ({}: LandingPageProps) => {
-  const dispatch = useDispatch();
-  const { projectState, error }: any = useGetContentState();
+const LandingPage = ({ content }: LandingPageProps) => {
+  const projectState = content.data;
 
   const scrollTop = useScrollTop({});
   const prevScrollTop: number = usePrevious(scrollTop);
@@ -42,22 +39,6 @@ const LandingPage = ({}: LandingPageProps) => {
   } else {
     direction = 'down';
   }
-
-  useEffect(() => {
-    if (projectState) {
-      dispatch(setContent(projectState));
-    }
-  }, [projectState]);
-
-  useEffect(() => {
-    if (error) {
-      toastError(
-        error.toString
-          ? error.toString()
-          : 'Sorry, something went wrong fetching content.',
-      );
-    }
-  }, [error]);
 
   return (
     <Container>
@@ -85,7 +66,11 @@ const LandingPage = ({}: LandingPageProps) => {
   );
 };
 
-export default LandingPage;
+const mapStateToProps = ({ content }) => ({
+  content,
+});
+
+export default connect(mapStateToProps)(LandingPage);
 
 const Container = styled.div`
   position: relative;

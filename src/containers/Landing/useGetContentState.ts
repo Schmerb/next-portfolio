@@ -36,39 +36,10 @@ export const useGetContentState = () => {
         const aboutMeRes: any = await getAboutMe();
         // console.log({ aboutMeRes });
         // sort work/personal projects
-        const projects: any = projectsRes.items.reduce(
-          (acc, proj) => {
-            if (proj.fields.isPersonalProject) {
-              return {
-                ...acc,
-                personal: [...acc.personal, proj],
-              };
-            } else {
-              return {
-                ...acc,
-                work: [...acc.work, proj],
-              };
-            }
-          },
-          { personal: [], work: [] },
-        );
+        const projects: any = sortProjectsByType(projectsRes.items);
         // sort project section headers
-        const projectHeaders: any = projectsHeadersRes.items.reduce(
-          (acc, proj) => {
-            console.log({ proj });
-            if (proj.fields.title === 'Projects') {
-              return {
-                ...acc,
-                personal: proj,
-              };
-            } else {
-              return {
-                ...acc,
-                work: proj,
-              };
-            }
-          },
-          { personal: [], work: [] },
+        const projectHeaders: any = sortProjectHeaders(
+          projectsHeadersRes.items,
         );
         // set locally
         setProjectState({
@@ -90,3 +61,41 @@ export const useGetContentState = () => {
 };
 
 export default useGetContentState;
+
+function sortProjectsByType(proejcts) {
+  return proejcts.reduce(
+    (acc, proj) => {
+      if (proj.fields.isPersonalProject) {
+        return {
+          ...acc,
+          personal: [...acc.personal, proj],
+        };
+      } else {
+        return {
+          ...acc,
+          work: [...acc.work, proj],
+        };
+      }
+    },
+    { personal: [], work: [] },
+  );
+}
+
+function sortProjectHeaders(headers) {
+  return headers.reduce(
+    (acc, proj) => {
+      if (proj.fields.title === 'Projects') {
+        return {
+          ...acc,
+          personal: proj,
+        };
+      } else {
+        return {
+          ...acc,
+          work: proj,
+        };
+      }
+    },
+    { personal: [], work: [] },
+  );
+}

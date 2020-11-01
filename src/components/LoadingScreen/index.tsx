@@ -66,6 +66,7 @@ interface LoadingScreenProps {
 }
 
 const Container = styled(animated.div)`
+  background-color: #313a46;
   position: fixed;
   top: 0;
   left: 0;

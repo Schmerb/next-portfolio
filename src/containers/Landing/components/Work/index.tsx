@@ -49,6 +49,7 @@ interface WorkProps {
 
 const Container = styled.section`
   // border: 1px solid #000;
+  min-height: 100vh;
 `;
 
 const ProjectList = styled.ul`
