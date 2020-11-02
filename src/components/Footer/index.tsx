@@ -8,6 +8,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 // import { Link, animateScroll as scroll } from 'react-scroll';
 import { useSpring } from 'react-spring';
+import { isBrowser, isMobile } from 'react-device-detect';
 
 import LinkedInIcon from 'components/svg/Brands/LinkedIn';
 import GithubIcon from 'components/svg/Brands/Github';
@@ -51,33 +52,39 @@ const Footer = ({}: FooterProps) => {
     const El = document.querySelector(`#${id}`);
     const box = El.getBoundingClientRect();
     const elDistanceToTop = window.pageYOffset + box.top;
-    window.scroll({
-      top: elDistanceToTop,
-      left: 0,
-      behavior: 'smooth',
-    });
-    // setY({
-    //   y: elDistanceToTop,
-    //   reset: true,
-    //   from: { y: window.scrollY },
-    //   // @ts-ignore
-    //   onFrame: (props: any) => window.scroll(0, props.y),
-    // });
+    if (isBrowser) {
+      setY({
+        y: elDistanceToTop,
+        reset: true,
+        from: { y: window.scrollY },
+        // @ts-ignore
+        onFrame: (props: any) => window.scroll(0, props.y),
+      });
+    } else {
+      window.scroll({
+        top: elDistanceToTop,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
   };
 
   const scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-    // setY({
-    //   y: 0,
-    //   reset: true,
-    //   from: { y: window.scrollY },
-    //   // @ts-ignore
-    //   onFrame: (props: any) => window.scroll(0, props.y),
-    // });
+    if (isBrowser) {
+      setY({
+        y: 0,
+        reset: true,
+        from: { y: window.scrollY },
+        // @ts-ignore
+        onFrame: (props: any) => window.scroll(0, props.y),
+      });
+    } else {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
   };
 
   return (
