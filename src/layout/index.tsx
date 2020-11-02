@@ -43,12 +43,12 @@ const Layout = ({
 }: LayoutProps) => {
   const { projectState, error }: any = useGetContentState();
 
-  useEffect(() => {
-    const smoothscroll = require('smoothscroll-polyfill');
+  // useEffect(() => {
+  //   const smoothscroll = require('smoothscroll-polyfill');
 
-    // kick off the polyfill!
-    smoothscroll.polyfill();
-  }, []);
+  //   // kick off the polyfill!
+  //   smoothscroll.polyfill();
+  // }, []);
 
   useEffect(() => {
     if (projectState) {
