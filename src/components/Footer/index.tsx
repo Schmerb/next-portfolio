@@ -75,6 +75,7 @@ const Footer = ({}: FooterProps) => {
       y: 0,
       reset: true,
       from: { y: window.scrollY },
+      // @ts-ignore
       onFrame: (props: any) => window.scroll(0, props.y),
     });
   };
