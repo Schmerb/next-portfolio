@@ -60,6 +60,7 @@ const Footer = ({}: FooterProps) => {
       y: elDistanceToTop,
       reset: true,
       from: { y: window.scrollY },
+      // @ts-ignore
       onFrame: (props: any) => window.scroll(0, props.y),
     });
   };
