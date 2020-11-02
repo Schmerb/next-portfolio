@@ -52,21 +52,28 @@ const Footer = ({}: FooterProps) => {
     const El = document.querySelector(`#${id}`);
     const box = El.getBoundingClientRect();
     const elDistanceToTop = window.pageYOffset + box.top;
-    if (isBrowser) {
-      setY({
-        y: elDistanceToTop,
-        reset: true,
-        from: { y: window.scrollY },
-        // @ts-ignore
-        onFrame: (props: any) => window.scroll(0, props.y),
-      });
-    } else {
-      window.scroll({
-        top: elDistanceToTop,
-        left: 0,
-        behavior: 'smooth',
-      });
-    }
+    setY({
+      y: elDistanceToTop,
+      reset: true,
+      from: { y: window.scrollY },
+      // @ts-ignore
+      onFrame: (props: any) => window.scroll(0, props.y),
+    });
+    // if (isBrowser) {
+    //   setY({
+    //     y: elDistanceToTop,
+    //     reset: true,
+    //     from: { y: window.scrollY },
+    //     // @ts-ignore
+    //     onFrame: (props: any) => window.scroll(0, props.y),
+    //   });
+    // } else {
+    //   window.scroll({
+    //     top: elDistanceToTop,
+    //     left: 0,
+    //     behavior: 'smooth',
+    //   });
+    // }
   };
 
   const scrollToTop = () => {

@@ -20,6 +20,7 @@ export const MyGlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
     /* overflow: hidden; // issue with double scroll bar */
     /* font-family: "NextPro-Regular", sans-serif; */
   }
