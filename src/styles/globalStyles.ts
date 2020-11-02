@@ -16,11 +16,11 @@ export const MyGlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     font-family: 'Open Sans', sans-serif;
+    -webkit-overflow-scrolling: touch;
   }
   body {
     margin: 0;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
     /* overflow: hidden; // issue with double scroll bar */
     /* font-family: "NextPro-Regular", sans-serif; */
   }
