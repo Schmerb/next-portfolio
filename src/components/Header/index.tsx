@@ -7,7 +7,7 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-scroll';
-import { animated } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 import { isBrowser, isMobile } from 'react-device-detect';
 
 import Particles from 'components/lib/Particles';
@@ -22,6 +22,7 @@ export const HEADER_HEIGHT = 60;
 
 const Header = ({ dispatch, menuIsOpen, hasData }: HeaderProps) => {
   const props = useBurgerAnimation({ menuIsOpen });
+  const [, setY] = useSpring(() => ({ y: 0 }));
   let className = '';
   if (isMobile) {
     className = `${className} isMobile`;
@@ -60,11 +61,21 @@ const Header = ({ dispatch, menuIsOpen, hasData }: HeaderProps) => {
               const El = document.querySelector('#work-section');
               const box = El.getBoundingClientRect();
               const elDistanceToTop = window.pageYOffset + box.top;
-              window.scroll({
-                top: elDistanceToTop,
-                left: 0,
-                behavior: 'smooth',
-              });
+              if (isBrowser) {
+                setY({
+                  y: elDistanceToTop,
+                  reset: true,
+                  from: { y: window.scrollY },
+                  // @ts-ignore
+                  onFrame: (props: any) => window.scroll(0, props.y),
+                });
+              } else {
+                window.scroll({
+                  top: elDistanceToTop,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              }
             }, 100);
           }}
         >

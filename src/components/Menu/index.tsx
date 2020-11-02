@@ -9,12 +9,14 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
-// import { Link } from 'react-scroll';
+import { isBrowser, isMobile } from 'react-device-detect';
 
 import { links } from 'utils/navigation';
 import { closeMenu } from 'actions/display';
 
 const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
+  //
+  const [, setY] = useSpring(() => ({ y: 0 }));
   //
   const animatedProps = useSpring({
     opacity: menuIsOpen ? 1 : 0,
@@ -26,11 +28,21 @@ const Menu = ({ dispatch, menuIsOpen }: IMenuProps) => {
     const El = document.querySelector(`#${id}`);
     const box = El.getBoundingClientRect();
     const elDistanceToTop = window.pageYOffset + box.top;
-    window.scroll({
-      top: elDistanceToTop,
-      left: 0,
-      behavior: 'smooth',
-    });
+    if (isBrowser) {
+      setY({
+        y: elDistanceToTop,
+        reset: true,
+        from: { y: window.scrollY },
+        // @ts-ignore
+        onFrame: (props: any) => window.scroll(0, props.y),
+      });
+    } else {
+      window.scroll({
+        top: elDistanceToTop,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
   };
   return (
     <Container className={menuIsOpen ? 'open' : ''}>
