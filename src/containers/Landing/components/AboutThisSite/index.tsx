@@ -11,15 +11,19 @@ import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
 
 import ProjectLogos from 'components/Project/ProjectLogos';
+import ProjectButtons from 'components/Project/ProjectButtons';
 
 import useVisibilityState from 'utils/hooks/useVisibilityState';
 
 import { title, text, tools } from './data';
 
-const AboutThisSite = ({ scrollTop }: AboutThisSiteProps) => {
+const codeHref = 'https://github.com/Schmerb/next-portfolio';
+
+const AboutThisSite = ({ scrollTop, direction }: AboutThisSiteProps) => {
   const { containerRef, containerInView } = useVisibilityState({ scrollTop });
 
   const ref = useRef();
+  const buttonsRef = useRef();
 
   const containerProps = useSpring({
     opacity: containerInView ? 1 : 0,
@@ -44,6 +48,13 @@ const AboutThisSite = ({ scrollTop }: AboutThisSiteProps) => {
         <Text>{text()}</Text>
       </animated.div>
       <ProjectLogos logosRef={ref} tools={tools} inView={containerInView} />
+      <ProjectButtons
+        dark
+        passRef={buttonsRef}
+        project={{ fields: { clientCode: codeHref } }}
+        direction={direction}
+        buttonsInView={containerInView}
+      />
     </Container>
   );
 };
@@ -52,6 +63,7 @@ export default memo(AboutThisSite);
 
 interface AboutThisSiteProps {
   scrollTop: number;
+  direction: string;
 }
 
 const Container = styled.div`

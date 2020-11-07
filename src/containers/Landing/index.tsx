@@ -60,7 +60,7 @@ const LandingPage = ({ content }: LandingPageProps) => {
         direction={direction}
         workFlow={projectState.workFlow}
       />
-      <AboutThisSite scrollTop={scrollTop} />
+      <AboutThisSite scrollTop={scrollTop} direction={direction} />
       <Contact scrollTop={scrollTop} />
     </Container>
   );

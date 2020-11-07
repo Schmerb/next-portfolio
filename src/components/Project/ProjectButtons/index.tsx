@@ -32,6 +32,7 @@ const ProjectButtons = ({
   passRef,
   buttonsInView,
   direction,
+  dark = false,
 }: IProjectButtonsProps) => {
   const [topBtnReady, setTopBtnReady] = useState(false);
   const [leftBtnReady, setLeftBtnReady] = useState(false);
@@ -70,17 +71,23 @@ const ProjectButtons = ({
       noCode={!project.fields.apiCode && !project.fields.clientCode}
       ref={passRef}
     >
-      <animated.div style={topBtnProps}>
-        <ProjectButton
-          noIcon
-          text="Check it Out"
-          href={project.fields.linkHref}
-          style={hasOnlyClientCode ? { marginRight: '25px' } : {}}
-        />
-      </animated.div>
+      {project.fields.linkHref && (
+        <animated.div style={topBtnProps}>
+          <ProjectButton
+            noIcon
+            text="Check it Out"
+            href={project.fields.linkHref}
+            style={hasOnlyClientCode ? { marginRight: '25px' } : {}}
+          />
+        </animated.div>
+      )}
       {hasOnlyClientCode && (
         <animated.div style={leftBtnProps}>
-          <ProjectButton text="Code" href={project.fields.clientCode} />
+          <ProjectButton
+            dark={dark}
+            text="Code"
+            href={project.fields.clientCode}
+          />
         </animated.div>
       )}
       {hasApiAndClient && (
@@ -108,6 +115,7 @@ interface IProjectButtonsProps {
   passRef: any;
   buttonsInView: boolean;
   direction: string;
+  dark?: boolean;
 }
 
 const ButtonWrapper = styled.div`
